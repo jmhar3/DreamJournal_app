@@ -25,7 +25,7 @@ body {
 
 /* FONTS */
 
-h1, h2, h3, h4, h5, li, a {
+h1, h2, h3, h4, h5, li, a, button, input {
   font-family: 'Bold';
   font-weight: normal;
   color: var(--bold);
@@ -35,12 +35,7 @@ h1, h2, h3, h4, h5, li, a {
 p {
   font-family: 'Regular';
   font-weight: normal;
-}
-
-/* PROPORTIONS */
-
-.full-page {
-  height: 100vh;
+  margin: 0;
 }
 
 /* COLOURS */
@@ -55,22 +50,71 @@ p {
 
 /* COMPONENTS */
 
-.button {
+/* Buttons */
+
+.button, input[type=submit] {
   height: fit-content;
   width: fit-content;
   text-decoration: none;
   background-color: var(--light-mid);
   padding: .9vw;
   border: var(--mid) solid 2px;
-  border-radius: .9vw;
+  border-radius: 1.2vw;
 }
 
-.button:hover {
+.button:hover, input[type=submit]:hover {
   border-radius: 1.8vw;
+}
+
+.toggle-slider {
+  background-color: var(--light-mid);
+  width: fit-content;
+  border-radius: 100vw;
+}
+
+.toggle-slider:hover {
+  background-color: var(--mid);
+}
+
+.toggle-button {
+  cursor: pointer;
+  padding: .6vw;
+  padding-left: .9vw;
+  padding-right: .9vw;
+  border: none;
+  border-radius: 100vw;
+}
+
+input[type=submit] {
+  background-color: var(--bold);
+  color: var(--light);
+}
+
+/* Input Fields */
+
+input {
+  background-color: var(--light-mid);
+  width: 24vw;
+  padding: .9vw;
+  border: none;
+  border-radius: 1.2vw;
+}
+
+input:hover {
+  border-radius: 3vw;
+}
+
+input:focus {
+  background-color: var(--mid);
+  outline: none;
+}
+
+::placeholder {
+  color: var(--bold);
 }
 
 /* TRANSITIONS */
 
-.button, img, li {
+.button, img, input[type=submit] {
   transition: border-radius .3s, border .3s;
 }

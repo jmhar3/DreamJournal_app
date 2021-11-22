@@ -1,0 +1,47 @@
+#login {
+    display: flex;
+    flex-direction: row;
+}
+
+
+#login-left {
+    height: 100vh;
+    width: 55%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.8vh;
+}
+
+#login form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5vh;
+}
+
+#socials {
+    display: flex;
+    flex-direction: row;
+    gap: 1.5vh;
+}
+
+.social-icon img {
+    width: 3.9vw;
+}
+
+
+#login-right {
+    height: 100vh;
+    width: 45%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--light-mid);
+}
+
+#login-right img {
+    position: relative;
+    right: 6.9vw;
+}

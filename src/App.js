@@ -6,6 +6,7 @@ import Nav from './containers/nav.js';
 import './css/App.css';
 import './css/home.css';
 import './css/nav.css';
+import './css/login.css';
 
 function App() {
   return (
