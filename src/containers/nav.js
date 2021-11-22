@@ -44,7 +44,7 @@ const Nav = () => {
     return (
         <header>
             <nav onMouseLeave={hideTrackers} >
-                <Link to="/" className="menu-icon"><img src={home} onMouseOver={showHome} onMouseLeave={hideHome} /></Link>
+                <Link to="/dashboard" className="menu-icon"><img src={home} onMouseOver={showHome} onMouseLeave={hideHome} /></Link>
                 <Link to="/calendar" className="menu-icon"><img src={calendar} onMouseOver={showCalendar} onMouseLeave={hideCalendar} /></Link>
                 <Link to="/account" className="menu-icon"><img src={account} onMouseOver={showAccount} onMouseLeave={hideAccount} /></Link>
                 <span className="menu-icon"

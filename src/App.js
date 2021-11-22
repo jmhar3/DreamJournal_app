@@ -7,6 +7,7 @@ import './css/App.css';
 import './css/home.css';
 import './css/nav.css';
 import './css/login.css';
+import './css/dashboard.css';
 
 function App() {
   return (

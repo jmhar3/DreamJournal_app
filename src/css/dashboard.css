@@ -1,0 +1,11 @@
+#dashboard-left {
+    width: 60%;
+    height: 100vh;
+    float: left;
+}
+
+#dashboard-right {
+    float: left;
+    width: 40%;
+    height: 100vh;
+}
