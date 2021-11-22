@@ -1,5 +1,7 @@
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './containers/home.js';
+import Login from './containers/login.js';
+import Dashboard from './containers/dashboard.js';
 import Nav from './containers/nav.js';
 import './css/App.css';
 import './css/home.css';
@@ -9,8 +11,11 @@ function App() {
   return (
     <Router>
       <Nav />
-        <Home />
-        {/* <Route exact path="/" component={Home} /> */}
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+      </Routes>
     </Router>
   );
 }
