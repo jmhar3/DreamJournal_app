@@ -9,10 +9,8 @@ function App() {
   return (
     <Router>
       <Nav />
-      <main>
         <Home />
         {/* <Route exact path="/" component={Home} /> */}
-      </main>
     </Router>
   );
 }

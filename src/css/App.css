@@ -10,25 +10,67 @@
 
 :root {
   --light: #fcf1f3;
-  --light-mid: #ffe9ec;
+  --light-mid: #ffe9ef;
   --mid: #ffe2e7;
   --strong: #fac2cb;
   --bold: #c41019;
+  --dark: #130001;
 }
 
-main {
-  padding-left: 4.8vw;
+body {
+  padding-left: 4.5vw;
   background-color: var(--light);
   height: 100%;
 }
 
-h1, h2, h3, h4, h5, li {
+/* FONTS */
+
+h1, h2, h3, h4, h5, li, a {
   font-family: 'Bold';
   font-weight: normal;
   color: var(--bold);
+  margin: 0;
 }
 
-p, a {
+p {
   font-family: 'Regular';
   font-weight: normal;
+}
+
+/* PROPORTIONS */
+
+.full-page {
+  height: 100vh;
+}
+
+/* COLOURS */
+
+.light {
+  background-color: var(--light);
+}
+
+.mid {
+  background-color: var(--mid);
+}
+
+/* COMPONENTS */
+
+.button {
+  height: fit-content;
+  width: fit-content;
+  text-decoration: none;
+  background-color: var(--light-mid);
+  padding: .9vw;
+  border: var(--mid) solid 2px;
+  border-radius: .9vw;
+}
+
+.button:hover {
+  border-radius: 1.8vw;
+}
+
+/* TRANSITIONS */
+
+.button, img, li {
+  transition: border-radius .3s, border .3s;
 }

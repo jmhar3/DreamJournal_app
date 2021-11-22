@@ -61,7 +61,7 @@ const Nav = () => {
                 </Link>
             </nav>
             <ul style={{ display: (showLabels ? 'flex' : 'none')}}>
-                <li style={{ visibility: (homeLabel ? 'visible' : 'hidden') }}>Home</li>
+                <li style={{ visibility: (homeLabel ? 'visible' : 'hidden') }}>DreamJournal</li>
                 <li style={{ visibility: (calendarLabel ? 'visible' : 'hidden') }}>Calendar</li>
                 <li style={{ visibility: (accountLabel ? 'visible' : 'hidden') }}>Account</li>
                 <li style={{ visibility: (newRecordLabel ? 'visible' : 'hidden') }}>New Record</li>
