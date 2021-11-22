@@ -39,6 +39,8 @@ const Nav = () => {
     const showNewTransaction = () => setNewTransaction(true);
     const hideNewTransaction = () => setNewTransaction(false);
 
+    const showLabels = homeLabel || calendarLabel || accountLabel || newRecordLabel || newGoalLabel || newTransactionLabel
+
     return (
         <header>
             <nav onMouseLeave={hideTrackers} >
@@ -58,7 +60,7 @@ const Nav = () => {
                     <img src={finance} onMouseOver={showNewTransaction} onMouseLeave={hideNewTransaction} />
                 </Link>
             </nav>
-            <ul>
+            <ul style={{ display: (showLabels ? 'flex' : 'none')}}>
                 <li style={{ visibility: (homeLabel ? 'visible' : 'hidden') }}>Home</li>
                 <li style={{ visibility: (calendarLabel ? 'visible' : 'hidden') }}>Calendar</li>
                 <li style={{ visibility: (accountLabel ? 'visible' : 'hidden') }}>Account</li>
