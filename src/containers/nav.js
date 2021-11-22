@@ -45,18 +45,18 @@ const Nav = () => {
         <header>
             <nav onMouseLeave={hideTrackers} >
                 <Link to="/" className="menu-icon"><img src={home} onMouseOver={showHome} onMouseLeave={hideHome} /></Link>
-                <Link to="/" className="menu-icon"><img src={calendar} onMouseOver={showCalendar} onMouseLeave={hideCalendar} /></Link>
-                <Link to="/" className="menu-icon"><img src={account} onMouseOver={showAccount} onMouseLeave={hideAccount} /></Link>
+                <Link to="/calendar" className="menu-icon"><img src={calendar} onMouseOver={showCalendar} onMouseLeave={hideCalendar} /></Link>
+                <Link to="/account" className="menu-icon"><img src={account} onMouseOver={showAccount} onMouseLeave={hideAccount} /></Link>
                 <span className="menu-icon"
                   onMouseOver={showNewRecord}
                   onMouseLeave={hideNewRecord}
                   style={{ opacity: (trackers ? '0.8' : '1') }}>
                     <img src={newRecord}/>
                 </span>
-                <Link to="/" className="menu-icon" style={{ visibility: (trackers ? 'visible' : 'hidden') }}>
+                <Link to="/newgoal" className="menu-icon" style={{ visibility: (trackers ? 'visible' : 'hidden') }}>
                     <img src={goal} onMouseOver={showNewGoal} onMouseLeave={hideNewGoal} />
                 </Link>
-                <Link to="/" className="menu-icon" style={{ visibility: (trackers ? 'visible' : 'hidden') }}>
+                <Link to="/newtransaction" className="menu-icon" style={{ visibility: (trackers ? 'visible' : 'hidden') }}>
                     <img src={finance} onMouseOver={showNewTransaction} onMouseLeave={hideNewTransaction} />
                 </Link>
             </nav>

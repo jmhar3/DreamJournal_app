@@ -1,3 +1,13 @@
+@font-face {
+  font-family: 'Regular';
+  src: url('../fonts/SourceCodePro-Medium.ttf');
+}
+
+@font-face {
+  font-family: 'Bold';
+  src: url('../fonts/SourceCodePro-Black.ttf');
+}
+
 :root {
   --light: #fcf1f3;
   --light-mid: #ffe9ec;
@@ -9,4 +19,16 @@
 main {
   padding-left: 4.8vw;
   background-color: var(--light);
+  height: 100%;
+}
+
+h1, h2, h3, h4, h5, li {
+  font-family: 'Bold';
+  font-weight: normal;
+  color: var(--bold);
+}
+
+p, a {
+  font-family: 'Regular';
+  font-weight: normal;
 }

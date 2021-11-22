@@ -18,6 +18,7 @@ nav {
 .menu-icon img {
     height: 3vw;
     border-radius: .9vw;
+    border: var(--light-mid) solid 2px;
 }
 
 header ul {
@@ -37,4 +38,9 @@ header li {
     width: fit-content;
     padding-left: 1vw;
     padding-right: 1vw;
+    border: var(--mid) solid 2px;
+}
+
+header a img:hover {
+    border: var(--strong) solid 2px;
 }
