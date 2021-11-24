@@ -1,11 +1,69 @@
 #dashboard-left {
-    width: 60%;
+    padding: 2.1%;
+    width: 60.8%;
     height: 100vh;
     float: left;
+    display: flex;
+    flex-direction: column;
+    gap: 1.8vw;
+}
+
+#dashboard-left h1, #dashboard-left h3 {
+    color: var(--dark);
 }
 
 #dashboard-right {
     float: left;
-    width: 40%;
+    width: 31%;
+    padding: 2.1%;
+    padding-left: 0;
     height: 100vh;
+    display: flex;
+    flex-direction: column;
+    gap: 1.8vw;
+}
+
+.finance-charts div, #db-finance-goals, #upcoming-payments, #db-goals {
+    padding: 1.8%;
+    padding-left: 3%;
+    padding-right: 3%;
+    background-color: var(--mid);
+    border-radius: 1.5vw;
+    width: 54.8vw;
+    float: left;
+}
+
+.finance-charts, #db-finance-goals, #db-finance-goals div, #db-goals span {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 1.2vw;
+}
+
+#db-finance-goals {
+    justify-content: space-around;
+}
+
+#upcoming-payments h2 {
+    color: var(--dark);
+}
+
+#db-goals {
+    padding: 1.8vw;
+    width: 35vw;
+    height: 69vh;
+    -moz-box-shadow: 0 -3px 6px var(--strong) inset;
+    -webkit-box-shadow: 0 -3px 6px var(--strong) inset;
+    box-shadow: 0 -3px 6px var(--strong) inset;
+}
+
+#db-goals span {
+    justify-content: space-between;
+}
+
+#db-goals .button {
+    font-size: 3vw;
+    padding-top: 0;
+    padding-bottom: 0;
 }

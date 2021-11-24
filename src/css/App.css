@@ -13,8 +13,11 @@
   --light-mid: #ffe9ef;
   --mid: #ffe2e7;
   --strong: #fac2cb;
-  --bold: #c41019;
+  --bold: #d40819;
   --dark: #130001;
+  --low: #068f1d;
+  --norm: #eba204;
+  --high: #eb0d1f;
 }
 
 body {
@@ -38,6 +41,26 @@ p {
   margin: 0;
 }
 
+h1 {
+  font-size: 2.7vw;
+}
+
+h2 {
+  font-size: 2.1vw;
+}
+
+h3 {
+  font-size: 1.8vw;
+}
+
+h4 {
+  font-size: 1.5vw;
+}
+
+h5 {
+  font-size: 1.2vw;
+}
+
 /* COLOURS */
 
 .light {
@@ -58,12 +81,15 @@ p {
   text-decoration: none;
   background-color: var(--light-mid);
   padding: .9vw;
+  padding-left: 1.2vw;
+  padding-right: 1.2vw;
   border: var(--mid) solid 2px;
   border-radius: 1.2vw;
 }
 
 .button:hover, input[type=submit]:hover {
-  border-radius: 1.8vw;
+  border-radius: 30vw;
+  color: var(--bold);
 }
 
 .toggle-slider {
@@ -90,6 +116,11 @@ input[type=submit] {
   color: var(--light);
 }
 
+input[type=submit]:hover {
+  color: var(--light);
+  box-shadow: none;
+}
+
 /* Input Fields */
 
 input {
@@ -102,6 +133,7 @@ input {
 
 input:hover {
   border-radius: 3vw;
+  box-shadow: 0 1px 6px 1px var(--strong);
 }
 
 input:focus {
@@ -113,8 +145,27 @@ input:focus {
   color: var(--bold);
 }
 
+/* Progress Bars + Charts */
+
+.progress {
+  background-color: var(--light);
+  border-radius: 100vw;
+}
+
+.bg-success {
+  background-color: var(--low);
+}
+
+.bg-warning {
+  background-color: var(--norm);
+}
+
+.bg-danger {
+  background-color: var(--high);
+}
+
 /* TRANSITIONS */
 
-.button, img, input[type=submit] {
-  transition: border-radius .3s, border .3s;
+.button, img, input {
+  transition: border-radius .6s, border .6s, color .3s, box-shadow .3s;
 }

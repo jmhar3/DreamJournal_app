@@ -52,3 +52,7 @@
     top: 1.2vw;
     right: 1.2vw;
 }
+
+#hp-second .button:hover, .sign-in-button:hover  {
+    box-shadow: 0 1px 6px 1px var(--strong);
+}
