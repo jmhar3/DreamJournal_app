@@ -84,11 +84,34 @@
 }
 
 #db-goals span {
+    align-items: flex-end;
     justify-content: space-between;
 }
 
+#db-goals h2 {
+    margin-bottom: .9vw;
+  }
+
 #db-goals .button {
-    font-size: 3vw;
+    font-size: 2.7vw;
     padding-top: 0;
     padding-bottom: 0;
+}
+
+#db-goals li {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.goal-label {
+    width: 100%;
+    padding-left: 1.2vw;
+}
+
+.priority-indicator {
+    width: .9vw;
+    height: .9vw;
+    border-radius: 100%;
 }

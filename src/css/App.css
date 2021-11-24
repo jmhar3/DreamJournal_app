@@ -11,12 +11,12 @@
 :root {
   --light: #fcf1f3;
   --light-mid: #ffe9ef;
-  --mid: #ffe2e7;
-  --strong: #fac2cb;
+  --mid: #fde3e7;
+  --strong: #fac6ce;
   --bold: #d40819;
   --dark: #130001;
   --low: #068f1d;
-  --norm: #eba204;
+  --norm: #f7c215;
   --high: #eb0d1f;
 }
 
@@ -76,6 +76,18 @@ h5, p {
   background-color: var(--mid);
 }
 
+.low {
+  background-color: var(--low);
+}
+
+.norm {
+  background-color: var(--norm);
+}
+
+.high {
+  background-color: var(--high);
+}
+
 /* COMPONENTS */
 
 /* Buttons */
@@ -126,6 +138,22 @@ input[type=submit]:hover {
   box-shadow: none;
 }
 
+ul {
+  padding: 0;
+}
+
+li {
+  list-style-type: none;
+}
+
+hr {
+  border-top: 3px solid var(--strong);
+  background-color: var(--strong);
+  border-radius: 9px;
+  margin-top: .9vw;
+  margin-bottom: .9vw;
+}
+
 /* Input Fields */
 
 input {
@@ -150,11 +178,17 @@ input:focus {
   color: var(--bold);
 }
 
+input[type=checkbox] {
+  width: 1.2vw;
+}
+
 /* Progress Bars + Charts */
 
 .progress {
   background-color: var(--light);
   border-radius: 100vw;
+  margin-top: .6vw;
+  margin-bottom: .9vw;
 }
 
 .bg-success {

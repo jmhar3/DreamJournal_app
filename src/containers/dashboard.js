@@ -114,7 +114,65 @@ const Dashboard = () => {
                     <ProgressBar variant="warning" now={20} key={2} />
                     <ProgressBar variant="danger" now={10} key={3} />
                 </ProgressBar>
+                <ul>
+                    <li>
+                        <input type="checkbox" />
+                        <div className="goal-label">
+                            <h5>Read a book</h5>
+                            <p className="label">13:00</p>
+                        </div>
+                        <div className="priority-indicator high"></div>
+                    </li>
+                    <hr />
+                    <li>
+                        <input type="checkbox" />
+                        <div className="goal-label">
+                            <h5>Read a book</h5>
+                            <p className="label">13:00</p>
+                        </div>
+                        <div className="priority-indicator low"></div>
+                    </li>
+                    <hr />
+                    <li>
+                        <input type="checkbox" />
+                        <div className="goal-label">
+                            <h5>Read a book</h5>
+                            <p className="label">🔄 13:00</p>
+                        </div>
+                        <div className="priority-indicator norm"></div>
+                    </li>
+                    <hr />
+                </ul>
                 <h2>Upcoming Goals</h2>
+                <ul>
+                    <li>
+                        <input type="checkbox" />
+                        <div className="goal-label">
+                            <h5>Read a book</h5>
+                            <p className="label">03.12.21 13:00</p>
+                        </div>
+                        <div className="priority-indicator high"></div>
+                    </li>
+                    <hr />
+                    <li>
+                        <input type="checkbox" />
+                        <div className="goal-label">
+                            <h5>Read a book</h5>
+                            <p className="label">🔄 21.12.21 18:00</p>
+                        </div>
+                        <div className="priority-indicator norm"></div>
+                    </li>
+                    <hr />
+                    <li>
+                        <input type="checkbox" />
+                        <div className="goal-label">
+                            <h5>Read a book</h5>
+                            <p className="label">🔄 15.12.21 11:00</p>
+                        </div>
+                        <div className="priority-indicator low"></div>
+                    </li>
+                    <hr />
+                </ul>
             </div>
             <div>
                 <h1>Notes</h1>
