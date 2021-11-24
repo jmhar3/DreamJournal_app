@@ -23,7 +23,7 @@
     gap: 1.8vw;
 }
 
-.finance-charts div, #db-finance-goals, #upcoming-payments, #db-goals {
+.finance-charts div, #db-finance-goals, #upcoming-payments div, #db-goals {
     padding: 1.8%;
     padding-left: 3%;
     padding-right: 3%;
@@ -45,8 +45,33 @@
     justify-content: space-around;
 }
 
+#upcoming-payments div {
+    width: fit-content;
+    text-align: center;
+    border: 2px solid var(--light);
+    background-color: var(--light-mid);
+    -moz-box-shadow: 0 3px 6px var(--mid);
+    -webkit-box-shadow: 0 3px 6px var(--mid);
+    box-shadow: 0 3px 6px var(--mid);
+    margin-right: 1.2vw;
+}
+
 #upcoming-payments h2 {
     color: var(--dark);
+    padding: 1.2vw;
+    padding-left: 0;
+}
+
+#upcoming-payments div h1 {
+    font-size: 3.9vw;
+}
+
+#upcoming-payments div h4 {
+    padding-top: .3vw;
+}
+
+#upcoming-payments div .label {
+    padding-bottom: .3vw;
 }
 
 #db-goals {

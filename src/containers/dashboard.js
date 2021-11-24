@@ -77,6 +77,30 @@ const Dashboard = () => {
             </div>
             <div id="upcoming-payments">
                 <h2>Upcoming Payments</h2>
+                <div>
+                    <h1>🍿</h1>
+                    <h4>Netflix</h4>
+                    <p class="label">27.11.21</p>
+                    <p>$19.00</p>
+                </div>
+                <div>
+                    <h1>📑</h1>
+                    <h4>Phone</h4>
+                    <p class="label">28.11.21</p>
+                    <p>$100.00</p>
+                </div>
+                <div>
+                    <h1>💼</h1>
+                    <h4>Advertising</h4>
+                    <p class="label">30.11.21</p>
+                    <p>$240.00</p>
+                </div>
+                <div>
+                    <h1>🍿</h1>
+                    <h4>Disney</h4>
+                    <p class="label">31.11.21</p>
+                    <p>$19.00</p>
+                </div>
             </div>
         </section>
         <section id="dashboard-right">
