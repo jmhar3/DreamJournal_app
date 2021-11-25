@@ -3,7 +3,7 @@
     height: 100vh;
     width: 100vw;
     background-color: rgba(248, 220, 226, 0.69);
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
 }
@@ -18,9 +18,13 @@
     justify-content: center;
     align-items: center;
     gap: 0.9vw;
-    padding: .9vw;
+    padding: 1.2vw;
 }
 
 #account .button {
     width: 100%;text-align: center;
+}
+
+#account img {
+    width: 90%;
 }

@@ -40,12 +40,12 @@ const Login = () => {
                 {toggleLogin ? <SignIn /> : <SignUp />}
                 <p>Or sign in with...</p>
                 <section id="socials">
-                    <Link to="/twitter" className="social-icon"><img src={twitter} /></ Link>
-                    <Link to="/github" className="social-icon"><img src={github} /></ Link>
+                    <Link to="/twitter" className="social-icon"><img src={twitter} alt="twitter login" /></ Link>
+                    <Link to="/github" className="social-icon"><img src={github} alt="github login" /></ Link>
                 </section>
             </section>
             <section id="login-right">
-                <img src={image} />
+                <img src={image} alt="" />
             </section>
         </div>
     )

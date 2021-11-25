@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { CircularProgressbar } from 'react-circular-progressbar';
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import {Bar} from 'react-chartjs-2';
-import Chart from 'chart.js/auto'
+import Chart from 'chart.js/auto';
 
 const expenseData = {
     labels: ['Mon', 'Tue', 'Wed',
