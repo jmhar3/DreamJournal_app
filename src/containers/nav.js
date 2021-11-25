@@ -3,8 +3,9 @@ import { useState } from 'react';
 import home from '../images/world.png';
 import calendar from '../images/calendar.png';
 import account from '../images/files.png';
-import newRecord from '../images/notes.png';
+import newRecord from '../images/book.png';
 import goal from '../images/to-do.png';
+import note from '../images/notes.png';
 import finance from '../images/box.png';
 
 const Nav = () => {
@@ -29,11 +30,15 @@ const Nav = () => {
     const showNewGoalLabel = () => setNewGoal(true);
     const hideNewGoal = () => setNewGoal(false);
 
+    const [newNoteLabel, setNewNote] = useState(false)
+    const showNewNoteLabel = () => setNewNote(true);
+    const hideNewNote = () => setNewNote(false);
+
     const [newTransactionLabel, setNewTransaction] = useState(false)
     const showNewTransaction = () => setNewTransaction(true);
     const hideNewTransaction = () => setNewTransaction(false);
 
-    const showLabels = homeLabel || calendarLabel || accountLabel || newGoalLabel || newTransactionLabel
+    const showLabels = homeLabel || calendarLabel || accountLabel || newGoalLabel || newNoteLabel || newTransactionLabel
 
     function showAccount(e) {
         e.preventDefault();
@@ -45,6 +50,12 @@ const Nav = () => {
         e.preventDefault();
         const newGoal = document.getElementById('new-goal');
         newGoal.style.display = 'flex';
+    }
+
+    function showNewNote(e) {
+        e.preventDefault();
+        const newNote = document.getElementById('new-note');
+        newNote.style.display = 'flex';
     }
 
     return (
@@ -61,6 +72,9 @@ const Nav = () => {
                 <button onClick={showNewGoal} className="menu-icon" style={{ visibility: (trackers ? 'visible' : 'hidden') }}>
                     <img src={goal} alt="new goal" onMouseOver={showNewGoalLabel} onMouseLeave={hideNewGoal} />
                 </button>
+                <Link to="/newnote" className="menu-icon" style={{ visibility: (trackers ? 'visible' : 'hidden') }}>
+                    <img src={note} alt="new note" onMouseOver={showNewNoteLabel} onMouseLeave={hideNewNote} />
+                </Link>
                 <Link to="/newtransaction" className="menu-icon" style={{ visibility: (trackers ? 'visible' : 'hidden') }}>
                     <img src={finance} alt="new transaction" onMouseOver={showNewTransaction} onMouseLeave={hideNewTransaction} />
                 </Link>
@@ -71,6 +85,7 @@ const Nav = () => {
                 <li style={{ visibility: (accountLabel ? 'visible' : 'hidden') }}>Account</li>
                 <li style={{ visibility: 'hidden' }}>New Record</li>
                 <li style={{ visibility: (newGoalLabel ? 'visible' : 'hidden') }}>New Goal</li>
+                <li style={{ visibility: (newNoteLabel ? 'visible' : 'hidden') }}>New Note</li>
                 <li style={{ visibility: (newTransactionLabel ? 'visible' : 'hidden') }}>New Transaction</li>
             </ul>
         </header>

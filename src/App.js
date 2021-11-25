@@ -4,6 +4,7 @@ import Login from './containers/login.js';
 import Account from './containers/account.js';
 import Dashboard from './containers/dashboard.js';
 import NewGoal from './containers/newGoal.js';
+import NewNote from './containers/newNote.js';
 import Nav from './containers/nav.js';
 import 'react-circular-progressbar/dist/styles.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -14,6 +15,7 @@ import './css/login.css';
 import './css/account.css';
 import './css/dashboard.css';
 import './css/new-goal.css';
+import './css/new-note.css';
 
 function App() {
   return (
@@ -25,6 +27,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/newnote" element={<NewNote />} />
       </Routes>
     </Router>
   );

@@ -17,7 +17,7 @@ const NewGoal = () => {
         <div id="new-goal" className="pop-up">
             <section>
                 <button onClick={hideNewGoal}>x</button>
-                <h1>New Goal</h1>
+                <h1>Create Goal</h1>
                 <form>
                     <input type="text" name="goal" placeholder="Goal" />
                     <input type="text" name="content" placeholder="Content" />
