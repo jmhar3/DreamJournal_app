@@ -29,8 +29,9 @@ const incomeData = {
 }
 
 const Dashboard = () => {
-    const today = new Date()
-    const curHr = today.getHours()
+    const dateTime = new Date()
+    const curHr = dateTime.getHours()
+    const today = dateTime.toDateString()
 
     function greeting() {
         if (curHr < 12) {
@@ -48,7 +49,7 @@ const Dashboard = () => {
       <main id="dashboard">
         <section id="dashboard-left">
             <div id="db-header">
-                <h3>Thursday, 25th November 2021</h3>
+                <h3>{today}</h3>
                 <h1>{ greeting() }, User Name</h1>
             </div>
             <section className="finance-charts">

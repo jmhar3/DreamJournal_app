@@ -18,13 +18,6 @@ nav {
     box-shadow: 3px 0 6px var(--strong);
 }
 
-nav button {
-    border: none;
-    padding: 0;
-    background-color: none;
-    border-radius: .9vw;
-}
-
 .menu-icon img {
     height: 3vw;
     border-radius: .9vw;

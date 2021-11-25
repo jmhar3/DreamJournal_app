@@ -26,7 +26,7 @@ const Nav = () => {
     const hideTrackers = () => setTrackers(false);
 
     const [newGoalLabel, setNewGoal] = useState(false)
-    const showNewGoal = () => setNewGoal(true);
+    const showNewGoalLabel = () => setNewGoal(true);
     const hideNewGoal = () => setNewGoal(false);
 
     const [newTransactionLabel, setNewTransaction] = useState(false)
@@ -41,6 +41,12 @@ const Nav = () => {
         account.style.display = 'flex';
     }
     
+    function showNewGoal(e) {
+        e.preventDefault();
+        const newGoal = document.getElementById('new-goal');
+        newGoal.style.display = 'flex';
+    }
+
     return (
         <header>
             <nav onMouseLeave={hideTrackers} >
@@ -52,9 +58,9 @@ const Nav = () => {
                   style={{ opacity: (trackers ? '0.8' : '1') }}>
                     <img src={newRecord} alt="new record" />
                 </span>
-                <Link to="/newgoal" className="menu-icon" style={{ visibility: (trackers ? 'visible' : 'hidden') }}>
-                    <img src={goal} alt="new goal" onMouseOver={showNewGoal} onMouseLeave={hideNewGoal} />
-                </Link>
+                <button onClick={showNewGoal} className="menu-icon" style={{ visibility: (trackers ? 'visible' : 'hidden') }}>
+                    <img src={goal} alt="new goal" onMouseOver={showNewGoalLabel} onMouseLeave={hideNewGoal} />
+                </button>
                 <Link to="/newtransaction" className="menu-icon" style={{ visibility: (trackers ? 'visible' : 'hidden') }}>
                     <img src={finance} alt="new transaction" onMouseOver={showNewTransaction} onMouseLeave={hideNewTransaction} />
                 </Link>

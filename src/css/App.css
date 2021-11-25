@@ -92,6 +92,13 @@ h5, p {
 
 /* Buttons */
 
+button {
+  border: none;
+  padding: 0;
+  background-color: none;
+  border-radius: .9vw;
+}
+
 .button, input[type=submit] {
   height: fit-content;
   width: fit-content;
@@ -225,4 +232,29 @@ input[type=checkbox] {
 
 .button, img, input {
   transition: border-radius .6s, border .6s, color .3s, box-shadow .3s;
+}
+
+/* POP UP */
+
+.pop-up {
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(248, 220, 226, 0.69);
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.pop-up section {
+  background-color: var(--light);
+  border-radius: 1.8vw;
+  width: 30%;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.9vw;
+  padding: 1.2vw;
 }

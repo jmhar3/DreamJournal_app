@@ -9,7 +9,7 @@ const Account = () => {
     }
 
     return (
-        <div id="account" onClick={hideAccount} >
+        <div id="account" className="pop-up" onClick={hideAccount} >
             <section>
                 <img src={image} alt="profile pic"/>
                 <h2>Jessica Hackerman</h2>
