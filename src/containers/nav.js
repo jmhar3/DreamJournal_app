@@ -14,10 +14,6 @@ const Nav = () => {
     const showHome = () => setHome(true);
     const hideHome = () => setHome(false);
 
-    const [calendarLabel, setCalendar] = useState(false)
-    const showCalendar = () => setCalendar(true);
-    const hideCalendar = () => setCalendar(false);
-
     const [accountLabel, setAccount] = useState(false)
     const showAccountLabel = () => setAccount(true);
     const hideAccount = () => setAccount(false);
@@ -38,7 +34,7 @@ const Nav = () => {
     const showNewTransaction = () => setNewTransaction(true);
     const hideNewTransaction = () => setNewTransaction(false);
 
-    const showLabels = homeLabel || calendarLabel || accountLabel || newGoalLabel || newNoteLabel || newTransactionLabel
+    const showLabels = homeLabel || accountLabel || newGoalLabel || newNoteLabel || newTransactionLabel
 
     function showAccount(e) {
         e.preventDefault();
@@ -52,17 +48,10 @@ const Nav = () => {
         newGoal.style.display = 'flex';
     }
 
-    function showNewNote(e) {
-        e.preventDefault();
-        const newNote = document.getElementById('new-note');
-        newNote.style.display = 'flex';
-    }
-
     return (
         <header>
             <nav onMouseLeave={hideTrackers} >
                 <Link to="/dashboard" className="menu-icon"><img src={home} alt="home" onMouseOver={showHome} onMouseLeave={hideHome} /></Link>
-                <Link to="/calendar" className="menu-icon"><img src={calendar} alt="calendar" onMouseOver={showCalendar} onMouseLeave={hideCalendar} /></Link>
                 <button onClick={showAccount} className="menu-icon"><img src={account} alt="account" onMouseOver={showAccountLabel} onMouseLeave={hideAccount} /></button>
                 <span className="menu-icon"
                   onMouseOver={showTrackers}
@@ -81,7 +70,6 @@ const Nav = () => {
             </nav>
             <ul style={{ display: (showLabels ? 'flex' : 'none')}}>
                 <li style={{ visibility: (homeLabel ? 'visible' : 'hidden') }}>DreamJournal</li>
-                <li style={{ visibility: (calendarLabel ? 'visible' : 'hidden') }}>Calendar</li>
                 <li style={{ visibility: (accountLabel ? 'visible' : 'hidden') }}>Account</li>
                 <li style={{ visibility: 'hidden' }}>New Record</li>
                 <li style={{ visibility: (newGoalLabel ? 'visible' : 'hidden') }}>New Goal</li>

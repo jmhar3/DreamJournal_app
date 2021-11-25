@@ -1,0 +1,101 @@
+#note-left, #note-right {
+    height: 100%;
+    padding: 1.5vw;
+    padding-top: 3vw;
+}
+    
+#note-left {
+    width: 32%;
+    float: left;
+}
+
+#note-right {
+    width: 68%;
+    position: fixed;
+    right: 0;
+    top: 0;
+    padding-left: 2.4vw;
+    padding-right: 2.4vw;
+    -moz-box-shadow: 0 -3px 6px var(--strong) inset;
+    -webkit-box-shadow: 0 -3px 6px var(--strong) inset;
+    box-shadow: 0 -3px 6px var(--strong) inset;
+}
+
+#note-right span {
+    display: flex;
+    justify-content: space-between;
+}
+
+#note-right input[type=text], #note-right textarea {
+    padding: 0;
+    background-color: var(--light);
+    font-size: 2.1vw;
+    padding-top: 0;
+    padding-bottom: 0;
+    width: 100%;
+    color: var(--dark);
+    border-radius: 0;
+}
+
+#note-right textarea  {
+    font-size: 1.5vw;
+    height: 87vh;
+    resize: none;
+}
+
+#note-right input[type=text]:hover, #note-right textarea:hover {
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+#note-right input[type=text]::placeholder {
+    color: var(--dark);
+}
+
+#note-right .label, #note-right hr {
+    font-size: 1.2vw;
+}
+
+#note-right input[type=submit] {
+    position: fixed;
+    bottom: 1.2vw;
+    right: 1.2vw;
+}
+
+/* CHECKBOX */
+
+#checkbox-container {
+    margin-left: 1.2vw;
+}
+  
+input[type=checkbox] {
+    display: none;
+}
+  
+input + label {
+    font-size: 2.4vw;
+    transition: .1s all;
+    cursor: pointer;
+    z-index: 999 !important;
+}
+  
+input + label:hover {
+    transform: scale(.95);
+}
+  
+input + label:after {
+    content: "📌";
+}
+  
+input:checked + label {
+    transform: scale(1.1);
+}
+  
+input:checked + label:hover {
+    transform: scale(1.05);
+}
+  
+input:checked + label:after {
+    content: "⭐";
+}

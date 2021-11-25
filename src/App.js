@@ -18,6 +18,21 @@ import './css/new-goal.css';
 import './css/new-note.css';
 
 function App() {
+
+//   fetch("http://localhost:3000/login", {
+//     method: 'post',
+//     headers: {
+//          'content-type': 'application/json',
+//          'accept': 'application/json'
+//     },
+//     body: JSON.stringify({
+//         email: "email@email.com",
+//         password: "password"
+//     })
+// })
+// .then(res => res.json())
+
+
   return (
     <Router>
       <Nav />

@@ -35,7 +35,7 @@ h1, h2, h3, h4, h5, li, a, button, input {
   margin: 0;
 }
 
-p {
+p, textarea {
   font-family: 'Regular';
   font-weight: normal;
   margin: 0;
@@ -161,9 +161,9 @@ hr {
   margin-bottom: .9vw;
 }
 
-/* Input Fields */
+/* Form Fields */
 
-input {
+input, textarea {
   background-color: var(--light-mid);
   width: 24vw;
   padding: .9vw;
@@ -171,12 +171,12 @@ input {
   border-radius: 1.2vw;
 }
 
-input:hover {
+input:hover, textarea:hover {
   border-radius: 3vw;
   box-shadow: 0 1px 6px 1px var(--strong);
 }
 
-input:focus {
+input:focus, textarea:focus {
   background-color: var(--mid);
   outline: none;
 }
