@@ -47,8 +47,10 @@ const Dashboard = () => {
     return (
       <main id="dashboard">
         <section id="dashboard-left">
-            <h3>{ Date() }</h3>
-            <h1>{ greeting() }, User Name</h1>
+            <div id="db-header">
+                <h3>Thursday, 25th November 2021</h3>
+                <h1>{ greeting() }, User Name</h1>
+            </div>
             <section className="finance-charts">
                 <div>
                     <h2>💸 Expense</h2>

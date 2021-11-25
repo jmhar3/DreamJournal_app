@@ -1,6 +1,6 @@
 #dashboard-left {
     padding: 2.1%;
-    width: 60.8%;
+    width: 70%;
     height: 100vh;
     float: left;
     display: flex;
@@ -14,7 +14,7 @@
 
 #dashboard-right {
     float: left;
-    width: 31%;
+    width: 30%;
     padding: 2.1%;
     padding-left: 0;
     height: 100vh;
@@ -23,13 +23,17 @@
     gap: 1.8vw;
 }
 
+#db-header {
+    padding-top: 3vw;
+}
+
 .finance-charts div, #db-finance-goals, #upcoming-payments div, #db-goals {
     padding: 1.8%;
     padding-left: 3%;
     padding-right: 3%;
     background-color: var(--mid);
     border-radius: 1.5vw;
-    width: 54.8vw;
+    width: 100%;
     float: left;
 }
 
@@ -76,7 +80,7 @@
 
 #db-goals {
     padding: 1.8vw;
-    width: 35vw;
+    width: 100%;
     height: 69vh;
     -moz-box-shadow: 0 -3px 6px var(--strong) inset;
     -webkit-box-shadow: 0 -3px 6px var(--strong) inset;
