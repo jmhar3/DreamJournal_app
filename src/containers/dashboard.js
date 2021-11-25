@@ -176,8 +176,22 @@ const Dashboard = () => {
                     <hr />
                 </ul>
             </div>
-            <div>
-                <h1>Notes</h1>
+            <div id="db-notes">
+                <div>
+                    <h1>📝</h1>
+                    <p>Phase 5</p>
+                    <p class="label">31.11.21</p>
+                </div>
+                <div>
+                    <h1>📝</h1>
+                    <p>Groceries</p>
+                    <p class="label">31.11.21</p>
+                </div>
+                <div>
+                    <h1>📝</h1>
+                    <p>Important</p>
+                    <p class="label">31.11.21</p>
+                </div>
             </div>
         </section>
       </main>

@@ -203,6 +203,24 @@ input[type=checkbox] {
   background-color: var(--high);
 }
 
+/* Scroll Bar */
+
+::-webkit-scrollbar {
+  width: 15px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--light-colour);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--super-light-colour);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--super-light-mid);
+}
+
 /* TRANSITIONS */
 
 .button, img, input {
