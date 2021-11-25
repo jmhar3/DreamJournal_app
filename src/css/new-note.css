@@ -7,6 +7,35 @@
 #note-left {
     width: 32%;
     float: left;
+    overflow: hidden;
+}
+
+#note-left div {
+    margin-top: .9vw;
+    background-color: var(--light-mid);
+    color: var(--dark);
+    padding: .9vw;
+    border-radius: 1.2vw;
+    width: 89%;
+}
+
+#note-left span{
+    display: flex;
+    justify-content: space-between;
+}
+
+#note-left .label {
+    padding-bottom: .6vw;
+    height: fit-content;
+}
+
+#note-left h3 {
+    color: var(--dark);
+}
+
+#note-left p {
+    height: 3.5vw;
+    overflow: clip;
 }
 
 #note-right {

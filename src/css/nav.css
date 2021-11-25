@@ -46,6 +46,6 @@ header li {
     border: var(--mid) solid 2px;
 }
 
-header a img:hover {
+header a img:hover, header button img:hover {
     border: var(--strong) solid 2px;
 }

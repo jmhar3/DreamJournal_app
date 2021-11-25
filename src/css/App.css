@@ -24,6 +24,8 @@ body {
   padding-left: 4.5vw;
   background-color: var(--light);
   height: 100%;
+  overscroll-behavior: none;
+  scroll-behavior: smooth;
 }
 
 /* FONTS */
@@ -217,15 +219,15 @@ input[type=checkbox] {
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--light-colour);
+  background: var(--light);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--super-light-colour);
+  background: var(--strong);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--super-light-mid);
+  background: var(--bold);
 }
 
 /* TRANSITIONS */
