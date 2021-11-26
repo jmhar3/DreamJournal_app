@@ -58,9 +58,9 @@ const Nav = () => {
                   style={{ opacity: (trackers ? '0.8' : '1') }}>
                     <img src={newRecord} alt="new record" />
                 </span>
-                <button onClick={showNewGoal} className="menu-icon" style={{ visibility: (trackers ? 'visible' : 'hidden') }}>
+                <Link to="/newgoal" className="menu-icon" style={{ visibility: (trackers ? 'visible' : 'hidden') }}>
                     <img src={goal} alt="new goal" onMouseOver={showNewGoalLabel} onMouseLeave={hideNewGoal} />
-                </button>
+                </Link>
                 <Link to="/newnote" className="menu-icon" style={{ visibility: (trackers ? 'visible' : 'hidden') }}>
                     <img src={note} alt="new note" onMouseOver={showNewNoteLabel} onMouseLeave={hideNewNote} />
                 </Link>

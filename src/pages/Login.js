@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
 import { useState } from 'react';
-import SignIn from './signIn.js';
-import SignUp from './signUp.js';
+import SignIn from '../components/SignIn.js';
+import SignUp from '../components/SignUp.js';
 import image from '../images/stretching.png';
 import twitter from '../images/twitter.png';
 import github from '../images/github.png';
 
-const Login = () => {
+const Login = ({ setToken }) => {
 
     const [toggleLogin, setToggleLogin] = useState(true)
     const showSignIn = () => setToggleLogin(false);
@@ -37,7 +37,7 @@ const Login = () => {
                         Sign Up
                     </button>
                 </div>
-                {toggleLogin ? <SignIn /> : <SignUp />}
+                {toggleLogin ? <SignIn setToken={setToken} /> : <SignUp />}
                 <p>Or sign in with...</p>
                 <section id="socials">
                     <Link to="/twitter" className="social-icon"><img src={twitter} alt="twitter login" /></ Link>

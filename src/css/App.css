@@ -30,7 +30,7 @@ body {
 
 /* FONTS */
 
-h1, h2, h3, h4, h5, li, a, button, input {
+h1, h2, h3, h4, h5, li, a, button, input, select {
   font-family: 'Bold';
   font-weight: normal;
   color: var(--bold);
@@ -165,12 +165,13 @@ hr {
 
 /* Form Fields */
 
-input, textarea {
+input, textarea, select {
   background-color: var(--light-mid);
   width: 24vw;
   padding: .9vw;
   border: none;
   border-radius: 1.2vw;
+  outline: none;
 }
 
 input:hover, textarea:hover {
@@ -189,6 +190,10 @@ input:focus, textarea:focus {
 
 input[type=checkbox] {
   width: 1.2vw;
+}
+
+select {
+  width: fit-content;
 }
 
 /* Progress Bars + Charts */
@@ -215,7 +220,8 @@ input[type=checkbox] {
 /* Scroll Bar */
 
 ::-webkit-scrollbar {
-  width: 15px;
+  width: .9vw;
+  height: .6vw;
 }
 
 ::-webkit-scrollbar-track {
@@ -224,6 +230,7 @@ input[type=checkbox] {
 
 ::-webkit-scrollbar-thumb {
   background: var(--strong);
+  border-radius: 900px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -239,6 +246,7 @@ input[type=checkbox] {
 /* POP UP */
 
 .pop-up {
+  z-index: 998;
   position: fixed;
   height: 100vh;
   width: 100vw;
@@ -259,4 +267,15 @@ input[type=checkbox] {
   align-items: center;
   gap: 0.9vw;
   padding: 1.2vw;
+}
+
+.pop-up button {
+  background-color: var(--bold);
+  color: var(--light);
+  font-size: 2.4vw;
+  padding-left: 1.2vw;
+  padding-right: 1.2vw;
+  position: fixed;
+  top: 3vw;
+  right: 3vw;
 }

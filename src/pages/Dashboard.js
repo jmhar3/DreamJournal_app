@@ -5,6 +5,7 @@ import {Bar} from 'react-chartjs-2';
 import Chart from 'chart.js/auto';
 
 const expenseData = {
+
     labels: ['Mon', 'Tue', 'Wed',
              'Thu', 'Fri', 'Sat', 'Sun'],
     datasets: [
@@ -29,6 +30,16 @@ const incomeData = {
 }
 
 const Dashboard = () => {
+
+    // fetch("http://localhost:3000/goals", {
+    //     method: 'get',
+    //     headers: {
+    //          Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2VtYWlsIjoiZW1haWxAZ…9tIn0.W2mP9blFUgISQY6TPMx8XTnXGzJxU-7AufBu3cwxeLA'
+    //     }
+    // })
+    // .then(res => res.json())
+    // .then(res => console.log(res))
+    
     const dateTime = new Date()
     const curHr = dateTime.getHours()
     const today = dateTime.toDateString()
@@ -47,7 +58,7 @@ const Dashboard = () => {
 
     return (
       <main id="dashboard">
-        <section id="dashboard-left">
+        <section className="dashboard-left">
             <div id="db-header">
                 <h3>{today}</h3>
                 <h1>{ greeting() }, User Name</h1>
@@ -106,8 +117,8 @@ const Dashboard = () => {
                 </div>
             </div>
         </section>
-        <section id="dashboard-right">
-            <div id="db-goals">
+        <section className="dashboard-right">
+            <div className="dashboard-goals">
                 <span>
                     <h2>Todays Focus</h2>
                     <Link to="/newgoal" className="button">+</Link>
@@ -143,36 +154,6 @@ const Dashboard = () => {
                             <p className="label">🔄 13:00</p>
                         </div>
                         <div className="priority-indicator norm"></div>
-                    </li>
-                    <hr />
-                </ul>
-                <h2>Upcoming Goals</h2>
-                <ul>
-                    <li>
-                        <input type="checkbox" />
-                        <div className="goal-label">
-                            <h5>Read a book</h5>
-                            <p className="label">03.12.21 13:00</p>
-                        </div>
-                        <div className="priority-indicator high"></div>
-                    </li>
-                    <hr />
-                    <li>
-                        <input type="checkbox" />
-                        <div className="goal-label">
-                            <h5>Read a book</h5>
-                            <p className="label">🔄 21.12.21 18:00</p>
-                        </div>
-                        <div className="priority-indicator norm"></div>
-                    </li>
-                    <hr />
-                    <li>
-                        <input type="checkbox" />
-                        <div className="goal-label">
-                            <h5>Read a book</h5>
-                            <p className="label">🔄 15.12.21 11:00</p>
-                        </div>
-                        <div className="priority-indicator low"></div>
                     </li>
                     <hr />
                 </ul>

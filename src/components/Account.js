@@ -8,8 +8,14 @@ const Account = () => {
         account.style.display = 'none';
     }
 
+    // const header = document.querySelector('header');
+    // header.addEventListener('click', () => {
+    //     hideAccount();
+    // })
+
     return (
         <div id="account" className="pop-up" onClick={hideAccount} >
+        <button onClick={hideAccount}>x</button>
             <section>
                 <img src={image} alt="profile pic"/>
                 <h2>Jessica Hackerman</h2>

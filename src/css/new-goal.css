@@ -1,0 +1,11 @@
+#goals-left, #goals-right {
+    float: left;
+}
+
+#goals-left {
+    width: 60%;
+}
+
+#goals-right {
+    width: 40%;
+}

@@ -1,4 +1,4 @@
-#dashboard-left {
+.dashboard-left {
     padding: 2.1%;
     width: 70%;
     height: 100vh;
@@ -7,12 +7,12 @@
     flex-direction: column;
     gap: 1.8vw;
 }
-
-#dashboard-left h1, #dashboard-left h3 {
+  
+.dashboard-left h1, .dashboard-left h3 {
     color: var(--dark);
 }
-
-#dashboard-right {
+  
+.dashboard-right {
     float: left;
     width: 30%;
     padding: 2.1%;
@@ -27,7 +27,7 @@
     padding-top: 3vw;
 }
 
-.finance-charts div, #db-finance-goals, #upcoming-payments div, #db-goals, #db-notes div {
+.finance-charts div, #db-finance-goals, #upcoming-payments div, .dashboard-goals, #db-notes div {
     padding: 1.8%;
     padding-left: 3%;
     padding-right: 3%;
@@ -37,7 +37,7 @@
     float: left;
 }
 
-.finance-charts, #db-finance-goals, #db-finance-goals div, #db-goals span, #db-notes {
+.finance-charts, #db-finance-goals, #db-finance-goals div, .dashboard-goals span, #db-notes {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -49,9 +49,9 @@
     justify-content: space-around;
 }
 
-#upcoming-payments, #db-notes {
+#db-notes {
     justify-content: flex-start;
-    overflow: auto;
+    overflow-x: auto;
     padding-bottom: .6vw;;
 }
 
@@ -84,31 +84,32 @@
     padding-bottom: .3vw;
 }
 
-#db-goals {
+.dashboard-goals {
     padding: 1.8vw;
     width: 100%;
     height: 69vh;
     -moz-box-shadow: 0 -3px 6px var(--strong) inset;
     -webkit-box-shadow: 0 -3px 6px var(--strong) inset;
     box-shadow: 0 -3px 6px var(--strong) inset;
+    overflow: auto;
 }
 
-#db-goals span {
+.dashboard-goals span {
     align-items: flex-end;
     justify-content: space-between;
 }
 
-#db-goals h2 {
+.dashboard-goals h2 {
     margin-bottom: .9vw;
   }
 
-#db-goals .button {
+.dashboard-goals .button {
     font-size: 2.7vw;
     padding-top: 0;
     padding-bottom: 0;
 }
 
-#db-goals li {
+.dashboard-goals li {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -135,4 +136,8 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
+}
+
+#db-notes{
+    padding-bottom: 1.2vw;
 }

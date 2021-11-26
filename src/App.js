@@ -1,11 +1,12 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Home from './containers/home.js';
-import Login from './containers/login.js';
-import Account from './containers/account.js';
-import Dashboard from './containers/dashboard.js';
-import NewGoal from './containers/newGoal.js';
-import NewNote from './containers/newNote.js';
-import Nav from './containers/nav.js';
+import React, { useState } from 'react';
+import Home from './pages/Home.js';
+import Login from './pages/Login.js';
+import Account from './components/Account.js';
+import Dashboard from './pages/Dashboard.js';
+import NewGoal from './pages/GoalPage.js';
+import NewNote from './pages/NotePage.js';
+import Nav from './components/Nav.js';
 import 'react-circular-progressbar/dist/styles.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/App.css';
@@ -18,30 +19,21 @@ import './css/new-goal.css';
 import './css/new-note.css';
 
 function App() {
+  // const [token, setToken] = useState();
 
-//   fetch("http://localhost:3000/login", {
-//     method: 'post',
-//     headers: {
-//          'content-type': 'application/json',
-//          'accept': 'application/json'
-//     },
-//     body: JSON.stringify({
-//         email: "email@email.com",
-//         password: "password"
-//     })
-// })
-// .then(res => res.json())
-
+  // if(!token) {
+  //   return <Login setToken={setToken} />
+  // }
 
   return (
     <Router>
       <Nav />
       <Account />
-      <NewGoal />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/newgoal" element={<NewGoal />} />
         <Route path="/newnote" element={<NewNote />} />
       </Routes>
     </Router>

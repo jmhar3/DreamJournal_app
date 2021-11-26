@@ -11,7 +11,7 @@ const NewForm = () => {
         <p className="label">Last Updated 25th November 2021</p>
         <hr />
         <textarea value="Content" />
-        <input type="submit" value="Submit" className="button" />
+        <input type="submit" value="Save" className="button" />
     </form>
     )
 }
