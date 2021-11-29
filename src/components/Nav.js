@@ -48,6 +48,19 @@ const Nav = () => {
         newGoal.style.display = 'flex';
     }
 
+    if (!localStorage.getItem('jwt')) {
+        return (
+            <header className="mobile">
+                <nav onMouseLeave={hideTrackers} >
+                    <Link to="/" className="menu-icon"><img src={home} alt="home" onMouseOver={showHome} onMouseLeave={hideHome} /></Link>
+                </nav>
+                <ul>
+                    <li style={{ visibility: (homeLabel ? 'visible' : 'hidden') }}>DreamJournal</li>
+                </ul>
+            </header>
+        )
+    }
+
     return (
         <header>
             <nav onMouseLeave={hideTrackers} >

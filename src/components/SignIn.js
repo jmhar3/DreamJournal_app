@@ -1,5 +1,4 @@
 import { useForm } from 'react-hook-form';
-import PropTypes from 'prop-types';
 
 const SignIn = ({ setToken }) => {
 
@@ -21,12 +20,6 @@ const SignIn = ({ setToken }) => {
         .then(res => localStorage.setItem('jwt', res.token))
     }
 
-    // async function onSubmit(e, data) {
-    //     // e.preventDefault();
-    //     const token = await loginUser(data)
-    //     // setToken(token);
-    // }
-
     return (
         <form id="sign-in" onSubmit={handleSubmit(onSubmit)}>
             <input type="text" {...register("email")} placeholder="Email" />
@@ -37,7 +30,3 @@ const SignIn = ({ setToken }) => {
 }
   
 export default SignIn;
-
-// Login.propTypes = {
-//     setToken: PropTypes.func.isRequired
-// }

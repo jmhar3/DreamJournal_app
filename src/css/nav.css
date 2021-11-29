@@ -13,8 +13,8 @@ nav {
     flex-direction: column;
     gap: .6vw;
     padding: .6vw;
-    -moz-box-shadow: 3px 0 6px var(--mid);
-    -webkit-box-shadow: 3px 0 6px var(--mid);
+    -moz-box-shadow: 3px 0 6px var(--strong);
+    -webkit-box-shadow: 3px 0 6px var(--strong);
     box-shadow: 3px 0 6px var(--strong);
 }
 
@@ -48,4 +48,12 @@ header li {
 
 header a img:hover, header button img:hover {
     border: var(--strong) solid 2px;
+}
+
+/* MOBILE */
+.mobile nav {
+    background: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
 }

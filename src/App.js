@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import React, { useState } from 'react';
 import Home from './pages/Home.js';
 import Login from './pages/Login.js';
@@ -20,23 +20,33 @@ import './css/goals.css';
 import './css/notes.css';
 
 function App() {
-  // const [token, setToken] = useState();
-
-  // if(!token) {
-  //   return <Login setToken={setToken} />
-  // }
+  const auth = localStorage.getItem('jwt')
+  const dashboard_nav = <Navigate replace to="/dashboard" />
+  const login_nav = <Navigate replace to="/login" />
 
   return (
     <Router>
       <Nav />
       <Account />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/financepage" element={<FinancePage />} />
-        <Route path="/goalpage" element={<GoalPage />} />
-        <Route path="/notepage" element={<NotePage />} />
+        <Route path="/"
+          element={ auth ? dashboard_nav : <Home />}
+        />
+        <Route path="/login"
+          element={ auth ? dashboard_nav : <Login />}
+        />
+        <Route path="/dashboard"
+          element={!auth ? login_nav : <Dashboard /> }
+        />
+        <Route path="/financepage"
+          element={!auth ? login_nav : <FinancePage /> }
+        />
+        <Route path="/goalpage"
+          element={!auth ? login_nav : <GoalPage /> }
+        />
+        <Route path="/notepage"
+          element={ !auth ? login_nav : <NotePage />}
+        />
       </Routes>
     </Router>
   );

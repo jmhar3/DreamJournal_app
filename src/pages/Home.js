@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 const Home = () => {
   return (
     <div id="homepage">
-      <Link to="/login" class="sign-in-button button">Sign In</Link>
       <section id="hp-first">
         <h1>Get your sh*t together</h1>
       </section>
