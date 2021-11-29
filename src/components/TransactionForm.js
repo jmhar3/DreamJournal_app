@@ -45,23 +45,23 @@ const TransactionForm = () => {
     //     setSelectedCategory(e.value);
     // };
 
-    const customStyles = {
-        option: (provided, state) => ({
-          ...provided,
-          borderBottom: '1px dotted pink',
-          color: state.isSelected ? 'red' : 'blue',
-          padding: 20,
-        }),
-        control: () => ({
-          width: 'auto',
-        }),
-        singleValue: (provided, state) => {
-          const opacity = state.isDisabled ? 0.5 : 1;
-          const transition = 'opacity 300ms';
+    // const customStyles = {
+    //     option: (provided, state) => ({
+    //       ...provided,
+    //       borderBottom: '1px dotted pink',
+    //       color: state.isSelected ? 'red' : 'blue',
+    //       padding: 20,
+    //     }),
+    //     control: () => ({
+    //       width: 'auto',
+    //     }),
+    //     singleValue: (provided, state) => {
+    //       const opacity = state.isDisabled ? 0.5 : 1;
+    //       const transition = 'opacity 300ms';
       
-          return { ...provided, opacity, transition };
-        }
-      }
+    //       return { ...provided, opacity, transition };
+    //     }
+    //   }
 
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -69,17 +69,13 @@ const TransactionForm = () => {
                 <label>$ <input type="number" name="amount" placeholder="0.00" /></label>
                 <Select
                     options={directionOptions}
-                    styles={customStyles}
-                    // onChange={handleDirectionSelect}
-                    // value={directionOptions.filter(function (option) {
-                    //     return option.value === selectedDirection;
-                    // })}
+                    // styles={customStyles}
                 />
             </div>
             <div>
                 <Select
                     options={categoryOptions}
-                    styles={customStyles}
+                    // styles={customStyles}
                     // onChange={handleCategorySelect}
                     // value={categoryOptions.filter(function (option) {
                     //     return option.value === selectedCategory;

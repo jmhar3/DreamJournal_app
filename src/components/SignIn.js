@@ -1,6 +1,7 @@
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 
-const SignIn = ({ setToken }) => {
+const SignIn = () => {
 
     const {register, handleSubmit} = useForm();
 
@@ -18,6 +19,7 @@ const SignIn = ({ setToken }) => {
         })
         .then(res => res.json())
         .then(res => localStorage.setItem('jwt', res.token))
+        
     }
 
     return (
@@ -28,5 +30,5 @@ const SignIn = ({ setToken }) => {
         </form>
     )
 }
-  
+
 export default SignIn;

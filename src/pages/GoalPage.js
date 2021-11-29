@@ -1,5 +1,7 @@
 import GoalForm from '../components/GoalForm';
 import GoalList from '../components/GoalList';
+import { useContext } from 'react';
+import { GoalContext } from '../components/GoalContext';
 
 const GoalPage = () => {
     fetch("http://localhost:3000/goals", {
@@ -12,6 +14,8 @@ const GoalPage = () => {
     })
     .then(res => res.json())
     .then(res => console.log(res))
+
+    const [goalState, dispatch] = useContext(GoalContext)
     
     return (
         <div id="goal-db" >
@@ -22,7 +26,7 @@ const GoalPage = () => {
             <section className="dashboard-right ">
                 <div className="dashboard-goals">
                     <h2>Upcoming Goals</h2>
-                    <GoalList />
+                    <GoalList goals="hello world" />
                 </div>
             </section>
         </div>
