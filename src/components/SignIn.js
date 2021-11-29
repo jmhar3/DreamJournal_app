@@ -18,7 +18,7 @@ const SignIn = ({ setToken }) => {
             })
         })
         .then(res => res.json())
-        .then(res => console.log(res))
+        .then(res => localStorage.setItem('jwt', res.token))
     }
 
     // async function onSubmit(e, data) {

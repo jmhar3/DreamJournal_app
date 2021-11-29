@@ -1,6 +1,14 @@
+import { useForm } from 'react-hook-form';
+
 const NewForm = () => {
+    const {register, handleSubmit} = useForm();
+
+    async function onSubmit(d) {
+
+    }
+
     return (
-    <form>
+    <form onSubmit={handleSubmit(onSubmit)}>
         <span>
             <input type="text" name="title" placeholder="Title" />
             <div id="checkbox-container">

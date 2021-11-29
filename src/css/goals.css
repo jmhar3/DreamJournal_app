@@ -1,0 +1,12 @@
+#goal-db .dashboard-left form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2vw;
+    width: fit-content;
+}
+
+#goal-db .dashboard-left form div {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
