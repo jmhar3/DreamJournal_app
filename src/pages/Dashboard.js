@@ -6,7 +6,8 @@ import Chart from 'chart.js/auto';
 import { useContext } from 'react';
 import { GoalContext } from '../components/GoalContext';
 import GoalList from '../components/GoalList';
-import TransactionList from '../components/TransactionList';
+import TransactionList from '../components/TransactionsList';
+import FinanceCategories from '../components/FinanceCategories';
 
 const expenseData = {
     labels: ['Mon', 'Tue', 'Wed',
@@ -87,8 +88,9 @@ const Dashboard = () => {
                         <Bar data={incomeData} />
                     </div>
                 </section>
-                <section>
+                <section id="transaction-stats">
                     <div id="db-finance-categories">
+                        <FinanceCategories transactions={'transactions'} />
                     </div>
                     <div id="db-transactions">
                         <TransactionList transactions={'transactions'} />
