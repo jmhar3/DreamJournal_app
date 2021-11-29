@@ -5,23 +5,6 @@ import { GoalContext } from '../components/GoalContext';
 
 const GoalPage = () => {
     const [goalState, dispatch] = useContext(GoalContext)
-
-    fetch("http://localhost:3000/goals", {
-        method: 'get',
-        headers: {
-             'content-type': 'application/json',
-             'accept': 'application/json',
-             'Authorization': `Bearer ${localStorage.getItem('jwt')}`
-        }
-    })
-    .then(res => res.json())
-    .then(res => {
-        // dispatch({
-        //     type: "addGoal",
-        //     data: res
-        // })
-        console.log(res)
-    })
     
     return (
         <div id="goal-db" >

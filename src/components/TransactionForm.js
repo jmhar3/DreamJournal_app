@@ -33,8 +33,8 @@ const TransactionForm = () => {
                     <option value="insurance">🚘 Insurance</option>
                     <option value="personal">💇🏽 Personal</option>
                     <option value="savings">💰 Savings</option>
-                    <option value="transportation">🛩️ Transportation</option>
-                    <option value="utilities">📱 Utilities</option>
+                    <option value="transport">🛩️ Transport</option>
+                    <option value="utility">📱 Utility</option>
                     <option value="other">🏦 Other</option>
                 </select>
                 <input type="submit" value="Save" />
