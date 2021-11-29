@@ -4,6 +4,8 @@ import { useContext } from 'react';
 import { GoalContext } from '../components/GoalContext';
 
 const GoalPage = () => {
+    const [goalState, dispatch] = useContext(GoalContext)
+
     fetch("http://localhost:3000/goals", {
         method: 'get',
         headers: {
@@ -13,9 +15,13 @@ const GoalPage = () => {
         }
     })
     .then(res => res.json())
-    .then(res => console.log(res))
-
-    const [goalState, dispatch] = useContext(GoalContext)
+    .then(res => {
+        // dispatch({
+        //     type: "addGoal",
+        //     data: res
+        // })
+        console.log(res)
+    })
     
     return (
         <div id="goal-db" >
@@ -26,7 +32,7 @@ const GoalPage = () => {
             <section className="dashboard-right ">
                 <div className="dashboard-goals">
                     <h2>Upcoming Goals</h2>
-                    <GoalList goals="hello world" />
+                    <GoalList goals={goalState} />
                 </div>
             </section>
         </div>

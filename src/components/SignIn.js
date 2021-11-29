@@ -1,5 +1,5 @@
 import { useForm } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom';
+import { Navigate } from "react-router-dom";
 
 const SignIn = () => {
 
@@ -19,15 +19,23 @@ const SignIn = () => {
         })
         .then(res => res.json())
         .then(res => localStorage.setItem('jwt', res.token))
-        
+    }
+    
+    function loggedIn() {
+        if (localStorage.getItem('jwt')) {
+            <Navigate to="/dashboard" replace={true} />
+        }
     }
 
     return (
-        <form id="sign-in" onSubmit={handleSubmit(onSubmit)}>
-            <input type="text" {...register("email")} placeholder="Email" />
-            <input type="password" {...register("password")} placeholder="Password" />
-            <input type="submit" value="Lets go!" />
-        </form>
+        <div>
+            {loggedIn()}
+            <form id="sign-in" onSubmit={handleSubmit(onSubmit)}>
+                <input type="text" {...register("email")} placeholder="Email" />
+                <input type="password" {...register("password")} placeholder="Password" />
+                <input type="submit" value="Lets go!" />
+            </form>
+        </div>
     )
 }
 

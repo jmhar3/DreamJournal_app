@@ -14,23 +14,17 @@ export const GoalContextProvider = props => {
 
 const GoalReducer = (state, action) => {
     switch (action.type) {
-        case "addGoal":
-            if (state.length < 6) {
-                return [...state, action.data]
-            }
-        case "removeGoal":
-            if (state.length > 4) {
-                return state.filter(goal => action.data !== goal)
-            }
+        case "createGoal":
+            return [...state, action.data]
+        case "deleteGoal":
+            return state.filter(goal => action.data !== goal)
         case "updateGoal":
             return state.map((goal) => {
-                if (goal === action.data.oldColour) {
-                    goal = action.data.newColour
+                if (goal === action.data.oldGoal) {
+                    goal = action.data.newGoal
                 }
                 return goal
             })
-        case "openPalette":
-            return [...action.data]
         default:
             return state;
     }

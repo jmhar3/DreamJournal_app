@@ -16,11 +16,11 @@ const GoalForm = () => {
     const [goalState, dispatch] = useContext(GoalContext);
 
     const createGoal = data => {
-        console.log(data);
-        // dispatch({
-        //     type: "addGoal",
-        //     data: data
-        // })
+        dispatch({
+            type: "createGoal",
+            data: Object.values(data)
+        })
+        console.log(goalState);
     }
     
     return (

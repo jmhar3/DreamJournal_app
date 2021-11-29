@@ -9,78 +9,34 @@ const TransactionForm = () => {
 
     }
 
-    // const [selectedDirection, setSelectedDirection] = useState("none");
-
-    const directionOptions = [
-        { value: "none", label: "Empty" },
-        { value: "incoming", label: "Incoming" },
-        { value: "outgoing", label: "Outgoing" }
-    ];
-
-    // const handleDirectionSelect = e => {
-    //     setSelectedDirection(e.value);
-    // };
-
-    // const [selectedCategory, setSelectedCategory] = useState("none");
-
-    const categoryOptions = [
-        { value: "none", label: "Category" },
-        { value: "clothing", label: "🧥 Clothing" },
-        { value: "debt", label: "💳 Debt" },
-        { value: "education", label: "📚 Education" },
-        { value: "entertainment", label: "🎮 Entertainment" },
-        { value: "food", label: "🍜 Food" },
-        { value: "health", label: "❤️‍🩹 Health" },
-        { value: "household", label: "🧻 Household" },
-        { value: "housing", label: "🏡 Housing" },
-        { value: "insurance", label: "🚘 Insurance" },
-        { value: "personal", label: "💇🏽 Personal" },
-        { value: "savings", label: "💰 Savings" },
-        { value: "transportation", label: "🛩️ Transportation" },
-        { value: "utilities", label: "📱 Utilities" },
-        { value: "other", label: "🏦 Other" }
-    ];
-
-    // const handleCategorySelect = e => {
-    //     setSelectedCategory(e.value);
-    // };
-
-    // const customStyles = {
-    //     option: (provided, state) => ({
-    //       ...provided,
-    //       borderBottom: '1px dotted pink',
-    //       color: state.isSelected ? 'red' : 'blue',
-    //       padding: 20,
-    //     }),
-    //     control: () => ({
-    //       width: 'auto',
-    //     }),
-    //     singleValue: (provided, state) => {
-    //       const opacity = state.isDisabled ? 0.5 : 1;
-    //       const transition = 'opacity 300ms';
-      
-    //       return { ...provided, opacity, transition };
-    //     }
-    //   }
-
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
             <div>
                 <label>$ <input type="number" name="amount" placeholder="0.00" /></label>
-                <Select
-                    options={directionOptions}
-                    // styles={customStyles}
-                />
+                <select {...register("direction")}>
+                    <option value="incoming">Incoming</option>
+                    <option value="outgoing">Outgoing</option>
+                </select>
             </div>
             <div>
-                <Select
-                    options={categoryOptions}
-                    // styles={customStyles}
-                    // onChange={handleCategorySelect}
-                    // value={categoryOptions.filter(function (option) {
-                    //     return option.value === selectedCategory;
-                    // })}
-                />
+                
+            <select {...register("category")}>
+                    <option value="none">Category</option>
+                    <option value="clothing">🧥 Clothing</option>
+                    <option value="debt">💳 Debt</option>
+                    <option value="education">📚 Education</option>
+                    <option value="entertainment">🎮 Entertainment</option>
+                    <option value="food">🍜 Food</option>
+                    <option value="health">❤️‍🩹 Health</option>
+                    <option value="household">🧻 Household</option>
+                    <option value="housing">🏡 Housing</option>
+                    <option value="insurance">🚘 Insurance</option>
+                    <option value="personal">💇🏽 Personal</option>
+                    <option value="savings">💰 Savings</option>
+                    <option value="transportation">🛩️ Transportation</option>
+                    <option value="utilities">📱 Utilities</option>
+                    <option value="other">🏦 Other</option>
+                </select>
                 <input type="submit" value="Save" />
             </div>
         </form>
