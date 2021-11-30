@@ -140,6 +140,7 @@
 
 #transaction-stats {
     align-items: flex-start;
+    justify-content: space-between;
 }
 
 #db-finance-categories {
@@ -147,6 +148,6 @@
 }
 
 #db-transactions, #db-finance-categories {
-    width: 48%;
+    width: 50%;
     height: fit-content;
 }
