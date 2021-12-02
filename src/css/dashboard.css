@@ -97,12 +97,17 @@
 
 .dashboard-goals h2 {
     margin-bottom: .9vw;
-  }
+}
 
-.dashboard-goals .button {
+.dashboard-goals span .button {
     font-size: 2.7vw;
     padding-top: 0;
     padding-bottom: 0;
+}
+
+.dashboard-goals .button {
+    font-size: 1.5w;
+    background-color: var(--light)
 }
 
 .dashboard-goals li, #db-transactions li {

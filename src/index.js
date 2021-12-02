@@ -5,10 +5,14 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { createStore, combineReducers } from 'redux'
 import {Provider} from 'react-redux'
-import goalReducer from './components/GoalReducer';
+import goalReducer from './reducers/GoalReducer';
+import noteReducer from './reducers/NoteReducer';
+import transactionReducer from './reducers/TransactionReducer';
 
 const rootReducer = combineReducers({
-  goals: goalReducer
+  goals: goalReducer,
+  notes: noteReducer,
+  transactions: transactionReducer
 });
 
 const store = createStore(

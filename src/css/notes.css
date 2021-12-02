@@ -86,7 +86,7 @@
     font-size: 1.2vw;
 }
 
-#note-right input[type=submit] {
+#note-right .submit {
     position: fixed;
     bottom: 1.2vw;
     right: 1.2vw;

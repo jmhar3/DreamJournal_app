@@ -3,10 +3,10 @@ import GoalList from '../components/GoalList';
 import { Link } from "react-router-dom";
 import { connect } from 'react-redux';
 
-const GoalPage = ({goals}) => {
+const GoalPage = ({goalState}) => {
     var goals;
-    if (goals.length !== 0) {
-        goals = <GoalList goals={goals} />
+    if (goalState.length !== 0) {
+        goals = <GoalList goals={goalState} />
     } else {
         goals = <Link to="/goalpage" className="button">Get your sh*t together</Link>
     }
@@ -28,7 +28,7 @@ const GoalPage = ({goals}) => {
 }
 
 const mapStateToProps = state => {
-    return { goals: state.goals }
+    return { goalState: state.goals }
 }
   
 export default connect(mapStateToProps)(GoalPage);

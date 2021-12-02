@@ -1,5 +1,5 @@
 import { useRef } from "react"
-import { connect, useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 
 const GoalForm = () => {
@@ -9,7 +9,16 @@ const GoalForm = () => {
     const year = dateTime.getFullYear()
     const hours = dateTime.getHours() + 1
     const minutes = dateTime.getMinutes() + 1
-    const today = year + "-" + month + "-0" + day + "T" + hours + ":" + minutes;
+
+    const validDate = (date) => {
+        if (date.toString().length === 1) {
+            return "0" + date
+        } else {
+            return date
+        }
+    }
+
+    const today = year + "-" + validDate(month) + "-" + validDate(day) + "T" + validDate(hours) + ":" + validDate(minutes);
 
     const labelRef = useRef();
     const dueDateRef = useRef();
@@ -21,7 +30,7 @@ const GoalForm = () => {
         dispatch({
             type: "ADD_GOAL",
             goal: {
-                id: uuidv4(),
+                key: uuidv4(),
                 label: labelRef.current.value,
                 due_date: dueDateRef.current.value,
                 priority: priorityRef.current.value
@@ -30,7 +39,7 @@ const GoalForm = () => {
     }
     
     return (
-        <form onSubmit={addGoal}>
+        <div className="form">
             <input type="text" ref={labelRef} placeholder="Goal" />
             <input type="datetime-local" ref={dueDateRef}  value={today} min={today}/>
             <div>
@@ -39,9 +48,9 @@ const GoalForm = () => {
                     <option value="mid">Mid</option>
                     <option value="high">High</option>
                 </select>
-                <input type="submit" value="Save" />
+                <button onClick={addGoal} className="submit">Submit</button>
             </div>
-        </form>
+        </div>
     )
 }
 

@@ -1,26 +1,38 @@
-import { useForm } from 'react-hook-form';
-import React, { useState } from "react";
-import Select from "react-select";
+import { useRef } from "react"
+import { useDispatch } from 'react-redux';
+import { v4 as uuidv4 } from 'uuid';
 
 const TransactionForm = () => {
-    const { register, handleSubmit } = useForm();
+    const amountRef = useRef();
+    const directionRef = useRef();
+    const categoryRef = useRef();
 
-    async function onSubmit(d) {
+    const dispatch = useDispatch();
 
+    const addTransaction = () => {
+        dispatch({
+            type: "ADD_TRANSACTION",
+            transaction: {
+                key: uuidv4(),
+                label: amountRef.current.value,
+                due_date: directionRef.current.value,
+                priority: categoryRef.current.value
+            }
+        }) 
     }
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <div className="form">
             <div>
-                <label>$ <input type="number" name="amount" placeholder="0.00" /></label>
-                <select {...register("direction")}>
+                <label>$ <input type="number" placeholder="0.00" ref={amountRef} /></label>
+                <select ref={directionRef}>
                     <option value="incoming">Incoming</option>
                     <option value="outgoing">Outgoing</option>
                 </select>
             </div>
             <div>
                 
-            <select {...register("category")}>
+            <select ref={categoryRef}>
                     <option value="none">Category</option>
                     <option value="clothing">🧥 Clothing</option>
                     <option value="debt">💳 Debt</option>
@@ -37,10 +49,17 @@ const TransactionForm = () => {
                     <option value="utility">📱 Utility</option>
                     <option value="other">🏦 Other</option>
                 </select>
-                <input type="submit" value="Save" />
+            <button onClick={addTransaction} className="submit">Submit</button>
             </div>
-        </form>
+        </div>
     )
 }
+
+const mapDispatchToProps = dispatch => ({
+    addTransaction: (transaction) => dispatch({
+        type: "ADD_TRANSACTION",
+        transaction
+    })
+})
 
 export default TransactionForm;

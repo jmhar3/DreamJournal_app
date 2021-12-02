@@ -97,7 +97,7 @@ button {
   border-radius: .9vw;
 }
 
-.button, input[type=submit] {
+.button, .submit {
   height: fit-content;
   width: fit-content;
   text-decoration: none;
@@ -109,7 +109,7 @@ button {
   border-radius: 1.2vw;
 }
 
-.button:hover, input[type=submit]:hover {
+.button:hover, .submit:hover {
   border-radius: 30vw;
   color: var(--bold);
 }
@@ -133,12 +133,12 @@ button {
   border-radius: 100vw;
 }
 
-input[type=submit] {
+.submit {
   background-color: var(--bold);
   color: var(--light);
 }
 
-input[type=submit]:hover {
+.submit:hover {
   color: var(--light);
   box-shadow: none;
 }
