@@ -3,11 +3,10 @@ import { CircularProgressbar } from 'react-circular-progressbar';
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import { Bar } from 'react-chartjs-2';
 import Chart from 'chart.js/auto';
-import { useContext } from 'react';
-import { GoalContext } from '../components/GoalContext';
 import GoalList from '../components/GoalList';
 import TransactionList from '../components/TransactionsList';
 import FinanceCategories from '../components/FinanceCategories';
+import { connect } from 'react-redux';
 
 const expenseData = {
     labels: ['Mon', 'Tue', 'Wed',
@@ -33,9 +32,7 @@ const incomeData = {
     ]
 }
 
-const Dashboard = () => {
-    const [goalState, dispatch] = useContext(GoalContext)
-
+const Dashboard = ({goals}) => {
     // fetch("http://localhost:3000/goals", {
     //     method: 'get',
     //     headers: {
@@ -68,6 +65,13 @@ const Dashboard = () => {
         } else {
             return 'Good Evening'
         }
+    }
+
+    var goals;
+    if (goals.length !== 0) {
+        goals = <GoalList goals={goals} />
+    } else {
+        goals = <Link to="/goalpage" className="button">Get your sh*t together</Link>
     }
 
     return (
@@ -109,7 +113,7 @@ const Dashboard = () => {
                         <ProgressBar variant="warning" now={20} key={2} />
                         <ProgressBar variant="danger" now={10} key={3} />
                     </ProgressBar>
-                    <GoalList goals={goalState} />
+                    {goals}
                 </div>
                 <div id="db-notes">
                     <div>
@@ -133,4 +137,8 @@ const Dashboard = () => {
     )
 }
 
-export default Dashboard;
+const mapStateToProps = state => {
+    return { goals: state.goals }
+}
+  
+export default connect(mapStateToProps)(Dashboard);

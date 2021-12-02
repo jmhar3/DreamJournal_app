@@ -1,14 +1,12 @@
 import GoalForm from '../components/GoalForm';
 import GoalList from '../components/GoalList';
-import { useContext } from 'react';
-import { GoalContext } from '../components/GoalContext';
 import { Link } from "react-router-dom";
+import { connect } from 'react-redux';
 
-const GoalPage = () => {
-    const [goalState, dispatch] = useContext(GoalContext)
+const GoalPage = ({goals}) => {
     var goals;
-    if (goalState.length !== 0) {
-        goals = <GoalList goals={goalState} />
+    if (goals.length !== 0) {
+        goals = <GoalList goals={goals} />
     } else {
         goals = <Link to="/goalpage" className="button">Get your sh*t together</Link>
     }
@@ -29,4 +27,8 @@ const GoalPage = () => {
     )
 }
 
-export default GoalPage;
+const mapStateToProps = state => {
+    return { goals: state.goals }
+}
+  
+export default connect(mapStateToProps)(GoalPage);

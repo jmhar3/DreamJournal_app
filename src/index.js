@@ -3,13 +3,24 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { GoalContextProvider } from './components/GoalContext';
+import { createStore, combineReducers } from 'redux'
+import {Provider} from 'react-redux'
+import goalReducer from './components/GoalReducer';
+
+const rootReducer = combineReducers({
+  goals: goalReducer
+});
+
+const store = createStore(
+  rootReducer,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
 
 ReactDOM.render(
   <React.StrictMode>
-    <GoalContextProvider>
+    <Provider store={store}>
       <App />
-    </GoalContextProvider>
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
