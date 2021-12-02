@@ -1,5 +1,6 @@
 import { useForm } from 'react-hook-form';
 import { Navigate } from "react-router-dom";
+import jwt from 'jwt-decode';
 
 const SignIn = () => {
 
@@ -18,7 +19,10 @@ const SignIn = () => {
             })
         })
         .then(res => res.json())
-        .then(res => localStorage.setItem('jwt', res.token))
+        .then(res => {
+            localStorage.setItem('jwt', res.token)
+            localStorage.setItem('username', jwt(res.token).user_name)
+        })
     }
     
     function loggedIn() {

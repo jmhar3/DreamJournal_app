@@ -74,12 +74,16 @@ const Dashboard = ({goals}) => {
         goals = <Link to="/goalpage" className="button">Get your sh*t together</Link>
     }
 
+    function capitalize(str){
+        return str.charAt(0).toUpperCase() + str.slice(1);
+    }
+
     return (
         <main id="dashboard">
             <section className="dashboard-left">
                 <div id="db-header">
                     <h3>{today}</h3>
-                    <h1>{greeting()}, User Name</h1>
+                    <h1>{greeting()}, {capitalize(localStorage.getItem('username'))}</h1>
                 </div>
                 <section className="finance-charts">
                     <div>
