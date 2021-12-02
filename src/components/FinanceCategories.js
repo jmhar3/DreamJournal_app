@@ -1,4 +1,4 @@
-import { Pie } from 'react-chartjs-2';
+import { Doughnut } from 'react-chartjs-2';
 
 const categories = ['clothing', 'debt', 'education', 'entertainment', 'food', 'health', 'household', 'housing', 'insurance', 'personal', 'savings', 'transport', 'utility', 'other']
   
@@ -15,7 +15,7 @@ const categoryData = {
 
 const FinanceCategories = () => {
     return (
-        <Pie data={categoryData} />
+        <Doughnut data={categoryData} />
     )
 }
 

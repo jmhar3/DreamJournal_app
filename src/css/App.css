@@ -16,7 +16,7 @@
   --bold: #d40819;
   --dark: #130001;
   --low: #068f1d;
-  --norm: #f7c215;
+  --norm: #f7bb15;
   --high: #eb0d1f;
 }
 
@@ -74,15 +74,11 @@ h5, p {
   background-color: var(--light);
 }
 
-.mid {
-  background-color: var(--mid);
-}
-
 .low {
   background-color: var(--low);
 }
 
-.norm {
+.mid {
   background-color: var(--norm);
 }
 

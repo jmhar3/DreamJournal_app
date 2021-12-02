@@ -36,22 +36,25 @@ const incomeData = {
 const Dashboard = () => {
     const [goalState, dispatch] = useContext(GoalContext)
 
-    fetch("http://localhost:3000/goals", {
-        method: 'get',
-        headers: {
-             'content-type': 'application/json',
-             'accept': 'application/json',
-             'Authorization': `Bearer ${localStorage.getItem('jwt')}`
-        }
-    })
-    .then(res => res.json())
-    .then(res => {
-        // dispatch({
-        //     type: "addGoal",
-        //     data: res
-        // })
-        console.log(res)
-    })
+    // fetch("http://localhost:3000/goals", {
+    //     method: 'get',
+    //     headers: {
+    //          'content-type': 'application/json',
+    //          'accept': 'application/json',
+    //          'Authorization': `Bearer ${localStorage.getItem('jwt')}`
+    //     }
+    // })
+    // .then(res => res.json())
+    // .then(res => {
+    //     res.every(goal =>
+    //         dispatch({
+    //             type: "createGoal",
+    //             data: Object.values(goal)
+    //         })
+    //     )
+    //     console.log(res)
+    //     console.log(goalState)
+    // })
 
     const dateTime = new Date()
     const curHr = dateTime.getHours()
@@ -66,8 +69,6 @@ const Dashboard = () => {
             return 'Good Evening'
         }
     }
-
-    const finance_goal = 66;
 
     return (
         <main id="dashboard">

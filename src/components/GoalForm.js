@@ -9,7 +9,7 @@ const GoalForm = () => {
     const year = dateTime.getFullYear()
     const hours = dateTime.getHours() + 1
     const minutes = dateTime.getMinutes() + 1
-    const today = year + "-" + month + "-" + day + "T" + hours + ":" + minutes
+    const today = year + "-" + month + "-0" + day + "T" + hours + ":" + minutes
 
     const {register, handleSubmit} = useForm();
 
@@ -19,8 +19,7 @@ const GoalForm = () => {
         dispatch({
             type: "createGoal",
             data: Object.values(data)
-        })
-        console.log(goalState);
+        }) 
     }
     
     return (

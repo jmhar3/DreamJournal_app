@@ -10,7 +10,7 @@ const NewForm = () => {
     return (
     <form onSubmit={handleSubmit(onSubmit)}>
         <span>
-            <input type="text" name="title" placeholder="Title" />
+            <input type="text" {...register("title")} placeholder="Title" />
             <div id="checkbox-container">
                 <input id="checkbox" type="checkbox"/>
                 <label for="checkbox" ></label>
@@ -18,7 +18,7 @@ const NewForm = () => {
         </span>
         <p className="label">Last Updated 25th November 2021</p>
         <hr />
-        <textarea value="Content" />
+        <textarea {...register("content")} placeholder="Content" />
         <input type="submit" value="Save" className="button" />
     </form>
     )
