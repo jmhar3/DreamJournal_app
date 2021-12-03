@@ -1,37 +1,12 @@
 import { Link } from "react-router-dom";
 import { CircularProgressbar } from 'react-circular-progressbar';
 import GoalProgressBar from '../components/GoalProgressBar';
-import { Bar } from 'react-chartjs-2';
-import Chart from 'chart.js/auto';
+import FinanceChart from '../components/FinanceChart';
 import GoalList from '../components/GoalList';
 import TransactionList from '../components/TransactionsList';
 import FinanceCategories from '../components/FinanceCategories';
 import { connect } from 'react-redux';
 import PinnedNotes from '../components/PinnedNotes';
-
-const expenseData = {
-    labels: ['Mon', 'Tue', 'Wed',
-        'Thu', 'Fri', 'Sat', 'Sun'],
-    datasets: [
-        {
-            label: 'Expense',
-            backgroundColor: '#d40819',
-            data: [65, 59, 80, 120, 56, 30, 10]
-        }
-    ]
-}
-
-const incomeData = {
-    labels: ['Mon', 'Tue', 'Wed',
-        'Thu', 'Fri', 'Sat', 'Sun'],
-    datasets: [
-        {
-            label: 'Income',
-            backgroundColor: '#d40819',
-            data: [650, 590, 300, 120, 89, 30, 120]
-        }
-    ]
-}
 
 const Dashboard = ({goals}) => {
     const dateTime = new Date()
@@ -87,16 +62,8 @@ const Dashboard = ({goals}) => {
                     <h1>{greeting()}, {capitalize(localStorage.getItem('username'))}</h1>
                 </div>
                 <section className="finance-charts">
-                    <div>
-                        <h2>💸 Expense</h2>
-                        <p>$1200.00</p>
-                        <Bar data={expenseData} />
-                    </div>
-                    <div>
-                        <h2>🤑 Income</h2>
-                        <p>$1800.00</p>
-                        <Bar data={incomeData} />
-                    </div>
+                    <FinanceChart type={'Expense'} />
+                    <FinanceChart type={'Income'} />
                 </section>
                 <section id="transaction-stats">
                     <div id="db-finance-categories">
