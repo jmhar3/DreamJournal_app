@@ -39,7 +39,7 @@ const FinanceChart = ({transactions, type}) => {
     const dailyLabels = ['Mon', 'Tue', 'Wed',
     'Thu', 'Fri', 'Sat', 'Sun']
 
-    const adjustedLabels = [dailyLabels.slice(day) + dailyLabels.slice(0, day)]
+    const adjustedLabels = dailyLabels.slice(day).concat(dailyLabels.slice(0, day))
 
     const chartData = {
         labels: adjustedLabels,
