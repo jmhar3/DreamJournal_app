@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 
 const TransactionForm = () => {
+    const labelRef = useRef();
     const amountRef = useRef();
     const directionRef = useRef();
     const categoryRef = useRef();
@@ -14,9 +15,10 @@ const TransactionForm = () => {
             type: "ADD_TRANSACTION",
             transaction: {
                 key: uuidv4(),
-                label: amountRef.current.value,
-                due_date: directionRef.current.value,
-                priority: categoryRef.current.value
+                label: labelRef.current.value,
+                amount: amountRef.current.value,
+                direction: directionRef.current.value,
+                category: categoryRef.current.value
             }
         }) 
     }
@@ -24,6 +26,7 @@ const TransactionForm = () => {
     return (
         <div className="form">
             <div>
+                <input type="text" placeholder="Description" ref={labelRef} />
                 <label>$ <input type="number" placeholder="0.00" ref={amountRef} /></label>
                 <select ref={directionRef}>
                     <option value="incoming">Incoming</option>

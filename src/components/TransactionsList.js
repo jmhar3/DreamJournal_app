@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
+import { connect } from 'react-redux';
 
-const TransactionsList = ({transactionss}) => {
+const TransactionsList = ({transactions}) => {
     function categoryEmoji(category) {
         switch (category) {
             case 'clothing':
@@ -44,18 +45,25 @@ const TransactionsList = ({transactionss}) => {
     const sampleFour = ['Gong De Lin', 'food', '$40']
 
     return (
+        // {transactions.length < 0 ? (
+        //     <ul>
+        //         {transactions.map(transaction => {
+        //             <li key={transaction.key}>
+        //                 <span>
+        //                       <h1>{categoryEmoji(transaction.category)}</h1>
+        //                       <div className="transactions-label">
+        //                           <h5>{transaction.label}</h5>
+        //                           <p className="label">{capitalize(transaction.category)}</p>
+        //                       </div>
+        //                 </span>
+        //                 <p>${transaction.amount}</p>
+        //             </li>
+        //             <hr />
+        //         })}
+        //     </ul>
+        // ) : null}
+
         <ul>
-            <li>
-                <span>
-                    <h1>{categoryEmoji(sampleOne[1])}</h1>
-                    <div className="transactions-label">
-                        <h5>{sampleOne[0]}</h5>
-                        <p className="label">{capitalize(sampleOne[1])}</p>
-                    </div>
-                </span>
-                <p>{sampleOne[2]}</p>
-            </li>
-            <hr />
             <li>
                 <span>
                     <h1>{categoryEmoji(sampleTwo[1])}</h1>
@@ -92,4 +100,8 @@ const TransactionsList = ({transactionss}) => {
     )
 }
 
-export default TransactionsList;
+const mapStateToProps = state => {
+    return { transactions: state.transactions }
+}
+
+export default connect(mapStateToProps)(TransactionsList);
