@@ -25,8 +25,4 @@ const PinnedNotes = ({notes}) => {
     )
 }
 
-const mapStateToProps = state => {
-    return { notes: state.notes }
-}
-
-export default connect(mapStateToProps)(PinnedNotes);
+export default PinnedNotes;

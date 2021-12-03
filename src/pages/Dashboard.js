@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import { CircularProgressbar } from 'react-circular-progressbar';
 import GoalProgressBar from '../components/GoalProgressBar';
 import FinanceChart from '../components/FinanceChart';
 import GoalList from '../components/GoalList';
@@ -8,7 +7,11 @@ import FinanceCategories from '../components/FinanceCategories';
 import { connect } from 'react-redux';
 import PinnedNotes from '../components/PinnedNotes';
 
-const Dashboard = ({goals}) => {
+const Dashboard = ({goals, notes, transactions}) => {
+    function capitalize(str){
+        return str.charAt(0).toUpperCase() + str.slice(1);
+    }
+
     const dateTime = new Date()
     const curHr = dateTime.getHours()
     const today = dateTime.toDateString()
@@ -47,11 +50,21 @@ const Dashboard = ({goals}) => {
     if (todaysGoals.length !== 0) {
         renderGoals = <GoalList goals={todaysGoals} />
     } else {
-        renderGoals = <Link to="/goalpage" className="button">Get your sh*t together</Link>
+        renderGoals = <Link to="/goalpage" className="button gyst-button">Get your goals together</Link>
     }
 
-    function capitalize(str){
-        return str.charAt(0).toUpperCase() + str.slice(1);
+    var renderNotes;
+    if (notes.find(note => note.pinned === true)) {
+        renderNotes = <PinnedNotes notes={notes}/>
+    } else {
+        renderNotes = <Link to="/goalpage" className="button gyst-button">Get your notes together</Link>
+    }
+
+    var renderTransactions;
+    if (transactions !== undefined) {
+        renderTransactions = <TransactionList transactions={'transactions'} />
+    } else {
+        renderTransactions = <Link to="/goalpage" className="button gyst-button">Get your finances together</Link>
     }
 
     return (
@@ -70,7 +83,7 @@ const Dashboard = ({goals}) => {
                         <FinanceCategories transactions={'transactions'} />
                     </div>
                     <div id="db-transactions">
-                        <TransactionList transactions={'transactions'} />
+                        {renderTransactions}
                     </div>
                 </section>
             </section>
@@ -84,7 +97,7 @@ const Dashboard = ({goals}) => {
                     {renderGoals}
                 </div>
                 <div id="db-notes">
-                    <PinnedNotes />
+                    {renderNotes}
                 </div>
             </section>
         </main>
@@ -92,7 +105,7 @@ const Dashboard = ({goals}) => {
 }
 
 const mapStateToProps = state => {
-    return { goals: state.goals }
+    return { goals: state.goals, notes: state.notes, transaction: state.transactions }
 }
   
 export default connect(mapStateToProps)(Dashboard);
