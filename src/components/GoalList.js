@@ -3,11 +3,18 @@ import Goal from './GoalItem.js';
 const GoalList = ({goals}) => {
     return (
         <ul>
-            {/* <Goal goal={goals[0]} /> */}
-            { goals.map(goal => (
-                <Goal goal={goal} />
-            )) }
-            <hr />
+            <Goal goal={goals[0]} />
+            { goals > 1 ? (
+                <>
+                    { goals.map(goal => (
+                        <>
+                            <Goal goal={goal} />
+                            <hr/>
+                        </>
+                    )) }
+                </>
+            ) : null}
+            
         </ul>
     )
 }

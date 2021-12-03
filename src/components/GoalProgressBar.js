@@ -19,13 +19,17 @@ const GoalProgressBar = ({goals}) => {
         return (priority.length / goals.length) * 100
     }
 
-    return (
-        <ProgressBar>
-            <ProgressBar variant="success" now={checkProgress(lowPriority)} key={1} />
-            <ProgressBar variant="warning" now={checkProgress(midPriority)} key={2} />
-            <ProgressBar variant="danger" now={checkProgress(highPriority)} key={3} />
-        </ProgressBar>
-    )
+    if (lowPriority.length !== 0 || midPriority.length !== 0 || highPriority.length !== 0) {
+        return (
+            <ProgressBar>
+                <ProgressBar variant="success" now={checkProgress(lowPriority)} key={1} />
+                <ProgressBar variant="warning" now={checkProgress(midPriority)} key={2} />
+                <ProgressBar variant="danger" now={checkProgress(highPriority)} key={3} />
+            </ProgressBar>
+        )
+    } else {
+        return null
+    }
 }
 
 export default GoalProgressBar;
