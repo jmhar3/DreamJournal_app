@@ -1,12 +1,16 @@
-import { useRef } from "react"
+import { useRef, useState } from "react"
 import { useDispatch, connect } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 import Categories from './CategoryInput';
 
 const NoteForm = ({categories}) => {
     const titleRef = useRef();
-    const pinnedRef = useRef();
     const contentRef = useRef();
+
+    const [pinnedState, setPinnedState] = useState(false)
+    const pin = () => {
+        setPinnedState(!pinnedState);
+    }
 
     const dispatch = useDispatch();
 
@@ -16,7 +20,7 @@ const NoteForm = ({categories}) => {
             note: {
                 key: uuidv4(),
                 label: titleRef.current.value,
-                pinned: pinnedRef.current.value,
+                pinned: pinnedState,
                 content: contentRef.current.value,
                 categories: categories
             }
@@ -28,7 +32,7 @@ const NoteForm = ({categories}) => {
             <span>
                 <input type="text" ref={titleRef} placeholder="Title" />
                 <div id="checkbox-container">
-                    <input id="checkbox" type="checkbox" ref={pinnedRef}/>
+                    <input id="checkbox" type="checkbox" onClick={pin} />
                     <label for="checkbox" ></label>
                 </div>
             </span>
