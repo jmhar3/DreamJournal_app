@@ -1,8 +1,9 @@
 import { useRef } from "react"
-import { useDispatch } from 'react-redux';
+import { useDispatch, connect } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
+import Categories from './CategoryInput';
 
-const NoteForm = () => {
+const NoteForm = ({categories}) => {
     const titleRef = useRef();
     const pinnedRef = useRef();
     const contentRef = useRef();
@@ -16,7 +17,8 @@ const NoteForm = () => {
                 key: uuidv4(),
                 label: titleRef.current.value,
                 due_date: pinnedRef.current.value,
-                priority: contentRef.current.value
+                priority: contentRef.current.value,
+                categories: categories
             }
         }) 
     }
@@ -31,6 +33,7 @@ const NoteForm = () => {
                 </div>
             </span>
             <p className="label">Last Updated 25th November 2021</p>
+            <Categories />
             <hr />
             <textarea ref={contentRef} placeholder="Content" />
             <button onClick={addNote} className="submit">Submit</button>
@@ -45,4 +48,8 @@ const mapDispatchToProps = dispatch => ({
     })
 })
 
-export default NoteForm;
+const mapStateToProps = state => {
+    return { categories: state.categories }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(NoteForm);

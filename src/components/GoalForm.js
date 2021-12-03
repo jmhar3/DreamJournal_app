@@ -1,5 +1,5 @@
 import { useRef } from "react"
-import { useDispatch } from 'react-redux';
+import { useDispatch, connect } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 
 const GoalForm = () => {
@@ -61,4 +61,4 @@ const mapDispatchToProps = dispatch => ({
     })
 })
 
-export default GoalForm;
+export default connect(mapDispatchToProps)(GoalForm);

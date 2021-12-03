@@ -8,11 +8,13 @@ import {Provider} from 'react-redux'
 import goalReducer from './reducers/GoalReducer';
 import noteReducer from './reducers/NoteReducer';
 import transactionReducer from './reducers/TransactionReducer';
+import categoryReducer from './reducers/CategoryReducer';
 
 const rootReducer = combineReducers({
   goals: goalReducer,
   notes: noteReducer,
-  transactions: transactionReducer
+  transactions: transactionReducer,
+  categories: categoryReducer
 });
 
 const store = createStore(
