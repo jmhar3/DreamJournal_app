@@ -16,8 +16,8 @@ const NoteForm = ({categories}) => {
             note: {
                 key: uuidv4(),
                 label: titleRef.current.value,
-                due_date: pinnedRef.current.value,
-                priority: contentRef.current.value,
+                pinned: pinnedRef.current.value,
+                content: contentRef.current.value,
                 categories: categories
             }
         }) 
@@ -32,7 +32,7 @@ const NoteForm = ({categories}) => {
                     <label for="checkbox" ></label>
                 </div>
             </span>
-            <p className="label">Last Updated 25th November 2021</p>
+            {/* <p className="label">Last Updated 25th November 2021</p> */}
             <Categories />
             <hr />
             <textarea ref={contentRef} placeholder="Content" />

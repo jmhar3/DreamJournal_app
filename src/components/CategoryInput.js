@@ -26,7 +26,7 @@ const CategoryForm = ({categories}) => {
 
     return (
         <span id="category-input">
-            {/* {categories.length < 0 ? (
+            {categories.length < 0 ? (
                 <ul>
                     {categories.map((category) => {
                         <li key={category.key}>
@@ -37,12 +37,7 @@ const CategoryForm = ({categories}) => {
                         </li>
                     })}
                 </ul>
-            ) : null} */}
-            <ul>
-                <li>Food<button>x</button></li>
-                <li>Snacks<button>x</button></li>
-                <li>Dessert<button>x</button></li>
-            </ul>
+            ) : null}
             
             <input type="text" ref={categoryRef} placeholder="Add Category" />
             <button onClick={addCategory}>+</button>

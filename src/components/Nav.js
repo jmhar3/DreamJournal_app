@@ -74,7 +74,7 @@ const Nav = () => {
                 <Link to="/goalpage" className="menu-icon" style={{ visibility: (trackers ? 'visible' : 'hidden') }}>
                     <img src={goal} alt="new goal" onMouseOver={showNewGoalLabel} onMouseLeave={hideNewGoal} />
                 </Link>
-                <Link to="/notepage" className="menu-icon" style={{ visibility: (trackers ? 'visible' : 'hidden') }}>
+                <Link to="/notepad" className="menu-icon" style={{ visibility: (trackers ? 'visible' : 'hidden') }}>
                     <img src={note} alt="new note" onMouseOver={showNewNoteLabel} onMouseLeave={hideNewNote} />
                 </Link>
                 <Link to="/financepage" className="menu-icon" style={{ visibility: (trackers ? 'visible' : 'hidden') }}>

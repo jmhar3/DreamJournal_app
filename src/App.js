@@ -44,7 +44,7 @@ function App() {
         <Route path="/goalpage"
           element={!auth ? login_nav : <GoalPage /> }
         />
-        <Route path="/notepage"
+        <Route path="/notepad"
           element={ !auth ? login_nav : <NotePage />}
         />
       </Routes>

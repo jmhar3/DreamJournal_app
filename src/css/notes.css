@@ -143,7 +143,7 @@ input:checked + label:after {
     padding: 0;
 }
 
-#note-right #category-input input::placeholder, #category-input li, #category-input button {
+#note-right #category-input input, #note-right #category-input input::placeholder, #category-input li, #category-input button {
     font-size: 1.2vw;
     border: 3px solid var(--strong);
     color: var(--strong);
@@ -152,6 +152,10 @@ input:checked + label:after {
     padding-left: .6vw;
     padding-right: .6vw;
     background-color: var(--light)
+}
+
+#note-right #category-input input::placeholder {
+    border: none;
 }
 
 #category-input li, #category-input button  {
