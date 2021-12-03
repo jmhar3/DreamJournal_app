@@ -1,12 +1,13 @@
 import { Link } from "react-router-dom";
 import { CircularProgressbar } from 'react-circular-progressbar';
-import ProgressBar from 'react-bootstrap/ProgressBar';
+import GoalProgressBar from '../components/GoalProgressBar';
 import { Bar } from 'react-chartjs-2';
 import Chart from 'chart.js/auto';
 import GoalList from '../components/GoalList';
 import TransactionList from '../components/TransactionsList';
 import FinanceCategories from '../components/FinanceCategories';
 import { connect } from 'react-redux';
+import PinnedNotes from '../components/PinnedNotes';
 
 const expenseData = {
     labels: ['Mon', 'Tue', 'Wed',
@@ -36,7 +37,7 @@ const Dashboard = ({goals}) => {
     const dateTime = new Date()
     const curHr = dateTime.getHours()
     const today = dateTime.toDateString()
-
+    
     function greeting() {
         if (curHr < 12) {
             return 'Good Morning'
@@ -47,11 +48,31 @@ const Dashboard = ({goals}) => {
         }
     }
 
-    var goals;
-    if (goals.length !== 0) {
-        goals = <GoalList goals={goals} />
+    const day = dateTime.getDate()
+    const month = dateTime.getMonth() + 1
+    const year = dateTime.getFullYear()
+
+    const validDate = (date) => {
+        if (date.toString().length === 1) {
+            return "0" + date
+        } else {
+            return date
+        }
+    }
+
+    const todaysDate = year + "-" + validDate(month) + "-" + validDate(day);
+
+    function isToday(goal) {
+        return goal.due_date.includes(todaysDate);
+    }
+
+    const todaysGoals = goals.filter(isToday)
+
+    var renderGoals;
+    if (todaysGoals.length !== 0) {
+        renderGoals = <GoalList goals={todaysGoals} />
     } else {
-        goals = <Link to="/goalpage" className="button">Get your sh*t together</Link>
+        renderGoals = <Link to="/goalpage" className="button">Get your sh*t together</Link>
     }
 
     function capitalize(str){
@@ -92,29 +113,11 @@ const Dashboard = ({goals}) => {
                         <h2>Todays Focus</h2>
                         <Link to="/newgoal" className="button">+</Link>
                     </span>
-                    <ProgressBar>
-                        <ProgressBar variant="success" now={35} key={1} />
-                        <ProgressBar variant="warning" now={20} key={2} />
-                        <ProgressBar variant="danger" now={10} key={3} />
-                    </ProgressBar>
-                    {goals}
+                    <GoalProgressBar goals={todaysGoals}/>
+                    {renderGoals}
                 </div>
                 <div id="db-notes">
-                    <div>
-                        <h1>📝</h1>
-                        <p>Phase 5</p>
-                        <p class="label">31.11.21</p>
-                    </div>
-                    <div>
-                        <h1>📝</h1>
-                        <p>Groceries</p>
-                        <p class="label">31.11.21</p>
-                    </div>
-                    <div>
-                        <h1>📝</h1>
-                        <p>Important</p>
-                        <p class="label">31.11.21</p>
-                    </div>
+                    <PinnedNotes />
                 </div>
             </section>
         </main>

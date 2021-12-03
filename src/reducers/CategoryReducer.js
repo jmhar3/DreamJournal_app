@@ -3,7 +3,7 @@ function categoryReducer (categories = [], action) {
         case "ADD_CATEGORY":
             return [...categories, action.category]    
         case "REPLACE_CATEGORIES":
-            return [action.categories]
+            return [...action.categories]
         case "DELETE_CATEGORY":
             return categories.filter(category => action.key !== category.key)
         default:

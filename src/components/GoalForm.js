@@ -33,7 +33,8 @@ const GoalForm = () => {
                 key: uuidv4(),
                 label: labelRef.current.value,
                 due_date: dueDateRef.current.value,
-                priority: priorityRef.current.value
+                priority: priorityRef.current.value,
+                completed: false
             }
         }) 
     }

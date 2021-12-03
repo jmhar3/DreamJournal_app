@@ -10,7 +10,7 @@ const PinnedNotes = ({notes}) => {
 
     return (
         <div>
-            {pinnnedNotes.length < 0 ? (
+            {pinnedNotes.length < 0 ? (
                 <ul>
                     {pinnedNotes.map(note => {
                         <li key={note.key}>
