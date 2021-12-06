@@ -1,10 +1,9 @@
 import { useForm } from 'react-hook-form';
-import { useNavigate } from "react-router-dom";
+import jwt from 'jwt-decode';
 
 const SignUp = () => {
 
     const {register, handleSubmit} = useForm();
-    const navigate = useNavigate();
 
     async function onSubmit(d) {
         fetch("http://localhost:3000/signup", {
@@ -21,8 +20,11 @@ const SignUp = () => {
             })
         })
         .then(res => res.json())
-        .then(res => localStorage.setItem('jwt', res.token))
-        navigate("/dashboard", { replace: true });
+        .then(res => {
+            localStorage.setItem('jwt', res.token)
+            localStorage.setItem('username', jwt(res.token).user_name)
+            window.location.reload();
+        })
     }
 
     return (
