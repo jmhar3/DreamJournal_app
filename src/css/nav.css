@@ -55,20 +55,28 @@ header a img:hover, header button img:hover {
     width: 3vw;
 }
 
-button.pink_mode {
+button#pink_mode {
     background-color: #fda7b4;
 }
 
-button.blue_mode {
+button#blue_mode {
     background-color: #a1b9fa;
 }
 
-button.dark_mode {
-    background-color: #2b2727;
+button#orange_mode {
+    background-color: #fad0a1;
 }
 
-.clicked {
-    display: none;
+button#purple_mode {
+    background-color: #d2a1fa;
+}
+
+button#green_mode {
+    background-color: #a1fac6;
+}
+
+button#dark_mode {
+    background-color: #2b2727;
 }
 
 /* MOBILE */

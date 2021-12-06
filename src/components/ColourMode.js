@@ -2,33 +2,41 @@ import React from "react"
 import "../css/colour_mode.css"
 
 const ColourMode = () => {
-    const clicked = document.getElementsByClassName("clicked");
     const theme = localStorage.getItem("theme");
     const body = document.body;
 
-    if (theme === "pink") {
-        body.classList.add('pink')
-    }
+    body.className = theme
 
     const switchTheme = (e, colour) => {
-        body.classList.replace(theme, colour)
         localStorage.setItem("theme", colour)
-        // clicked.classList.remove("clicked")
-        // e.target.classList.add("clicked")
+        body.className = theme
+        window.location.reload();
     }
 
     return (
         <section id="colour_modes">
             <button
-                className="pink_mode clicked"
+                id="pink_mode"
                 onClick={e => switchTheme(e, "pink")}
             ></button>
             <button
-                className="blue_mode"
+                id="orange_mode"
+                onClick={e => switchTheme(e, "orange")}
+            ></button>
+            <button
+                id="green_mode"
+                onClick={e => switchTheme(e, "green")}
+            ></button>
+            <button
+                id="blue_mode"
                 onClick={e => switchTheme(e, "blue")}
             ></button>
             <button
-                className="dark_mode"
+                id="purple_mode"
+                onClick={e => switchTheme(e, "purple")}
+            ></button>
+            <button
+                id="dark_mode"
                 onClick={e => switchTheme(e, "dark")}
             ></button>
         </section>
