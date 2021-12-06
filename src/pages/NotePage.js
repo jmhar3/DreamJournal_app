@@ -1,5 +1,5 @@
-import NoteForm from '../components/NoteForm.js';
-import ShowNote from '../components/ShowNote.js';
+import NoteForm from '../components/notes/NoteForm.js';
+import ShowNote from '../components/notes/ShowNote.js';
 import { useState } from 'react';
 import { connect } from 'react-redux';
 

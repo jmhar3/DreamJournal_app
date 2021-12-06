@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
-import GoalProgressBar from '../components/GoalProgressBar';
-import FinanceChart from '../components/FinanceChart';
-import GoalList from '../components/GoalList';
-import TransactionList from '../components/TransactionsList';
-import FinanceCategories from '../components/FinanceCategories';
-import Account from '../components/Account.js';
+import GoalProgressBar from '../components/goals/GoalProgressBar';
+import FinanceChart from '../components/finance/FinanceChart';
+import GoalList from '../components/goals/GoalList';
+import TransactionList from '../components/finance/TransactionsList';
+import FinanceCategories from '../components/finance/FinanceCategories';
+import Account from '../components/account/AccountSettings.js';
 import { connect } from 'react-redux';
-import PinnedNotes from '../components/PinnedNotes';
+import PinnedNotes from '../components/notes/PinnedNotes';
 import { capitalize } from "../Helpers";
 
 const Dashboard = ({goals, notes, transactions}) => {

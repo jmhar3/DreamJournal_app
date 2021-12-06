@@ -7,12 +7,12 @@ header {
     flex-direction: row;
 }
 
-nav {
+#nav {
     background: var(--light-mid);
     display: flex;
+    align-items: center;
     flex-direction: column;
-    gap: .6vw;
-    padding: .6vw;
+    justify-content: space-between;
     -moz-box-shadow: 3px 0 6px var(--strong);
     -webkit-box-shadow: 3px 0 6px var(--strong);
     box-shadow: 3px 0 6px var(--strong);
@@ -24,7 +24,7 @@ nav {
     border: var(--light-mid) solid 2px;
 }
 
-header ul {
+header ul, nav, #nav section {
     display: flex;
     flex-direction: column;
     gap: .6vw;
@@ -50,8 +50,29 @@ header a img:hover, header button img:hover {
     border: var(--strong) solid 2px;
 }
 
+#colour_modes button {
+    height: 3vw;
+    width: 3vw;
+}
+
+button.pink_mode {
+    background-color: #fda7b4;
+}
+
+button.blue_mode {
+    background-color: #a1b9fa;
+}
+
+button.dark_mode {
+    background-color: #2b2727;
+}
+
+.clicked {
+    display: none;
+}
+
 /* MOBILE */
-.mobile nav {
+.mobile #nav {
     background: none;
     -moz-box-shadow: none;
     -webkit-box-shadow: none;

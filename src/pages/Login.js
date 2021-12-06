@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useState } from 'react';
-import SignIn from '../components/SignIn.js';
-import SignUp from '../components/SignUp.js';
+import SignIn from '../components/account/SignIn.js';
+import SignUp from '../components/account/SignUp.js';
 import image from '../images/stretching.png';
 import twitter from '../images/twitter.png';
 import github from '../images/github.png';

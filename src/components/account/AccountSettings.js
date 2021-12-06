@@ -1,4 +1,4 @@
-import settings from '../images/settings.png';
+import settings from '../../images/settings.png';
 import { useState } from 'react';
 
 const AccountSettings = () => {

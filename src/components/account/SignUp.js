@@ -5,7 +5,7 @@ const SignUp = () => {
 
     const {register, handleSubmit} = useForm();
 
-    async function onSubmit(d) {
+    function onSubmit(d) {
         fetch("http://localhost:3000/signup", {
             method: 'post',
             headers: {
@@ -23,6 +23,7 @@ const SignUp = () => {
         .then(res => {
             localStorage.setItem('jwt', res.token)
             localStorage.setItem('username', jwt(res.token).user_name)
+            localStorage.setItem('theme', "pink")
             window.location.reload();
         })
     }

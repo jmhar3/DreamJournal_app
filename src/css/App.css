@@ -63,6 +63,10 @@ h5, p {
   font-size: 1.2vw;
 }
 
+li, a, button, input, select, textarea {
+  font-size: 1.5vw;
+}
+
 .label {
   font-size: .9vw;
   color: var(--strong);
@@ -235,8 +239,8 @@ select {
 
 /* TRANSITIONS */
 
-.button, img, input {
-  transition: border-radius .6s, border .6s, color .3s, box-shadow .3s;
+.button, img, input, button {
+  transition: border-radius .3s, border .3s, color .3s, box-shadow .3s;
 }
 
 /* POP UP */

@@ -1,5 +1,5 @@
-import TransactionForm from '../components/TransactionForm';
-import TransactionsList from '../components/TransactionsList';
+import TransactionForm from '../components/finance/TransactionForm';
+import TransactionsList from '../components/finance/TransactionsList';
 
 const FinancePage = () => {
     return (

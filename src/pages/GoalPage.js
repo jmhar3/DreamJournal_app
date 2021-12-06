@@ -1,5 +1,5 @@
-import GoalForm from '../components/GoalForm';
-import GoalList from '../components/GoalList';
+import GoalForm from '../components/goals/GoalForm';
+import GoalList from '../components/goals/GoalList';
 import { Link } from "react-router-dom";
 import { connect } from 'react-redux';
 

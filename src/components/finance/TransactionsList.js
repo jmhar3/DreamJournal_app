@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { connect } from 'react-redux';
-import {capitalize} from '../Helpers';
+import {capitalize} from '../../Helpers';
 
 const TransactionsList = ({transactions}) => {
     function categoryEmoji(category) {

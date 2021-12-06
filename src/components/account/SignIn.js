@@ -2,10 +2,9 @@ import { useForm } from 'react-hook-form';
 import jwt from 'jwt-decode';
 
 const SignIn = () => {
-
     const {register, handleSubmit} = useForm();
 
-    async function onSubmit(d) {
+    function onSubmit(d) {
         fetch("http://localhost:3000/login", {
             method: 'post',
             headers: {
@@ -21,6 +20,7 @@ const SignIn = () => {
         .then(res => {
             localStorage.setItem('jwt', res.token)
             localStorage.setItem('username', jwt(res.token).user_name)
+            localStorage.setItem('theme', "pink")
             window.location.reload();
         })
     }
