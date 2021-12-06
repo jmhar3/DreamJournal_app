@@ -4,14 +4,12 @@ import FinanceChart from '../components/FinanceChart';
 import GoalList from '../components/GoalList';
 import TransactionList from '../components/TransactionsList';
 import FinanceCategories from '../components/FinanceCategories';
+import Account from '../components/Account.js';
 import { connect } from 'react-redux';
 import PinnedNotes from '../components/PinnedNotes';
+import { capitalize } from "../Helpers";
 
 const Dashboard = ({goals, notes, transactions}) => {
-    function capitalize(str){
-        return str.charAt(0).toUpperCase() + str.slice(1);
-    }
-
     const dateTime = new Date()
     const curHr = dateTime.getHours()
     const today = dateTime.toDateString()
@@ -70,10 +68,13 @@ const Dashboard = ({goals, notes, transactions}) => {
     return (
         <main id="dashboard">
             <section className="dashboard-left">
-                <div id="db-header">
-                    <h3>{today}</h3>
-                    <h1>{greeting()}, {capitalize(localStorage.getItem('username'))}</h1>
-                </div>
+                <section id="db-header">
+                    <div>
+                        <h3>{today}</h3>
+                        <h1>{greeting()}, {capitalize(localStorage.getItem('username'))}</h1>
+                    </div>
+                    <Account />
+                </section>
                 <section className="finance-charts">
                     <FinanceChart type={'Expense'} />
                     <FinanceChart type={'Income'} />

@@ -1,8 +1,9 @@
 import { useRef } from "react"
 import { useDispatch, connect } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
+import { useNavigate } from "react-router-dom";
 
-const GoalForm = () => {
+function GoalForm() {
     const dateTime = new Date()
     const day = dateTime.getDate()
     const month = dateTime.getMonth() + 1
@@ -25,8 +26,9 @@ const GoalForm = () => {
     const priorityRef = useRef();
 
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
-    const addGoal = () => {
+    async function addGoal() {
         dispatch({
             type: "ADD_GOAL",
             goal: {
@@ -36,7 +38,8 @@ const GoalForm = () => {
                 priority: priorityRef.current.value,
                 completed: false
             }
-        }) 
+        })
+        navigate("/dashboard", { replace: true });
     }
     
     return (

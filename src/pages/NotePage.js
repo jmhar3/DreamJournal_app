@@ -27,7 +27,7 @@ const Notepad = ({notes}) => {
                                     <h3>{note.label}</h3>
                                     <h3>{note.pinned ? "⭐" : null}</h3>
                                 </span>
-                                <p className="label">{note.categories}</p>
+                                <p className="label">{note.categories.join(", ")}</p>
                                 <p>{note.content}</p>
                             </li>
                         })}

@@ -23,10 +23,6 @@
     gap: 1.8vw;
 }
 
-#db-header {
-    padding-top: 3vw;
-}
-
 .finance-charts div, #db-transactions, #db-finance-categories, #upcoming-payments div, .dashboard-goals, #db-notes div {
     padding: 1.8%;
     padding-left: 3%;
@@ -43,6 +39,10 @@
     justify-content: center;
     align-items: center;
     gap: 1.2vw;
+}
+
+#db-header {
+    padding-top: 3vw;
 }
 
 #db-notes {
@@ -110,11 +110,12 @@
     background-color: var(--light)
 }
 
-.dashboard-goals li, #db-transactions li {
+.dashboard-goals li, #db-transactions li, #db-header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+
 }
 
 .goal-label {
@@ -148,11 +149,22 @@
     justify-content: space-between;
 }
 
-#db-finance-categories {
-    
-}
-
 #db-transactions, #db-finance-categories {
     width: 50%;
     height: fit-content;
+}
+
+#account-settings button {
+    float: right;
+}
+
+#account-settings button:first-of-type {
+    padding: .3vw .9vw .3vw .9vw;
+}
+
+#account-settings button:last-of-type {
+    margin-top: .6vw;
+    padding: 0;
+    border: var(--light) solid 2px;
+    cursor: default;
 }

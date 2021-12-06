@@ -1,5 +1,4 @@
 import { useForm } from 'react-hook-form';
-import { Navigate } from "react-router-dom";
 import jwt from 'jwt-decode';
 
 const SignIn = () => {
@@ -22,18 +21,12 @@ const SignIn = () => {
         .then(res => {
             localStorage.setItem('jwt', res.token)
             localStorage.setItem('username', jwt(res.token).user_name)
+            window.location.reload();
         })
-    }
-    
-    function loggedIn() {
-        if (localStorage.getItem('jwt')) {
-            <Navigate to="/dashboard" replace={true} />
-        }
     }
 
     return (
         <div>
-            {loggedIn()}
             <form id="sign-in" onSubmit={handleSubmit(onSubmit)}>
                 <input type="text" {...register("email")} placeholder="Email" />
                 <input type="password" {...register("password")} placeholder="Password" />

@@ -97,7 +97,7 @@ button {
   border-radius: .9vw;
 }
 
-.button, .submit {
+.button, .submit, button {
   height: fit-content;
   width: fit-content;
   text-decoration: none;
@@ -109,7 +109,7 @@ button {
   border-radius: 1.2vw;
 }
 
-.button:hover, .submit:hover {
+.button:hover, .submit:hover, button:hover {
   border-radius: 30vw;
   color: var(--bold);
 }
@@ -241,7 +241,7 @@ select {
 
 /* POP UP */
 
-.pop-up {
+/* .pop-up {
   z-index: 998;
   position: fixed;
   height: 100vh;
@@ -274,4 +274,4 @@ select {
   position: fixed;
   top: 3vw;
   right: 3vw;
-}
+} */

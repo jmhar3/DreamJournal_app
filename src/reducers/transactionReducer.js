@@ -1,19 +1,13 @@
-function goalReducer (goals = [], action) {
+function transactionReducer (transactions = [], action) {
     switch (action.type) {
-        case "ADD_GOAL":
-            return [...goals, action.data]
-        case "DELETE_GOAL":
-            return goals.filter(goal => action.data !== goal)
-        case "UPDATE_GOAL":
-            return goals.map((goal) => {
-                if (goal === action.data.oldGoal) {
-                    goal = action.data.newGoal
-                }
-                return goal
-            })
+        case "ADD_TRANSACTION":
+            console.log('hi')
+            return [...transactions, action.transaction]
+        case "DELETE_TRANSACTION":
+            return transactions.filter(transaction => action.transaction !== transaction)
         default:
-            return goals;
+            return transactions;
     }
 }
 
-export default goalReducer;
+export default transactionReducer;

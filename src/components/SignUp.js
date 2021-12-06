@@ -1,8 +1,10 @@
 import { useForm } from 'react-hook-form';
+import { useNavigate } from "react-router-dom";
 
 const SignUp = () => {
 
     const {register, handleSubmit} = useForm();
+    const navigate = useNavigate();
 
     async function onSubmit(d) {
         fetch("http://localhost:3000/signup", {
@@ -20,6 +22,7 @@ const SignUp = () => {
         })
         .then(res => res.json())
         .then(res => localStorage.setItem('jwt', res.token))
+        navigate("/dashboard", { replace: true });
     }
 
     return (

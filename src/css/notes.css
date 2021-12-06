@@ -92,43 +92,6 @@
     right: 1.2vw;
 }
 
-/* CHECKBOX */
-
-#checkbox-container {
-    margin-left: 1.2vw;
-}
-  
-input[type=checkbox] {
-    display: none;
-}
-  
-input + label {
-    font-size: 2.4vw;
-    transition: .1s all;
-    cursor: pointer;
-    z-index: 999 !important;
-}
-  
-input + label:hover {
-    transform: scale(.95);
-}
-  
-input + label:after {
-    content: "📌";
-}
-  
-input:checked + label {
-    transform: scale(1.1);
-}
-  
-input:checked + label:hover {
-    transform: scale(1.05);
-}
-  
-input:checked + label:after {
-    content: "⭐";
-}
-
 /* CATEGORIES */
 
 #category-input ul, #category-input, #category-input li {

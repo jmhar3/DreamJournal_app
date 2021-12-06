@@ -2,7 +2,6 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import React, { useState } from 'react';
 import Home from './pages/Home.js';
 import Login from './pages/Login.js';
-import Account from './components/Account.js';
 import Dashboard from './pages/Dashboard.js';
 import FinancePage from './pages/FinancePage.js';
 import GoalPage from './pages/GoalPage.js';
@@ -14,7 +13,6 @@ import './css/App.css';
 import './css/home.css';
 import './css/nav.css';
 import './css/login.css';
-import './css/account.css';
 import './css/dashboard.css';
 import './css/goals.css';
 import './css/notes.css';
@@ -27,7 +25,6 @@ function App() {
   return (
     <Router>
       <Nav />
-      <Account />
       <Routes>
         <Route path="/"
           element={ auth ? dashboard_nav : <Home />}

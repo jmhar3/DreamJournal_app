@@ -1,8 +1,6 @@
 import { Link } from "react-router-dom";
 import { useState } from 'react';
 import home from '../images/world.png';
-import calendar from '../images/calendar.png';
-import account from '../images/files.png';
 import newRecord from '../images/book.png';
 import goal from '../images/to-do.png';
 import note from '../images/notes.png';
@@ -13,10 +11,6 @@ const Nav = () => {
     const [homeLabel, setHome] = useState(false)
     const showHome = () => setHome(true);
     const hideHome = () => setHome(false);
-
-    const [accountLabel, setAccount] = useState(false)
-    const showAccountLabel = () => setAccount(true);
-    const hideAccount = () => setAccount(false);
 
     const [trackers, setTrackers] = useState(false)
     const showTrackers = () => setTrackers(true);
@@ -34,19 +28,7 @@ const Nav = () => {
     const showNewTransaction = () => setNewTransaction(true);
     const hideNewTransaction = () => setNewTransaction(false);
 
-    const showLabels = homeLabel || accountLabel || newGoalLabel || newNoteLabel || newTransactionLabel
-
-    function showAccount(e) {
-        e.preventDefault();
-        const account = document.getElementById('account');
-        account.style.display = 'flex';
-    }
-    
-    function showNewGoal(e) {
-        e.preventDefault();
-        const newGoal = document.getElementById('new-goal');
-        newGoal.style.display = 'flex';
-    }
+    const showLabels = homeLabel || newGoalLabel || newNoteLabel || newTransactionLabel
 
     if (!localStorage.getItem('jwt')) {
         return (
@@ -65,7 +47,6 @@ const Nav = () => {
         <header>
             <nav onMouseLeave={hideTrackers} >
                 <Link to="/dashboard" className="menu-icon"><img src={home} alt="home" onMouseOver={showHome} onMouseLeave={hideHome} /></Link>
-                <button onClick={showAccount} className="menu-icon"><img src={account} alt="account" onMouseOver={showAccountLabel} onMouseLeave={hideAccount} /></button>
                 <span className="menu-icon"
                   onMouseOver={showTrackers}
                   style={{ opacity: (trackers ? '0.8' : '1') }}>
@@ -83,7 +64,6 @@ const Nav = () => {
             </nav>
             <ul style={{ display: (showLabels ? 'flex' : 'none')}}>
                 <li style={{ visibility: (homeLabel ? 'visible' : 'hidden') }}>DreamJournal</li>
-                <li style={{ visibility: (accountLabel ? 'visible' : 'hidden') }}>Account</li>
                 <li style={{ visibility: 'hidden' }}>New Record</li>
                 <li style={{ visibility: (newGoalLabel ? 'visible' : 'hidden') }}>New Goal</li>
                 <li style={{ visibility: (newNoteLabel ? 'visible' : 'hidden') }}>New Note</li>

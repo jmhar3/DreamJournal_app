@@ -1,3 +1,5 @@
+import CategoryList from './CategoryList';
+
 const ShowNote = ({note}) => {
     return (
         <div>
@@ -6,15 +8,7 @@ const ShowNote = ({note}) => {
                 <h1>{note.pinned ? "⭐" : null}</h1>
             </span>
             <p className="label">Last Updated {note.lastUpdated}</p>
-            {note.categories.length < 0 ? (
-                <ul>
-                    {note.categories.map((category) => {
-                        <li key={category.key}>
-                            {category.label}
-                        </li>
-                    })}
-                </ul>
-            ) : null}
+            <CategoryList categories={note.categories} />
             <hr />
             <p>{note.content}</p>
         </div>
