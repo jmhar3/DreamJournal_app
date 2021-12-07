@@ -1,7 +1,7 @@
-export function fetchGoals() {
+export function fetchNotes() {
     return (dispatch) => {
-        dispatch({ type: "START_ADDING_ASTRONAUTS_REQUEST" });
-        fetch("http://localhost:3000/goals", {
+        dispatch({ type: "START_ADDING_NOTES_REQUEST" });
+        fetch("http://localhost:3000/notes", {
             method: 'get',
             headers: {
                 'content-type': 'application/json',
@@ -10,13 +10,11 @@ export function fetchGoals() {
             }
         })
         .then(res => res.json())
-        .then(res => {
-            res.every(goal =>
-                dispatch({
-                    type: "ADD_GOAL",
-                    goal: goal
-                })
-            )
+        .then(notes => {
+            dispatch({
+                type: "ADD_NOTES",
+                notes
+            })
         })
     };
 }

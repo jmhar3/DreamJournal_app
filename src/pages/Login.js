@@ -2,8 +2,8 @@ import { Link } from "react-router-dom";
 import { useState } from 'react';
 import SignIn from '../components/account/SignIn.js';
 import SignUp from '../components/account/SignUp.js';
+import FacebookLogin from '../components/account/FacebookLogin';
 import image from '../images/stretching.png';
-import facebook from '../images/facebook.png';
 
 const Login = ({ setToken }) => {
 
@@ -38,9 +38,7 @@ const Login = ({ setToken }) => {
                 </div>
                 {toggleLogin ? <SignIn setToken={setToken} /> : <SignUp />}
                 <p>Or sign in with...</p>
-                <section id="socials">
-                    <Link to="/auth/facebook" className="social-icon"><img src={facebook} alt="facebook login" /></ Link>
-                </section>
+                <FacebookLogin />
             </section>
             <section id="login-right">
                 <img src={image} alt="" />

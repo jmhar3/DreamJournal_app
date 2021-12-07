@@ -57,7 +57,7 @@ const FinanceChart = ({ transactions, type }) => {
     
     return (
         <div>
-            <h2>💸 {type}</h2>
+            <h2>{type === "Expense" ? "💸" : "💰"} {type}</h2>
             <p>${allValues().reduce(reducer)}</p>
             <Bar data={chartData} />
         </div>

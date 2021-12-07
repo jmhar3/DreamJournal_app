@@ -6,18 +6,9 @@ const AccountSettings = () => {
     const showAccountMenu = () => setAccount(true);
     const hideAccount = () => setAccount(false);
 
-    async function signOut(d) {
-        fetch("http://localhost:3000/login", {
-            method: 'post',
-            headers: {
-                 'content-type': 'application/json',
-                 'accept': 'application/json'
-            }
-        })
-        .then(res => {
-            localStorage.clear();
-            window.location.reload();
-        })
+    async function signOut() {
+        localStorage.removeItem("jwt");
+        window.location.reload();
     }
 
     return (

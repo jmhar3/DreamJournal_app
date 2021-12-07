@@ -17,7 +17,8 @@ const SignUp = () => {
 
     const emptyFields = credentials.name === "" || credentials.email === "" || credentials.password === "" || credentials.confirmPassword === "";
 
-    function onSubmit() {
+    function onSubmit(e) {
+        e.preventDefault();
         fetch("http://localhost:3000/signup", {
             method: 'post',
             headers: {

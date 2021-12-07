@@ -1,63 +1,30 @@
 import { useRef } from "react"
-import { useDispatch, connect } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 
-const CategoryForm = ({categories}) => {
+const CategoryForm = ({categories, addCategory}) => {
     const categoryRef = useRef();
-
-    const dispatch = useDispatch();
-
-    const addCategory = () => {
-        dispatch({
-            type: "ADD_CATEGORY",
-            category: {
-                key: uuidv4(),
-                label: categoryRef.current.value
-            }
-        }) 
-    }
-
-    const deleteCategory = (cat) => {
-        dispatch({
-            type: "DELETE_CATEGORY",
-            category: cat
-        }) 
-    }
 
     return (
         <span id="category-input">
-            {categories.length < 0 ? (
+            {categories?.length > 0 ? (
                 <ul>
                     {categories.map((category) => {
-                        <li key={category.key}>
-                            {category.label}
-                            <button
-                                onClick={deleteCategory(category)}
-                            >✕</button>
-                        </li>
+                        return (
+                            <li key={uuidv4}>
+                                {category}
+                                <button
+                                    // onClick={deleteCategory(category)}
+                                >✕</button>
+                            </li>
+                        )
                     })}
                 </ul>
             ) : null}
             
             <input type="text" ref={categoryRef} placeholder="Add Category" />
-            <button onClick={addCategory}>+</button>
+            <button onClick={() => addCategory(categoryRef.current.value)}>+</button>
         </span>
     )
 }
-
-const mapDispatchToProps = dispatch => ({
-    addCategory: (category) => dispatch({
-        type: "ADD_CATEGORY",
-        category
-    }),
-    deleteCategory: (key) => dispatch({
-        type: "DELETE_CATEGORY",
-        key
-    })
-})
-
-const mapStateToProps = state => {
-    return { categories: state.categories }
-}
   
-export default connect(mapStateToProps, mapDispatchToProps)(CategoryForm);
+export default CategoryForm;

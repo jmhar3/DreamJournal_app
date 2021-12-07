@@ -15,7 +15,9 @@ const SignIn = () => {
 
     const emptyFields = credentials.email === "" || credentials.password === "";
 
-    function onSubmit(d) {
+    function onSubmit(e) {
+        console.log(credentials)
+        e.preventDefault();
         fetch("http://localhost:3000/login", {
             method: 'post',
             headers: {
@@ -23,14 +25,16 @@ const SignIn = () => {
                  'accept': 'application/json'
             },
             body: JSON.stringify({
-                email: credentials.email,
-                password: credentials.password
+                email: `${credentials.email}`,
+                password: `${credentials.password}`
             })
         })
         .then(res => res.json())
         .then(res => {
-            localStorage.setItem('jwt', res.token)
-            localStorage.setItem('theme', "pink")
+            if (res.token !== undefined) {
+                localStorage.setItem('jwt', res.token)
+                localStorage.setItem('theme', "pink")
+            }
             window.location.reload();
         })
     }

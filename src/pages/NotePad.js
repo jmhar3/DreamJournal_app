@@ -1,14 +1,18 @@
 import NoteForm from '../components/notes/NoteForm.js';
 import ShowNote from '../components/notes/ShowNote.js';
-import { useState } from 'react';
-import { connect } from 'react-redux';
+import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from "react-router-dom";
+import { fetchNotes } from "../actions/fetchNotes";
 
-const Notepad = ({notes}) => {
+const Notepad = () => {
+    const dispatch = useDispatch();
+    const notes = useSelector(state => state.notes)
+    
     function showNote(noteData) {
         console.log(noteData)
     }
-    
+
     var note = null;
 
     const navigate = useNavigate();
@@ -20,6 +24,10 @@ const Notepad = ({notes}) => {
     const pathname = window.location.pathname;
     const show_note = () => pathname === '/notes/show'
 
+    useEffect(() => {
+        dispatch(fetchNotes())
+    }, [])
+    console.log(notes)
     return (
         <div id="note">
             <section id="note-left">
@@ -27,14 +35,17 @@ const Notepad = ({notes}) => {
                 { notes.length > 0 ? (
                     <ul>
                         {notes.map(note => {
-                            <li key={note.key} onClick={showNote(note)}>
-                                <span>
-                                    <h3>{note.label}</h3>
-                                    <h3>{note.pinned ? "⭐" : null}</h3>
-                                </span>
-                                <p className="label">{note.categories.join(", ")}</p>
-                                <p>{note.content}</p>
-                            </li>
+                            return (
+                                <li key={note.key} onClick={showNote(note)}>
+                                    <span>
+                                        <h3>{note.label}</h3>
+                                        <h3>{note.pinned ? "⭐" : null}</h3>
+                                    </span>
+                                    <p className="label">{note.categories.map(category => category.name).join(", ")}</p>
+                                    <p>{note.content}</p>
+                                </li>
+                            )
+                            
                         })}
                     </ul>
                 ) : <h3>No notes to show.</h3> }
@@ -47,8 +58,4 @@ const Notepad = ({notes}) => {
     )
 }
 
-const mapStateToProps = state => {
-    return { notes: state.notes }
-}
-
-export default connect(mapStateToProps)(Notepad);
+export default Notepad;
