@@ -92,6 +92,10 @@
     right: 1.2vw;
 }
 
+#note-right .form h2 {
+    cursor: pointer;
+}
+
 /* CATEGORIES */
 
 #category-input ul, #category-input, #category-input li {

@@ -8,6 +8,7 @@ import Account from '../components/account/AccountSettings.js';
 import { connect } from 'react-redux';
 import PinnedNotes from '../components/notes/PinnedNotes';
 import { capitalize } from "../Helpers";
+import jwt from 'jwt-decode';
 
 const Dashboard = ({goals, notes, transactions}) => {
     const dateTime = new Date()
@@ -48,22 +49,24 @@ const Dashboard = ({goals, notes, transactions}) => {
     if (todaysGoals.length !== 0) {
         renderGoals = <GoalList goals={todaysGoals} />
     } else {
-        renderGoals = <Link to="/goalpage" className="button gyst-button">Get your goals together</Link>
+        renderGoals = <Link to="/goals/new" className="button gyst-button">Get your goals together</Link>
     }
 
     var renderNotes;
     if (notes.find(note => note.pinned === true)) {
         renderNotes = <PinnedNotes notes={notes}/>
     } else {
-        renderNotes = <Link to="/goalpage" className="button gyst-button">Get your notes together</Link>
+        renderNotes = <Link to="/notes/new" className="button gyst-button">Get your notes together</Link>
     }
 
     var renderTransactions;
     if (transactions !== undefined) {
         renderTransactions = <TransactionList transactions={'transactions'} />
     } else {
-        renderTransactions = <Link to="/goalpage" className="button gyst-button">Get your finances together</Link>
+        renderTransactions = <Link to="/transactions/new" className="button gyst-button">Get your finances together</Link>
     }
+
+    const username = jwt(localStorage.getItem('jwt')).user_name;
 
     return (
         <main id="dashboard">
@@ -71,7 +74,9 @@ const Dashboard = ({goals, notes, transactions}) => {
                 <section id="db-header">
                     <div>
                         <h3>{today}</h3>
-                        <h1>{greeting()}, {capitalize(localStorage.getItem('username'))}</h1>
+                        <h1>
+                            {greeting()}, {capitalize(username)}
+                        </h1>
                     </div>
                     <Account />
                 </section>

@@ -54,13 +54,13 @@ const Nav = () => {
                     style={{ opacity: (trackers ? '0.8' : '1') }}>
                         <img src={newRecord} alt="new record" />
                     </span>
-                    <Link to="/goalpage" className="menu-icon" style={{ visibility: (trackers ? 'visible' : 'hidden') }}>
+                    <Link to="/goals/new" className="menu-icon" style={{ visibility: (trackers ? 'visible' : 'hidden') }}>
                         <img src={goal} alt="new goal" onMouseOver={showNewGoalLabel} onMouseLeave={hideNewGoal} />
                     </Link>
-                    <Link to="/notepad" className="menu-icon" style={{ visibility: (trackers ? 'visible' : 'hidden') }}>
+                    <Link to="/notes/new" className="menu-icon" style={{ visibility: (trackers ? 'visible' : 'hidden') }}>
                         <img src={note} alt="new note" onMouseOver={showNewNoteLabel} onMouseLeave={hideNewNote} />
                     </Link>
-                    <Link to="/financepage" className="menu-icon" style={{ visibility: (trackers ? 'visible' : 'hidden') }}>
+                    <Link to="/transactions/new" className="menu-icon" style={{ visibility: (trackers ? 'visible' : 'hidden') }}>
                         <img src={finance} alt="new transaction" onMouseOver={showNewTransaction} onMouseLeave={hideNewTransaction} />
                     </Link>
                 </nav>

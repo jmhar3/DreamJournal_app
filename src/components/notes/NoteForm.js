@@ -8,9 +8,7 @@ const NoteForm = ({categories}) => {
     const contentRef = useRef();
 
     const [pinnedState, setPinnedState] = useState(false)
-    const pin = () => {
-        setPinnedState(!pinnedState);
-    }
+    const pin = () => setPinnedState(!pinnedState);
 
     const dispatch = useDispatch();
 
@@ -31,16 +29,13 @@ const NoteForm = ({categories}) => {
         <div className="form">
             <span>
                 <input type="text" ref={titleRef} placeholder="Title" />
-                <div id="checkbox-container">
-                    <input id="checkbox" type="checkbox" onClick={pin} />
-                    <label for="checkbox" ></label>
-                </div>
+                <h2 onClick={pin}>{pinnedState ? '⭐️' : '📌'}</h2>
             </span>
             {/* <p className="label">Last Updated 25th November 2021</p> */}
             <Categories />
             <hr />
             <textarea ref={contentRef} placeholder="Content" />
-            <button onClick={addNote} className="submit">Submit</button>
+            <button onClick={addNote} className="submit">Save</button>
         </div>
     )
 }

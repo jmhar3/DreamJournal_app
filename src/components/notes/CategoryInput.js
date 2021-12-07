@@ -17,10 +17,10 @@ const CategoryForm = ({categories}) => {
         }) 
     }
 
-    const deleteCategory = (catKey) => {
+    const deleteCategory = (cat) => {
         dispatch({
             type: "DELETE_CATEGORY",
-            key: catKey
+            category: cat
         }) 
     }
 
@@ -32,8 +32,8 @@ const CategoryForm = ({categories}) => {
                         <li key={category.key}>
                             {category.label}
                             <button
-                                onClick={deleteCategory(category.key)}
-                            >x</button>
+                                onClick={deleteCategory(category)}
+                            >✕</button>
                         </li>
                     })}
                 </ul>

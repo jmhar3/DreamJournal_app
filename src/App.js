@@ -5,7 +5,7 @@ import Login from './pages/Login.js';
 import Dashboard from './pages/Dashboard.js';
 import FinancePage from './pages/FinancePage.js';
 import GoalPage from './pages/GoalPage.js';
-import NotePage from './pages/NotePage.js';
+import NotePage from './pages/NotePad.js';
 import Nav from './components/Nav.js';
 import 'react-circular-progressbar/dist/styles.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -35,14 +35,20 @@ function App() {
         <Route path="/dashboard"
           element={!auth ? login_nav : <Dashboard /> }
         />
-        <Route path="/financepage"
-          element={!auth ? login_nav : <FinancePage /> }
-        />
-        <Route path="/goalpage"
-          element={!auth ? login_nav : <GoalPage /> }
-        />
         <Route path="/notepad"
           element={ !auth ? login_nav : <NotePage />}
+        />
+        <Route path="/notes/show"
+          element={!auth ? login_nav : <NotePage /> }
+        />
+        <Route path="/notes/new"
+          element={!auth ? login_nav : <NotePage /> }
+        />
+        <Route path="/transactions/new"
+          element={!auth ? login_nav : <FinancePage /> }
+        />
+        <Route path="/goals/new"
+          element={!auth ? login_nav : <GoalPage /> }
         />
       </Routes>
     </Router>

@@ -3,8 +3,7 @@ import { useState } from 'react';
 import SignIn from '../components/account/SignIn.js';
 import SignUp from '../components/account/SignUp.js';
 import image from '../images/stretching.png';
-import twitter from '../images/twitter.png';
-import github from '../images/github.png';
+import facebook from '../images/facebook.png';
 
 const Login = ({ setToken }) => {
 
@@ -40,8 +39,7 @@ const Login = ({ setToken }) => {
                 {toggleLogin ? <SignIn setToken={setToken} /> : <SignUp />}
                 <p>Or sign in with...</p>
                 <section id="socials">
-                    <Link to="/twitter" className="social-icon"><img src={twitter} alt="twitter login" /></ Link>
-                    <Link to="/github" className="social-icon"><img src={github} alt="github login" /></ Link>
+                    <Link to="/auth/facebook" className="social-icon"><img src={facebook} alt="facebook login" /></ Link>
                 </section>
             </section>
             <section id="login-right">

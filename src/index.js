@@ -3,12 +3,13 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { createStore, combineReducers } from 'redux'
+import { createStore, combineReducers, applyMiddleware } from 'redux'
 import {Provider} from 'react-redux'
 import goalReducer from './reducers/GoalReducer';
 import noteReducer from './reducers/NoteReducer';
 import transactionReducer from './reducers/TransactionReducer';
 import categoryReducer from './reducers/CategoryReducer';
+import thunk from "redux-thunk";
 
 const rootReducer = combineReducers({
   goals: goalReducer,
@@ -17,10 +18,7 @@ const rootReducer = combineReducers({
   categories: categoryReducer
 });
 
-const store = createStore(
-  rootReducer,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-);
+const store = createStore(rootReducer, applyMiddleware(thunk));
 
 ReactDOM.render(
   <React.StrictMode>

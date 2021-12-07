@@ -27,8 +27,14 @@
     gap: 1.5vh;
 }
 
-.social-icon img {
+#socials img {
     width: 3.9vw;
+    border-radius: 1.2vw;
+    border: var(--light-mid) solid 2px;
+}
+
+#socials img:hover {
+    border: var(--strong) solid 2px;
 }
 
 #login-right {

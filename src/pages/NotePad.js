@@ -2,18 +2,23 @@ import NoteForm from '../components/notes/NoteForm.js';
 import ShowNote from '../components/notes/ShowNote.js';
 import { useState } from 'react';
 import { connect } from 'react-redux';
+import { useNavigate } from "react-router-dom";
 
 const Notepad = ({notes}) => {
-
-    const [displayNote, setDisplayNote] = useState(false)
-    const [note, setNote] = useState(null)
-
     function showNote(noteData) {
-        setNote(noteData);
-        setDisplayNote(true);
+        console.log(noteData)
+    }
+    
+    var note = null;
+
+    const navigate = useNavigate();
+
+    const showForm = () => {
+        navigate("/dashboard", { replace: true });
     }
 
-    const showForm = () => {setDisplayNote(false)}
+    const pathname = window.location.pathname;
+    const show_note = () => pathname === '/notes/show'
 
     return (
         <div id="note">
@@ -35,8 +40,8 @@ const Notepad = ({notes}) => {
                 ) : <h3>No notes to show.</h3> }
             </section>
             <section id="note-right">
-                <NoteForm style={{ visibility: (displayNote ? 'hidden' : 'visible') }}/>
-                { note !== null ? <ShowNote style={{ visibility: (displayNote ? 'visible' : 'hidden') }}  note={note}/> : null }
+                <NoteForm style={{ visibility: (show_note ? 'hidden' : 'visible') }}/>
+                {note !== null ? <ShowNote style={{ visibility: (show_note ? 'visible' : 'hidden') }}  note={note}/> : null}
             </section>
         </div>
     )
