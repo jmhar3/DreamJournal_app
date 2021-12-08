@@ -1,7 +1,9 @@
-import { useRef } from "react";
+import { useRef } from "react"
 import { useDispatch, connect } from 'react-redux';
-import { v4 as uuidv4 } from 'uuid';
-import { useNavigate } from "react-router-dom";
+// import { v4 as uuidv4 } from 'uuid';
+// import { useNavigate } from "react-router-dom";
+import {postGoal} from '../../actions/postGoal';
+import { userId } from "../../Helpers";
 
 function GoalForm() {
     const dateTime = new Date()
@@ -26,21 +28,21 @@ function GoalForm() {
     const priorityRef = useRef();
 
     const dispatch = useDispatch();
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
-    async function addGoal() {
-        dispatch({
-            type: "ADD_GOAL",
-            goal: {
-                key: uuidv4(),
+    const addGoal = () => {
+        dispatch(
+            postGoal({
+                user_id: userId,
                 label: labelRef.current.value,
                 due_date: dueDateRef.current.value,
                 priority: priorityRef.current.value,
                 completed: false
-            }
-        })
-        navigate("/dashboard", { replace: true });
+            })
+        )
     }
+
+    // navigate("/dashboard", { replace: true });
     
     return (
         <div className="form">

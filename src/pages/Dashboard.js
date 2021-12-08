@@ -5,12 +5,25 @@ import GoalList from '../components/goals/GoalList';
 import TransactionList from '../components/finance/TransactionsList';
 import FinanceCategories from '../components/finance/FinanceCategories';
 import Account from '../components/account/AccountSettings.js';
-import { connect, useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import PinnedNotes from '../components/notes/PinnedNotes';
 import { capitalize } from "../Helpers";
 import jwt from 'jwt-decode';
+import { fetchGoals } from "../actions/fetchGoals";
+import { fetchNotes } from "../actions/fetchNotes";
+import { useEffect } from 'react';
 
 const Dashboard = () => {
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(fetchGoals())
+    }, [])
+
+    // useEffect(() => {
+    //     dispatch(fetchNotes())
+    // }, [])
+
     const notes = useSelector(state => state.notes)
     const goals = useSelector(state => state.goals)
     const transactions = useSelector(state => state.transactions)
@@ -44,7 +57,7 @@ const Dashboard = () => {
     const todaysDate = year + "-" + validDate(month) + "-" + validDate(day);
 
     function isToday(goal) {
-        return goal.due_date.includes(todaysDate);
+        return goal.due_date?.includes(todaysDate);
     }
 
     const todaysGoals = goals.filter(isToday)

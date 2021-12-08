@@ -3,7 +3,7 @@ import { useDispatch, connect } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 import Categories from './CategoryInput';
 import {postNote} from '../../actions/postNote';
-import jwt from 'jwt-decode';
+import { userId } from "../../Helpers";
 
 const NoteForm = () => {
     const titleRef = useRef();
@@ -20,12 +20,10 @@ const NoteForm = () => {
         setCategories([...categories, category])
     }
 
-    const user_id = jwt(localStorage.getItem('jwt')).user_id;
-
     const addNote = () => {
         dispatch(
             postNote({
-                user_id: user_id,
+                user_id: userId,
                 title: titleRef.current.value,
                 pinned: pinnedState,
                 content: contentRef.current.value,

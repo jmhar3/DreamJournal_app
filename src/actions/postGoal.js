@@ -1,19 +1,22 @@
-export function fetchGoals() {
+export function postGoal(goal) {
     return (dispatch) => {
-        dispatch({ type: "START_ADDING_GOALS_REQUEST" });
+        dispatch({ type: "POSTING_GOAL_REQUEST" });
         fetch("http://localhost:3000/goals", {
-            method: 'get',
+            method: 'post',
             headers: {
                 'content-type': 'application/json',
                 'accept': 'application/json',
                 'Authorization': `Bearer ${localStorage.getItem('jwt')}`
-            }
+            },
+            body: JSON.stringify({
+                goal
+            })
         })
         .then(res => res.json())
-        .then(goals => {
+        .then(res => {
             dispatch({
-                type: "ADD_GOALS",
-                goals
+                type: "ADD_GOAL",
+                goal: goal
             })
         })
     };

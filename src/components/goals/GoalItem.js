@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useState } from 'react';
-import { useDispatch, connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 const Goal = ({goal}) => {
     const dispatch = useDispatch();
@@ -26,18 +26,11 @@ const Goal = ({goal}) => {
                     <s><Link to="edit_goal">{goal.label}</Link></s>
                     : <Link to="edit_goal">{goal.label}</Link>
                 }
-                <p className="label">{goal.due_date.replace("T", " ")}</p>
+                <p className="label">{goal.due_date?.replace("T", " ")}</p>
             </div>
             <div className={`priority-indicator ${goal.priority}`}></div>
         </li>
     )
 }
 
-const mapDispatchToProps = dispatch => ({
-    updateGoal: (goal) => dispatch({
-        type: "COMPLETED_GOAL",
-        goal
-    })
-})
-
-export default connect(mapDispatchToProps)(Goal);
+export default Goal;

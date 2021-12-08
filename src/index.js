@@ -8,14 +8,12 @@ import {Provider} from 'react-redux'
 import goalReducer from './reducers/GoalReducer';
 import noteReducer from './reducers/NoteReducer';
 import transactionReducer from './reducers/TransactionReducer';
-import categoryReducer from './reducers/CategoryReducer';
 import thunk from "redux-thunk";
 
 const rootReducer = combineReducers({
   goals: goalReducer,
   notes: noteReducer,
-  transactions: transactionReducer,
-  categories: categoryReducer
+  transactions: transactionReducer
 });
 
 const store = createStore(rootReducer, compose(applyMiddleware(thunk), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()));

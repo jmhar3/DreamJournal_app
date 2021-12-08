@@ -1,7 +1,7 @@
 import NoteForm from '../components/notes/NoteForm.js';
 import ShowNote from '../components/notes/ShowNote.js';
 import NotesList from '../components/notes/NotesList.js';
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from "react-router-dom";
 import { fetchNotes } from "../actions/fetchNotes";
