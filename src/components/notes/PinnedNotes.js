@@ -1,28 +1,25 @@
-const PinnedNotes = ({notes}) => {
-    
+import { v4 as uuidv4 } from 'uuid';
+
+const PinnedNotes = ({ notes }) => {
+
     function isPinned(note) {
         return note.pinned === true;
     }
 
-    const pinnedNotes = notes.filter(isPinned)
-console.log(pinnedNotes)
+    const pinnedNotes = notes.filter(isPinned);
+console.log(pinnedNotes);
     return (
-        <>
-            {pinnedNotes.length > 0 ? (
-                <ul>
-                    {pinnedNotes.map(note => {
-                        return (
-                            <li key={note.key}>
-                                <h1>📝</h1>
-                                <p>{note.title}</p>
-                                <p class="label">{note.categories}</p>
-                            </li>
-                        )
-                        
-                    })}
-                </ul>
-            ) : null}
-        </>
+        <ul>
+            {pinnedNotes.map(note => {
+                return (
+                    <li key={uuidv4}>
+                        <h1>📝</h1>
+                        <p>{note.title}</p>
+                    </li>
+                )
+
+            })}
+        </ul>
     )
 }
 

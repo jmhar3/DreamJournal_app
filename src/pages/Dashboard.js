@@ -21,9 +21,9 @@ const Dashboard = () => {
         dispatch(fetchGoals())
     }, [])
 
-    // useEffect(() => {
-    //     dispatch(fetchNotes())
-    // }, [])
+    useEffect(() => {
+        dispatch(fetchNotes())
+    }, [])
 
     useEffect(() => {
         dispatch(fetchTransactions())
@@ -76,7 +76,7 @@ const Dashboard = () => {
 
     
     var renderNotes;
-    if (notes.find(note => note.pinned === true)) {
+    if (notes?.find(note => note.pinned === true)) {
         renderNotes = <PinnedNotes notes={notes}/>
     } else {
         renderNotes = <Link to="/notes/new" className="button gyst-button">Get your notes together</Link>

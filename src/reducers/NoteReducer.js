@@ -5,7 +5,7 @@ function noteReducer (notes = [], action) {
         case "START_ADDING_NOTES_REQUEST":
             return notes
         case "ADD_NOTES":
-            return [...notes, ...action.notes]
+            return [...action.notes]
         case "ADD_NOTE":
             return [...notes, action.note]
         case "DELETE_NOTE":

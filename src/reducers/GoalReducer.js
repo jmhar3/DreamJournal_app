@@ -5,7 +5,7 @@ function goalReducer (goals = [], action) {
         case "START_ADDING_GOALS_REQUEST":
             return goals
         case "ADD_GOALS":
-            return [...goals, ...action.goals]
+            return [...action.goals]
         case "ADD_GOAL":
             return [...goals, action.goal]
         case "DELETE_GOAL":

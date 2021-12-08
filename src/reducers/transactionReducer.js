@@ -5,7 +5,7 @@ function transactionReducer (transactions = [], action) {
         case "START_ADDING_TRANSACTIONS_REQUEST":
             return transactions
         case "ADD_TRANSACTIONS":
-            return [...transactions, ...action.transactions]
+            return [...action.transactions]
         case "ADD_TRANSACTION":
             return [...transactions, action.transaction]
         case "DELETE_TRANSACTION":
