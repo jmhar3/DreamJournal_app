@@ -1,36 +1,37 @@
 import { useRef } from "react"
-import { useDispatch, connect } from 'react-redux';
-import { v4 as uuidv4 } from 'uuid';
+import { useDispatch } from 'react-redux';
+import {postTransaction} from '../../actions/postTransaction';
+import { userId } from "../../Helpers";
 
 const TransactionForm = () => {
     const labelRef = useRef();
     const amountRef = useRef();
     const directionRef = useRef();
     const categoryRef = useRef();
+    const descriptionRef = useRef();
 
     const dispatch = useDispatch();
 
     const addTransaction = () => {
-        dispatch({
-            type: "ADD_TRANSACTION",
-            transaction: {
-                key: uuidv4(),
-                label: labelRef.current.value,
+        dispatch(
+            postTransaction({
+                user_id: userId,
                 amount: amountRef.current.value,
                 direction: directionRef.current.value,
-                category: categoryRef.current.value
-            }
-        }) 
+                category: categoryRef.current.value,
+                description: descriptionRef.current.value
+            })
+        )
     }
 
     return (
         <div className="form">
             <div>
-                <input type="text" placeholder="Description" ref={labelRef} />
+                <input type="text" placeholder="Description" ref={descriptionRef} />
                 <label>$ <input type="number" placeholder="0.00" ref={amountRef} /></label>
                 <select ref={directionRef}>
-                    <option value="incoming">Incoming</option>
-                    <option value="outgoing">Outgoing</option>
+                    <option value="income">Incoming</option>
+                    <option value="expense">Outgoing</option>
                 </select>
             </div>
             <div>
@@ -58,11 +59,4 @@ const TransactionForm = () => {
     )
 }
 
-const mapDispatchToProps = dispatch => ({
-    addTransaction: (transaction) => dispatch({
-        type: "ADD_TRANSACTION",
-        transaction
-    })
-})
-
-export default connect(mapDispatchToProps)(TransactionForm);
+export default TransactionForm;

@@ -1,8 +1,7 @@
-import { Link } from "react-router-dom";
-import { connect } from 'react-redux';
-import {capitalize} from '../../Helpers';
+import { capitalize } from '../../Helpers';
+import { v4 as uuidv4 } from 'uuid';
 
-const TransactionsList = ({transactions}) => {
+const TransactionsList = ({ transactions }) => {
     function categoryEmoji(category) {
         switch (category) {
             case 'clothing':
@@ -36,38 +35,27 @@ const TransactionsList = ({transactions}) => {
         }
     }
 
-    const sampleOne = ['Phone', 'utility', '$100']
-    const sampleTwo = ['Netflix', 'entertainment', '$19']
-    const sampleThree = ['Uber', 'transport', '$100']
-    const sampleFour = ['Gong De Lin', 'food', '$40']
-
     return (
-        <>
-        {transactions.length < 0 ? (
-            <ul>
-                {transactions.map(transaction => {
+        <ul>
+            {transactions?.map(transaction => {
+                return (
                     <>
-                    <li key={transaction.key}>
-                        <span>
-                              <h1>{categoryEmoji(transaction.category)}</h1>
-                              <div className="transactions-label">
-                                  <h5>{transaction.label}</h5>
-                                  <p className="label">{capitalize(transaction.category)}</p>
-                              </div>
-                        </span>
-                        <p>${transaction.amount}</p>
-                    </li>
-                    <hr />
+                        <li key={uuidv4}>
+                            <span>
+                                <h1>{categoryEmoji(transaction.category)}</h1>
+                                <div className="transactions-label">
+                                    <h5>{transaction.description}</h5>
+                                    <p className="label">{capitalize(transaction.category)}</p>
+                                </div>
+                            </span>
+                            <p>${transaction.amount}</p>
+                        </li>
+                        <hr />
                     </>
-                })}
-            </ul>
-        ) : null}
-        </>
+                )
+            })}
+        </ul>
     )
 }
 
-const mapStateToProps = state => {
-    return { transactions: state.transactions }
-}
-
-export default connect(mapStateToProps)(TransactionsList);
+export default TransactionsList;

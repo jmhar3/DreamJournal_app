@@ -3,12 +3,13 @@ import Chart from 'chart.js/auto';
 import { connect } from 'react-redux';
 
 const FinanceChart = ({ transactions, type }) => {
-
     const dateTime = new Date()
 
     const allValues = () => {
         const byDirection = (transaction) => transaction.direction === type.toLowerCase();
         const filteredTransactions = transactions.filter(byDirection)
+
+        
 
         function weekday(count) {
             const date = dateTime.getDate() - count
@@ -25,16 +26,26 @@ const FinanceChart = ({ transactions, type }) => {
         }
 
         function byDay(transactions, count) {
+            console.log(transactions.filter(function (transaction) {
+                return transaction.created_at.includes(weekday(count));
+            }))
             return transactions.filter(function (transaction) {
-                return transaction.date === weekday(count);
+                return transaction.created_at.includes(weekday(count));
             })
         }
 
-        const weeklyValues = [byDay(filteredTransactions, 6), byDay(filteredTransactions, 5), byDay(filteredTransactions, 4), byDay(filteredTransactions, 3), byDay(filteredTransactions, 2), byDay(filteredTransactions, 1), byDay(filteredTransactions, 0)]
+        const weeklyValues = [
+            byDay(filteredTransactions, 6),
+            byDay(filteredTransactions, 5),
+            byDay(filteredTransactions, 4),
+            byDay(filteredTransactions, 3),
+            byDay(filteredTransactions, 2),
+            byDay(filteredTransactions, 1),
+            byDay(filteredTransactions, 0)
+        ]
         const values = weeklyValues.map(transaction => transaction.amount);
         return values.map(v => v === undefined ? 0 : v);
     }
-
     const day = dateTime.getDay();
 
     const dailyLabels = ['Mon', 'Tue', 'Wed',

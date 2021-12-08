@@ -11,6 +11,7 @@ import { capitalize } from "../Helpers";
 import jwt from 'jwt-decode';
 import { fetchGoals } from "../actions/fetchGoals";
 import { fetchNotes } from "../actions/fetchNotes";
+import { fetchTransactions } from "../actions/fetchTransactions";
 import { useEffect } from 'react';
 
 const Dashboard = () => {
@@ -23,6 +24,10 @@ const Dashboard = () => {
     // useEffect(() => {
     //     dispatch(fetchNotes())
     // }, [])
+
+    useEffect(() => {
+        dispatch(fetchTransactions())
+    }, [])
 
     const notes = useSelector(state => state.notes)
     const goals = useSelector(state => state.goals)
@@ -78,8 +83,8 @@ const Dashboard = () => {
     }
 
     var renderTransactions;
-    if (transactions.lenght > 0) {
-        renderTransactions = <TransactionList transactions={'transactions'} />
+    if (transactions.length > 0) {
+        renderTransactions = <TransactionList transactions={transactions} />
     } else {
         renderTransactions = <Link to="/transactions/new" className="button gyst-button">Get your finances together</Link>
     }
@@ -99,12 +104,12 @@ const Dashboard = () => {
                     <Account />
                 </section>
                 <section className="finance-charts">
-                    <FinanceChart type={'Expense'} />
-                    <FinanceChart type={'Income'} />
+                    <FinanceChart type={'Expense'} transactions={transactions}  />
+                    <FinanceChart type={'Income'} transactions={transactions}  />
                 </section>
                 <section id="transaction-stats">
                     <div id="db-finance-categories">
-                        <FinanceCategories transactions={'transactions'} />
+                        <FinanceCategories transactions={transactions} />
                     </div>
                     <div id="db-transactions">
                         {renderTransactions}

@@ -1,7 +1,12 @@
 function transactionReducer (transactions = [], action) {
     switch (action.type) {
+        case "POSTING_TRANSACTION_REQUEST":
+            return transactions
+        case "START_ADDING_TRANSACTIONS_REQUEST":
+            return transactions
+        case "ADD_TRANSACTIONS":
+            return [...transactions, ...action.transactions]
         case "ADD_TRANSACTION":
-            console.log('hi')
             return [...transactions, action.transaction]
         case "DELETE_TRANSACTION":
             return transactions.filter(transaction => action.transaction !== transaction)
