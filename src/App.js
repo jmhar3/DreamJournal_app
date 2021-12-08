@@ -6,6 +6,7 @@ import Dashboard from './pages/Dashboard.js';
 import FinancePage from './pages/FinancePage.js';
 import GoalPage from './pages/GoalPage.js';
 import NotePage from './pages/NotePad.js';
+import ShowNote from './pages/ShowNote.js';
 import Nav from './components/Nav.js';
 import 'react-circular-progressbar/dist/styles.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -16,11 +17,30 @@ import './css/login.css';
 import './css/dashboard.css';
 import './css/goals.css';
 import './css/notes.css';
+// import { useDispatch } from 'react-redux';
+// import { fetchGoals } from "./src/actions/fetchGoals";
+// import { fetchNotes } from "../actions/fetchNotes";
+// import { fetchTransactions } from "../actions/fetchTransactions";
+// import { useEffect } from 'react';
 
 function App() {
   const auth = localStorage.getItem('jwt')
   const dashboard_nav = <Navigate replace to="/dashboard" />
   const login_nav = <Navigate replace to="/login" />
+
+  // const dispatch = useDispatch();
+
+  // useEffect(() => {
+  //   dispatch(fetchGoals())
+  // }, [])
+
+  // useEffect(() => {
+  //     dispatch(fetchNotes())
+  // }, [])
+
+  // useEffect(() => {
+  //     dispatch(fetchTransactions())
+  // }, [])
 
   return (
     <Router>
@@ -38,8 +58,8 @@ function App() {
         <Route path="/notepad"
           element={ !auth ? login_nav : <NotePage />}
         />
-        <Route path="/notes/show"
-          element={!auth ? login_nav : <NotePage /> }
+        <Route path="/notes/:id"
+          element={!auth ? login_nav : <ShowNote /> }
         />
         <Route path="/notes/new"
           element={!auth ? login_nav : <NotePage /> }

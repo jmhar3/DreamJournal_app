@@ -38,14 +38,14 @@ const TransactionForm = () => {
                 
             <select ref={categoryRef}>
                     <option value="none">Category</option>
+                    <option value="business">💼 Business</option>
                     <option value="clothing">🧥 Clothing</option>
                     <option value="debt">💳 Debt</option>
                     <option value="education">📚 Education</option>
                     <option value="entertainment">🎮 Entertainment</option>
                     <option value="food">🍜 Food</option>
                     <option value="health">❤️‍🩹 Health</option>
-                    <option value="household">🧻 Household</option>
-                    <option value="housing">🏡 Housing</option>
+                    <option value="home">🏡 Home</option>
                     <option value="insurance">🚘 Insurance</option>
                     <option value="personal">💇🏽 Personal</option>
                     <option value="savings">💰 Savings</option>

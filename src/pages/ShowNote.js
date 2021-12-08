@@ -3,15 +3,13 @@ import ShowNote from '../components/notes/ShowNote.js';
 import NotesList from '../components/notes/NotesList.js';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { fetchNotes } from "../actions/fetchNotes";
 import { Link } from "react-router-dom";
 
 const Notepad = () => {
     const dispatch = useDispatch();
     const notes = useSelector(state => state.notes)
-
-    var note = null;
 
     const navigate = useNavigate();
 
@@ -26,6 +24,10 @@ const Notepad = () => {
         dispatch(fetchNotes())
     }, [])
 
+    const { id } = useParams();
+
+    const note = notes.find(note => note.id === parseInt(id))
+
     return (
         <div id="note">
             <section id="note-left">
@@ -33,8 +35,7 @@ const Notepad = () => {
                 <NotesList notes={notes}/>
             </section>
             <section id="note-right">
-                <NoteForm style={{ visibility: (show_note ? 'visible' : 'hidden') }}/>
-                {note !== null ? <ShowNote style={{ visibility: (show_note ? 'hidden' : 'visible') }}  note={note}/> : null}
+                <ShowNote style={{ visibility: (show_note ? 'hidden' : 'visible') }}  note={note}/>
             </section>
         </div>
     )

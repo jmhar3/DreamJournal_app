@@ -1,7 +1,8 @@
+import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
+
 const NotesList = ({ notes }) => {
-    function showNote(noteData) {
-        // console.log(noteData)
-    }
+    const { id } = useParams();
 
     return (
         <>
@@ -9,9 +10,9 @@ const NotesList = ({ notes }) => {
                 <ul>
                     {notes.map(note => {
                         return (
-                            <li key={note.key} onClick={showNote(note)}>
+                            <li key={note.key} style={{ backgroundColor: (parseInt(id) === note.id ? 'var(--mid)' : 'var(--light-mid)') }}>
                                 <span>
-                                    <h3>{note.title}</h3>
+                                    <h3><Link to={`/notes/${note.id}`} >{note.title}</Link></h3>
                                     <h3>{note.pinned ? "⭐" : null}</h3>
                                 </span>
                                 <p className="label">{note.categories ? note.categories.map(category => category.name).join(", ") : null}</p>

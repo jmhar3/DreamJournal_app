@@ -4,10 +4,10 @@ import { v4 as uuidv4 } from 'uuid';
 const TransactionsList = ({ transactions }) => {
     function categoryEmoji(category) {
         switch (category) {
+            case 'business':
+                return "💼"
             case 'clothing':
                 return "🧥"
-            case 'debt':
-                return "💳"
             case 'education':
                 return "📚"
             case 'entertainment':
@@ -16,20 +16,12 @@ const TransactionsList = ({ transactions }) => {
                 return "🍜"
             case 'health':
                 return "❤️‍🩹"
-            case 'housing':
-                return "🧻"
-            case 'household':
+            case 'home':
                 return "🏡"
-            case 'insurance':
-                return "🚘"
             case 'personal':
                 return "💇🏽"
-            case 'savings':
-                return "💰"
             case 'transport':
                 return "🛩️"
-            case 'utility':
-                return "📱"
             default:
                 return "🏦"
         }
@@ -48,7 +40,7 @@ const TransactionsList = ({ transactions }) => {
                                     <p className="label">{capitalize(transaction.category)}</p>
                                 </div>
                             </span>
-                            <p>${transaction.amount}</p>
+                            <p>{transaction.direction === 'income' ? "+" : "-"}${transaction.amount}</p>
                         </li>
                         <hr />
                     </>

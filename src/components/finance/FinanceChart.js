@@ -27,7 +27,7 @@ const FinanceChart = ({ transactions, type }) => {
 
         function byDay(transactions, count) {
             console.log(transactions.filter(function (transaction) {
-                return transaction.created_at.includes(weekday(count));
+                return transaction?.created_at.includes(weekday(count));
             }))
             return transactions.filter(function (transaction) {
                 return transaction.created_at.includes(weekday(count));

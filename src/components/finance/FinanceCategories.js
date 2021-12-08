@@ -1,17 +1,28 @@
 import { Doughnut } from 'react-chartjs-2';
-
+import randomColor from 'randomcolor';
 
 
 const FinanceCategories = ({transactions}) => {
-    const categories = ['clothing', 'debt', 'education', 'entertainment', 'food', 'health', 'household', 'housing', 'insurance', 'personal', 'savings', 'transport', 'utility', 'other']
+    const categories = transactions.map(transaction => transaction.category)
+
+    const amounts = () => {
+        const reducer = (prevValue, currValue) => prevValue.amount + currValue.amount;
+
+        console.log(transactions.filter(transaction => transaction.category === 'personal').reduce(reducer))
+        
+        return categories.map(category => {
+            const filteredTransactions = transactions.filter(transaction => transaction.category === category)
+            return filteredTransactions.reduce(reducer)
+        })
+    }
     
     const categoryData = {
         labels: categories,
         datasets: [
             {
                 label: 'Category',
-                backgroundColor: ['#F27608', '#F2CF08', '#F31904', '#17D90B', '#0BB0D9', '#A16BEE', '#DF55B3', '#FE4E70', '#FE352B', '#A8FA8D', '#8DCCFA', '#9F8DFA', '#9640F1'],
-                data: [65, 59, 80, 120, 56, 30, 10, 65, 59, 80, 120, 56, 30, 10]
+                backgroundColor: [...Array(categories.length)].map((e, i) => randomColor()),
+                data: amounts()
             }
         ]
     }
