@@ -10,7 +10,14 @@
     overflow: hidden;
 }
 
-#note-left div {
+/* #note-left h1 a {
+    border-top: 2px solid var(--light-mid);
+    border-radius: .9vw;
+    padding: .6vw;
+    background-color: var(--mid);
+} */
+
+#note-left li {
     margin-top: .9vw;
     background-color: var(--light-mid);
     color: var(--dark);
@@ -19,7 +26,7 @@
     width: 89%;
 }
 
-#note-left span{
+#note-left span {
     display: flex;
     justify-content: space-between;
 }

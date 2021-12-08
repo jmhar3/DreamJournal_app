@@ -23,7 +23,7 @@
     gap: 1.8vw;
 }
 
-.finance-charts div, #db-transactions, #db-finance-categories, #upcoming-payments div, .dashboard-goals, #db-notes div {
+.finance-charts div, #db-transactions, #db-finance-categories, #upcoming-payments div, .dashboard-goals, #db-notes li {
     padding: 1.8%;
     padding-left: 3%;
     padding-right: 3%;
@@ -33,7 +33,7 @@
     float: left;
 }
 
-.finance-charts, #transaction-stats, .dashboard-goals span, #db-notes, #db-transactions span {
+.finance-charts, #transaction-stats, .dashboard-goals span, #db-notes ul, #db-transactions span {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -45,13 +45,13 @@
     padding-top: 3vw;
 }
 
-#db-notes {
+#db-notes ul {
     justify-content: flex-start;
     overflow-x: auto;
     padding-bottom: .6vw;;
 }
 
-#upcoming-payments div, #db-notes div {
+#upcoming-payments div, #db-notes li {
     width: fit-content;
     text-align: center;
     border: 2px solid var(--light);
@@ -129,18 +129,18 @@
     border-radius: 100%;
 }
 
-#db-notes div {
+#db-notes li {
     padding: .9vw;
     margin: 0;
 }
 
-#db-notes div p {
+#db-notes li p {
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
 }
 
-#db-notes{
+#db-notes {
     padding-bottom: 1.2vw;
 }
 

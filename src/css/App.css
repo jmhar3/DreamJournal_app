@@ -9,12 +9,6 @@
 }
 
 :root {
-  --light: #fcf1f3;
-  --light-mid: #ffe9ef;
-  --mid: #fde3e7;
-  --strong: #fac6ce;
-  --bold: #d40819;
-  --dark: #130001;
   --low: #068f1d;
   --norm: #f7bb15;
   --high: #eb0d1f;
@@ -70,6 +64,10 @@ li, a, button, input, select, textarea {
 .label {
   font-size: .9vw;
   color: var(--strong);
+}
+
+a {
+  text-decoration: none;
 }
 
 /* COLOURS */

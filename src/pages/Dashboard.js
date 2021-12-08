@@ -5,12 +5,16 @@ import GoalList from '../components/goals/GoalList';
 import TransactionList from '../components/finance/TransactionsList';
 import FinanceCategories from '../components/finance/FinanceCategories';
 import Account from '../components/account/AccountSettings.js';
-import { connect } from 'react-redux';
+import { connect, useSelector } from 'react-redux';
 import PinnedNotes from '../components/notes/PinnedNotes';
 import { capitalize } from "../Helpers";
 import jwt from 'jwt-decode';
 
-const Dashboard = ({goals, notes, transactions}) => {
+const Dashboard = () => {
+    const notes = useSelector(state => state.notes)
+    const goals = useSelector(state => state.goals)
+    const transactions = useSelector(state => state.transactions)
+
     const dateTime = new Date()
     const curHr = dateTime.getHours()
     const today = dateTime.toDateString()
@@ -46,12 +50,13 @@ const Dashboard = ({goals, notes, transactions}) => {
     const todaysGoals = goals.filter(isToday)
 
     var renderGoals;
-    if (todaysGoals.length !== 0) {
+    if (todaysGoals.length > 0) {
         renderGoals = <GoalList goals={todaysGoals} />
     } else {
         renderGoals = <Link to="/goals/new" className="button gyst-button">Get your goals together</Link>
     }
 
+    
     var renderNotes;
     if (notes.find(note => note.pinned === true)) {
         renderNotes = <PinnedNotes notes={notes}/>
@@ -60,7 +65,7 @@ const Dashboard = ({goals, notes, transactions}) => {
     }
 
     var renderTransactions;
-    if (transactions !== undefined) {
+    if (transactions.lenght > 0) {
         renderTransactions = <TransactionList transactions={'transactions'} />
     } else {
         renderTransactions = <Link to="/transactions/new" className="button gyst-button">Get your finances together</Link>
@@ -109,9 +114,5 @@ const Dashboard = ({goals, notes, transactions}) => {
         </main>
     )
 }
-
-const mapStateToProps = state => {
-    return { goals: state.goals, notes: state.notes, transaction: state.transactions }
-}
   
-export default connect(mapStateToProps)(Dashboard);
+export default Dashboard;
