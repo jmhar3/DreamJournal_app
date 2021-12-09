@@ -16,6 +16,7 @@ import './css/login.css';
 import './css/dashboard.css';
 import './css/goals.css';
 import './css/notes.css';
+import './css/transactions.css';
 // import { useDispatch } from 'react-redux';
 // import { fetchGoals } from "./src/actions/fetchGoals";
 // import { fetchNotes } from "../actions/fetchNotes";

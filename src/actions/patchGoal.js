@@ -1,7 +1,7 @@
 export function patchGoal(goal) {
     return (dispatch) => {
         dispatch({ type: "PATCHING_GOAL_REQUEST" });
-        fetch(`http://localhost:3000/goals`, {
+        fetch(`http://localhost:3000/goals/${goal.oldGoal.id}`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json',

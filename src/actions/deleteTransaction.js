@@ -1,7 +1,7 @@
 export function deleteTransaction(transaction) {
     return (dispatch) => {
         dispatch({ type: "DELETING_TRANSACTION_REQUEST" });
-        fetch(`http://localhost:3000/transaction`, {
+        fetch(`http://localhost:3000/transaction/${transaction.id}`, {
             method: 'delete',
             headers: {
                 'content-type': 'application/json',
