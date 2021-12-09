@@ -1,5 +1,6 @@
 import { capitalize } from '../../Helpers';
-import { v4 as uuidv4 } from 'uuid';
+import { useDispatch } from 'react-redux';
+import { deleteTransaction } from '../../actions/deleteTransaction';
 
 const TransactionsList = ({ transactions }) => {
     function categoryEmoji(category) {
@@ -27,6 +28,16 @@ const TransactionsList = ({ transactions }) => {
         }
     }
 
+    const dispatch = useDispatch();
+
+    const destroyTransaction = (transaction) => {
+        dispatch(
+            deleteTransaction({
+                transaction
+            })
+        )
+    }
+
     return (
         <ul>
             {transactions?.map(transaction => {
@@ -40,7 +51,10 @@ const TransactionsList = ({ transactions }) => {
                                     <p className="label">{capitalize(transaction.category)}</p>
                                 </div>
                             </span>
-                            <p>{transaction.direction === 'income' ? "+" : "-"}${transaction.amount}</p>
+                            <span>
+                                <p>{transaction.direction === 'income' ? "+" : "-"}${transaction.amount}</p>
+                                <h4 onClick={destroyTransaction}>✕</h4>
+                            </span>
                         </li>
                         <hr />
                     </>

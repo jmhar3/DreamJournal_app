@@ -9,14 +9,14 @@ export function patchGoal(goal) {
                 'Authorization': `Bearer ${localStorage.getItem('jwt')}`
             },
             body: JSON.stringify({
-                goal
+                goal: goal.newGoal
             })
         })
         .then(res => res.json())
         .then(res => {
             dispatch({
                 type: "UPDATE_GOAL",
-                goal: goal.newGoal
+                goal
             })
         })
     };
