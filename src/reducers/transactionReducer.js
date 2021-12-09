@@ -1,5 +1,7 @@
 function transactionReducer (transactions = [], action) {
     switch (action.type) {
+        case "DELETING_TRANSACTION_REQUEST":
+            return transactions
         case "POSTING_TRANSACTION_REQUEST":
             return transactions
         case "START_ADDING_TRANSACTIONS_REQUEST":

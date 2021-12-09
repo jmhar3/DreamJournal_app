@@ -1,5 +1,7 @@
 function goalReducer (goals = [], action) {
     switch (action.type) {
+        case "PATCHING_GOAL_REQUEST":
+            return goals
         case "POSTING_GOAL_REQUEST":
             return goals
         case "START_ADDING_GOALS_REQUEST":
