@@ -1,4 +1,5 @@
 import { v4 as uuidv4 } from 'uuid';
+import { Link } from "react-router-dom";
 
 const PinnedNotes = ({ notes }) => {
 
@@ -13,8 +14,10 @@ console.log(pinnedNotes);
             {pinnedNotes.map(note => {
                 return (
                     <li key={uuidv4}>
-                        <h1>📝</h1>
-                        <p>{note.title}</p>
+                        <Link to={`/notes/${note.id}`} >
+                            <h1>📝</h1>
+                            <p>{note.title}</p>
+                        </Link>
                     </li>
                 )
 
