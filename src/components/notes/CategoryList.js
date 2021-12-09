@@ -6,7 +6,6 @@ const CategoryForm = ({categories}) => {
                     {categories.map((category) => {
                         <li key={category.id}>
                             {category.label}
-
                         </li>
                     })}
                 </ul>

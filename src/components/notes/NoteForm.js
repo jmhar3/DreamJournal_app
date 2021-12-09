@@ -1,5 +1,5 @@
-import { useRef, useState } from "react"
-import { useDispatch, connect } from 'react-redux';
+import { useRef, useState } from "react";
+import { useDispatch } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 import Categories from './CategoryInput';
 import {postNote} from '../../actions/postNote';
@@ -18,6 +18,10 @@ const NoteForm = () => {
 
     const addCategory = (category) => {
         setCategories([...categories, category])
+    }
+
+    const deleteCategory = (cat) => {
+        setCategories(categories.filter(category => cat !== category))
     }
 
     const addNote = () => {
@@ -39,7 +43,7 @@ const NoteForm = () => {
                 <h2 onClick={pin}>{pinnedState ? '⭐️' : '📌'}</h2>
             </span>
             {/* <p className="label">Last Updated 25th November 2021</p> */}
-            <Categories addCategory={addCategory} categories={categories} />
+            <Categories addCategory={addCategory} categories={categories} deleteCategory={deleteCategory} />
             <hr />
             <textarea ref={contentRef} placeholder="Content" />
             <button onClick={addNote} className="submit">Save</button>

@@ -16,7 +16,6 @@ const SignIn = () => {
     const emptyFields = credentials.email === "" || credentials.password === "";
 
     function onSubmit(e) {
-        console.log(credentials)
         e.preventDefault();
         fetch("http://localhost:3000/login", {
             method: 'post',
