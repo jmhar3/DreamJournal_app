@@ -5,8 +5,7 @@ import Login from './pages/Login.js';
 import Dashboard from './pages/Dashboard.js';
 import FinancePage from './pages/FinancePage.js';
 import GoalPage from './pages/GoalPage.js';
-import NotePage from './pages/NotePad.js';
-import ShowNote from './pages/ShowNote.js';
+import NotePad from './pages/NotePad.js';
 import Nav from './components/Nav.js';
 import 'react-circular-progressbar/dist/styles.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -55,14 +54,11 @@ function App() {
         <Route path="/dashboard"
           element={!auth ? login_nav : <Dashboard /> }
         />
-        <Route path="/notepad"
-          element={ !auth ? login_nav : <NotePage />}
-        />
         <Route path="/notes/:id"
-          element={!auth ? login_nav : <ShowNote /> }
+          element={!auth ? login_nav : <NotePad /> }
         />
         <Route path="/notes/new"
-          element={!auth ? login_nav : <NotePage /> }
+          element={!auth ? login_nav : <NotePad /> }
         />
         <Route path="/transactions/new"
           element={!auth ? login_nav : <FinancePage /> }

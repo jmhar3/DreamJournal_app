@@ -29,14 +29,9 @@ const TransactionForm = () => {
             <div>
                 <input type="text" placeholder="Description" ref={descriptionRef} />
                 <label>$ <input type="number" placeholder="0.00" ref={amountRef} /></label>
-                <select ref={directionRef}>
-                    <option value="income">Incoming</option>
-                    <option value="expense">Outgoing</option>
-                </select>
             </div>
             <div>
-                
-            <select ref={categoryRef}>
+                <select ref={categoryRef}>
                     <option value="none">Category</option>
                     <option value="business">💼 Business</option>
                     <option value="clothing">🧥 Clothing</option>
@@ -52,6 +47,10 @@ const TransactionForm = () => {
                     <option value="transport">🛩️ Transport</option>
                     <option value="utility">📱 Utility</option>
                     <option value="other">🏦 Other</option>
+                </select>
+                <select ref={directionRef}>
+                    <option value="income">Incoming</option>
+                    <option value="expense">Outgoing</option>
                 </select>
             <button onClick={addTransaction} className="submit">Submit</button>
             </div>

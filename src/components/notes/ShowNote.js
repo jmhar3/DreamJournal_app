@@ -1,6 +1,9 @@
 import CategoryList from './CategoryList';
 
 const ShowNote = ({note}) => {
+    const deleteNote = () => {
+        return "hi"
+    }
     return (
         <div>
             <span>
@@ -13,6 +16,7 @@ const ShowNote = ({note}) => {
             <CategoryList categories={note.categories} />
             <hr />
             <p>{note.content}</p>
+            <button onClick={deleteNote} className="submit">Delete</button>
         </div>
     )
 }
