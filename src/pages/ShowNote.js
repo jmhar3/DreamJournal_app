@@ -11,15 +11,6 @@ const Notepad = () => {
     const dispatch = useDispatch();
     const notes = useSelector(state => state.notes)
 
-    const navigate = useNavigate();
-
-    const showForm = () => {
-        navigate("/dashboard", { replace: true });
-    }
-
-    const pathname = window.location.pathname;
-    const show_note = () => pathname === '/notes/new'
-
     useEffect(() => {
         dispatch(fetchNotes())
     }, [])
@@ -35,7 +26,7 @@ const Notepad = () => {
                 <NotesList notes={notes}/>
             </section>
             <section id="note-right">
-                <ShowNote style={{ visibility: (show_note ? 'hidden' : 'visible') }}  note={note}/>
+                <ShowNote note={note}/>
             </section>
         </div>
     )

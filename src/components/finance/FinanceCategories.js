@@ -8,8 +8,8 @@ const FinanceCategories = ({transactions}) => {
     const amounts = () => {
         const reducer = (prevValue, currValue) => prevValue.amount + currValue.amount;
 
-        console.log(transactions.filter(transaction => transaction.category === 'personal').reduce(reducer))
-        
+        // console.log(transactions.filter(transaction => transaction.category === 'personal').reduce(reducer))
+
         return categories.map(category => {
             const filteredTransactions = transactions.filter(transaction => transaction.category === category)
             return filteredTransactions.reduce(reducer)

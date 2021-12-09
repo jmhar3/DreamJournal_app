@@ -4,8 +4,9 @@ const CategoryForm = ({categories}) => {
             {categories.length < 0 ? (
                 <ul>
                     {categories.map((category) => {
-                        <li key={category.key}>
+                        <li key={category.id}>
                             {category.label}
+
                         </li>
                     })}
                 </ul>

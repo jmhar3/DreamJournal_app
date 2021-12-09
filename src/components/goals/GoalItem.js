@@ -1,34 +1,43 @@
 import { Link } from "react-router-dom";
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+// import { useNavigate } from "react-router-dom";
+import {patchGoal} from '../../actions/patchGoal';
 
 const Goal = ({goal}) => {
+    const [completed, setCompleted] = useState(goal.completed);
+
     const dispatch = useDispatch();
 
-    const [completed, setCompleted] = useState(false)
-
-    const handleComplete = () => {
+    const updateGoal = () => {
         setCompleted(!completed);
-        dispatch({
-            type: "COMPLETED_GOAL",
-            goal: {
-                key: goal.key,
-                completed: completed
-            }
-        }) 
+        dispatch(
+            patchGoal({
+                goal: {
+                    oldGoal: goal,
+                    newGoal: {
+                        ...goal,
+                        completed: completed
+                    }
+                }
+            })
+        )
     }
 
     return (
         <li>
-            <input type="checkbox" checked={completed} onClick={handleComplete} />
-            <div className="goal-label" key={goal.key}>
-                {completed ?
+            
+            <div onClick={updateGoal} className="checkbox">
+                { completed ? <h3>✓</h3> : null }
+            </div>
+            <div className="goal-label" key={goal.id}>
+                { completed ?
                     <s><Link to="edit_goal">{goal.label}</Link></s>
                     : <Link to="edit_goal">{goal.label}</Link>
                 }
                 <p className="label">{goal.due_date?.replace("T", " ")}</p>
             </div>
-            <div className={`priority-indicator ${goal.priority}`}></div>
+            {completed ? null : <div className={`priority-indicator ${goal.priority}`}></div>}
         </li>
     )
 }

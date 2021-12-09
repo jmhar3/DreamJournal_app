@@ -1,6 +1,5 @@
 import { useRef } from "react"
-import { useDispatch, connect } from 'react-redux';
-// import { v4 as uuidv4 } from 'uuid';
+import { useDispatch } from 'react-redux';
 // import { useNavigate } from "react-router-dom";
 import {postGoal} from '../../actions/postGoal';
 import { userId } from "../../Helpers";
@@ -60,11 +59,4 @@ function GoalForm() {
     )
 }
 
-const mapDispatchToProps = dispatch => ({
-    addGoal: (goal) => dispatch({
-        type: "ADD_GOAL",
-        goal
-    })
-})
-
-export default connect(mapDispatchToProps)(GoalForm);
+export default GoalForm;

@@ -32,7 +32,7 @@ const TransactionsList = ({ transactions }) => {
             {transactions?.map(transaction => {
                 return (
                     <>
-                        <li key={uuidv4}>
+                        <li key={transaction.id}>
                             <span>
                                 <h1>{categoryEmoji(transaction.category)}</h1>
                                 <div className="transactions-label">

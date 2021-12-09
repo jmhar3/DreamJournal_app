@@ -17,13 +17,6 @@ function goalReducer (goals = [], action) {
                 }
                 return goal
             })
-        case "COMPLETED_GOAL":
-            return goals.map((goal) => {
-                if (goal === action.goal.key) {
-                    goal.confirmed = action.goal.confirmed
-                }
-                return goal
-            })
         default:
             return goals;
     }
