@@ -7,3 +7,7 @@ export function capitalize(str){
 export function userId() {
     return jwt(localStorage.getItem('jwt')).user_id;
 }
+
+export function reducer(previousValue, currentValue) {
+    return previousValue + currentValue;
+}

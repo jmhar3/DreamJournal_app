@@ -1,6 +1,6 @@
 import { Bar } from 'react-chartjs-2';
 import Chart from 'chart.js/auto';
-import { connect } from 'react-redux';
+import {reducer} from '../../Helpers';
 
 const FinanceChart = ({ transactions, type }) => {
     const dateTime = new Date()
@@ -8,8 +8,6 @@ const FinanceChart = ({ transactions, type }) => {
     const allValues = () => {
         const byDirection = (transaction) => transaction.direction === type.toLowerCase();
         const filteredTransactions = transactions.filter(byDirection)
-
-        
 
         function weekday(count) {
             const date = dateTime.getDate() - count
@@ -26,9 +24,6 @@ const FinanceChart = ({ transactions, type }) => {
         }
 
         function byDay(transactions, count) {
-            console.log(transactions.filter(function (transaction) {
-                return transaction?.created_at.includes(weekday(count));
-            }))
             return transactions.filter(function (transaction) {
                 return transaction.created_at.includes(weekday(count));
             })
@@ -43,9 +38,14 @@ const FinanceChart = ({ transactions, type }) => {
             byDay(filteredTransactions, 1),
             byDay(filteredTransactions, 0)
         ]
-        const values = weeklyValues.map(transaction => transaction.amount);
-        return values.map(v => v === undefined ? 0 : v);
+
+        const values = weeklyValues.map(transactions => {
+            var tv = transactions.map(transaction => transaction.amount)
+            return tv.length > 0 ? tv.reduce(reducer) : 0
+        });
+        return values
     }
+
     const day = dateTime.getDay();
 
     const dailyLabels = ['Mon', 'Tue', 'Wed',
@@ -63,8 +63,6 @@ const FinanceChart = ({ transactions, type }) => {
             }
         ]
     }
-
-    const reducer = (previousValue, currentValue) => previousValue + currentValue;
     
     return (
         <div>
@@ -75,8 +73,4 @@ const FinanceChart = ({ transactions, type }) => {
     )
 }
 
-const mapStateToProps = state => {
-    return { transactions: state.transactions }
-}
-
-export default connect(mapStateToProps)(FinanceChart);
+export default FinanceChart;

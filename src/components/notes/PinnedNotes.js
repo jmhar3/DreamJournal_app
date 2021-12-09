@@ -8,7 +8,7 @@ const PinnedNotes = ({ notes }) => {
     }
 
     const pinnedNotes = notes.filter(isPinned);
-console.log(pinnedNotes);
+
     return (
         <ul>
             {pinnedNotes.map(note => {
