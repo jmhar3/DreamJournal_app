@@ -1,12 +1,12 @@
 import { Bar } from 'react-chartjs-2';
 import Chart from 'chart.js/auto';
-import {reducer} from '../../Helpers';
+import {reducer, capitalize} from '../../Helpers';
 
 const FinanceChart = ({ transactions, type }) => {
     const dateTime = new Date()
 
     const allValues = () => {
-        const byDirection = (transaction) => transaction.direction === type.toLowerCase();
+        const byDirection = (transaction) => transaction.direction === type;
         const filteredTransactions = transactions.filter(byDirection)
 
         function weekday(count) {
@@ -57,7 +57,7 @@ const FinanceChart = ({ transactions, type }) => {
         labels: adjustedLabels,
         datasets: [
             {
-                label: type,
+                label: capitalize(type),
                 backgroundColor: '#d40819',
                 data: allValues()
             }

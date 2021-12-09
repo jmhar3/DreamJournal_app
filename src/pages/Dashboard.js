@@ -104,8 +104,8 @@ const Dashboard = () => {
                     <Account />
                 </section>
                 <section className="finance-charts">
-                    <FinanceChart type={'Expense'} transactions={transactions}  />
-                    <FinanceChart type={'Income'} transactions={transactions}  />
+                    <FinanceChart type={'expense'} transactions={transactions}  />
+                    <FinanceChart type={'income'} transactions={transactions}  />
                 </section>
                 <section id="transaction-stats">
                     <div id="db-finance-categories">
