@@ -1,18 +1,11 @@
 import CategoryList from './CategoryList';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from 'react-redux';
 import {deleteNote} from '../../actions/deleteNote';
 
 const ShowNote = ({note}) => {
     const dispatch = useDispatch();
-    
-    const destroyNote = () => {
-        dispatch(
-            deleteNote(
-                note
-            )
-        )
-    }
+    const navigate = useNavigate();
 
     return (
         <div>
@@ -28,7 +21,15 @@ const ShowNote = ({note}) => {
             <p>{note.content}</p>
             <div className="show-buttons">
                 <Link to={`/notes/${note.id}/edit`}>Edit</Link>
-                <button onClick={destroyNote}>Delete</button>
+                <button onClick={() => {
+                    dispatch(
+                        deleteNote(
+                            note
+                        )
+                    )
+                    navigate('/notes', { replace: true})
+                    // window.location.reload();
+                }}>Delete</button>
             </div>
             
         </div>

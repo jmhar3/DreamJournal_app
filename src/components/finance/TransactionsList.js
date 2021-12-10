@@ -30,14 +30,6 @@ const TransactionsList = ({ transactions }) => {
 
     const dispatch = useDispatch();
 
-    const destroyTransaction = (transaction) => {
-        dispatch(
-            deleteTransaction({
-                transaction
-            })
-        )
-    }
-
     return (
         <ul>
             {transactions?.map(transaction => {
@@ -53,7 +45,13 @@ const TransactionsList = ({ transactions }) => {
                             </span>
                             <span>
                                 <p>{transaction.direction === 'income' ? "+" : "-"}${transaction.amount}</p>
-                                <h4 onClick={destroyTransaction}>✕</h4>
+                                <h4 onClick={() => {
+                                    dispatch(
+                                        deleteTransaction(
+                                            transaction
+                                        )
+                                    )}}
+                                >✕</h4>
                             </span>
                         </li>
                         <hr />

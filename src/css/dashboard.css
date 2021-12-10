@@ -154,6 +154,11 @@
     height: fit-content;
 }
 
+#db-transactions h4:hover {
+    cursor: pointer;
+    color: blue;
+}
+
 #account-settings button {
     float: right;
 }

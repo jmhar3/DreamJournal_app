@@ -6,8 +6,7 @@ import {patchGoal} from '../../actions/patchGoal';
 const Goal = ({goal}) => {
     const dispatch = useDispatch();
 
-    const updateGoal = (e) => {
-        e.persist();
+    const updateGoal = () => {
         dispatch(
             patchGoal({
                 ...goal,

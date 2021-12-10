@@ -1,7 +1,7 @@
 export function deleteNote(note) {
     return (dispatch) => {
         dispatch({ type: "DELETING_NOTE_REQUEST" });
-        fetch(`http://localhost:3000/note/${note.id}`, {
+        fetch(`http://localhost:3000/notes/${note.id}`, {
             method: 'delete',
             headers: {
                 'content-type': 'application/json',
