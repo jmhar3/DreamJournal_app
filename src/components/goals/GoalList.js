@@ -4,12 +4,12 @@ const GoalList = ({goals}) => {
     return (
         <ul>
             <Goal goal={goals[0]} />
-            { goals > 1 ? (
+            { goals.length > 1 ? (
                 <>
-                    { goals.map(goal => (
+                    { goals.slice(1).map(goal => (
                         <>
-                            <Goal goal={goal} />
                             <hr/>
+                            <Goal goal={goal} />
                         </>
                     )) }
                 </>
