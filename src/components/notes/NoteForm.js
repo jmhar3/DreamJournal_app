@@ -35,7 +35,7 @@ const NoteForm = ({note}) => {
     }
 
     const addNote = () => {
-        if (note) {
+        if (note !== null) {
             dispatch(
                 patchNote(
                     note

@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { fetchGoals } from "../actions/fetchGoals";
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useParams } from "react-router-dom";
 
 const GoalPage = () => {
     const dispatch = useDispatch();
@@ -20,12 +21,17 @@ const GoalPage = () => {
     } else {
         goals = <Link to="/goalpage" className="button">Get your sh*t together</Link>
     }
+
+    const { id } = useParams();
+
+    var goal = null;
+    if (id) goal = goalData.find(goal => goal.id === parseInt(id))
     
     return (
         <div id="goal-db" >
             <section className="dashboard-left">
                 <h1>Create Goal</h1>
-                <GoalForm />
+                <GoalForm goal={goal}/>
             </section>
             <section className="dashboard-right ">
                 <div className="dashboard-goals">

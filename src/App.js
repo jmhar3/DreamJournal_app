@@ -51,7 +51,13 @@ function App() {
         <Route path="/transactions/new"
           element={!auth ? login_nav : <FinancePage /> }
         />
+        <Route path="/goals"
+          element={!auth ? login_nav : <GoalPage /> }
+        />
         <Route path="/goals/new"
+          element={!auth ? login_nav : <GoalPage /> }
+        />
+        <Route path="/goals/:id/edit"
           element={!auth ? login_nav : <GoalPage /> }
         />
       </Routes>
