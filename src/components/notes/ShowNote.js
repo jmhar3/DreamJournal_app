@@ -1,9 +1,11 @@
 import CategoryList from './CategoryList';
+import { Link } from "react-router-dom";
 
 const ShowNote = ({note}) => {
     const deleteNote = () => {
         return "hi"
     }
+
     return (
         <div>
             <span>
@@ -11,12 +13,16 @@ const ShowNote = ({note}) => {
                 <h1>{note.pinned ? "⭐" : null}</h1>
             </span>
             <p className="label">Last Updated {
-                note.updated_at.slice(0, 10) + " " + note.updated_at.slice(11, 16)
+                note.updated_at.slice(0, 16).replace("T", " ")
             }</p>
             <CategoryList categories={note.categories} />
             <hr />
             <p>{note.content}</p>
-            <button onClick={deleteNote} className="submit">Delete</button>
+            <div className="show-buttons">
+                <Link to={`/notes/${note.id}/edit`}>Edit</Link>
+                <button onClick={deleteNote}>Delete</button>
+            </div>
+            
         </div>
     )
 }

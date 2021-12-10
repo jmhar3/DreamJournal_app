@@ -1,13 +1,8 @@
 import { useRef } from "react"
 import { v4 as uuidv4 } from 'uuid';
-import { useState } from "react"
 
 const CategoryForm = ({categories, addCategory, deleteCategory}) => {
-    const [category, setCategory] = useState("")
-
-    function handleChange(e) {
-        setCategory(e.target.value)
-    }
+    const categoryRef = useRef();
 
     return (
         <span id="category-input">
@@ -18,7 +13,7 @@ const CategoryForm = ({categories, addCategory, deleteCategory}) => {
                             <li key={uuidv4}>
                                 {category}
                                 <button
-                                    onClick={() => deleteCategory(category)}
+                                    onClick={deleteCategory(category)}
                                 >✕</button>
                             </li>
                         )
@@ -26,8 +21,8 @@ const CategoryForm = ({categories, addCategory, deleteCategory}) => {
                 </ul>
             ) : null}
             
-            <input type="text" onChange={handleChange} value={category} placeholder="Add Category" />
-            <button onClick={() => addCategory(category)}>+</button>
+            <input type="text" ref={categoryRef} placeholder="Add Category" />
+            <button onClick={() => addCategory(categoryRef.current.value)}>+</button>
         </span>
     )
 }

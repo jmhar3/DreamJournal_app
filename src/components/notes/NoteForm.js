@@ -1,18 +1,28 @@
 import { useRef, useState } from "react";
 import { useDispatch } from 'react-redux';
-import { v4 as uuidv4 } from 'uuid';
 import Categories from './CategoryInput';
 import {postNote} from '../../actions/postNote';
+import {patchNote} from '../../actions/patchNote';
 import { userId } from "../../Helpers";
 
-const NoteForm = () => {
-    const titleRef = useRef();
-    const contentRef = useRef();
+const NoteForm = ({note}) => {
+    const [state, setState] = useState({
+        title: (note === null ? "" : note.title),
+        content: (note === null ? "" : note.content)
+    })
 
-    const [categories, setCategories] = useState([])
+    const [categories, setCategories] = useState(note === null ? [] : [...note.categories])
 
-    const [pinnedState, setPinnedState] = useState(false)
+    const pinnedNote = note === null ? false : note.pinned
+    const [pinnedState, setPinnedState] = useState(pinnedNote)
     const pin = () => setPinnedState(!pinnedState);
+
+    const handleChange = (e) => {
+        setState({
+            ...state,
+            [e.target.name]: e.target.value
+        })
+    }
 
     const dispatch = useDispatch();
 
@@ -20,32 +30,42 @@ const NoteForm = () => {
         setCategories([...categories, category])
     }
 
-    const deleteCategory = (cat) => {
-        setCategories(categories.filter(category => cat !== category))
+    const deleteCategory = (category) => {
+        setCategories(categories.filter(cat => cat !== category))
     }
 
     const addNote = () => {
-        dispatch(
-            postNote({
-                user_id: userId,
-                title: titleRef.current.value,
-                pinned: pinnedState,
-                content: contentRef.current.value,
-                categories_attributes: categories
-            })
-        )
+        if (note) {
+            dispatch(
+                patchNote(
+                    note
+                )
+            )
+        } else {
+            dispatch(
+                postNote({
+                    user_id: userId,
+                    title: state.title,
+                    pinned: pinnedState,
+                    content: state.content,
+                    categories_attributes: categories
+                })
+            )
+        }
     }
 
     return (
         <div className="form">
             <span>
-                <input type="text" ref={titleRef} placeholder="Title" />
+                <input type="text" value={state.title} onChange={handleChange} placeholder="Title" name="title" />
                 <h2 onClick={pin}>{pinnedState ? '⭐️' : '📌'}</h2>
             </span>
-            {/* <p className="label">Last Updated 25th November 2021</p> */}
+            { note ? <p className="label">Last Updated {
+                note.updated_at.slice(0, 16).replace("T", " ")
+            }</p> : null }
             <Categories addCategory={addCategory} categories={categories} deleteCategory={deleteCategory} />
             <hr />
-            <textarea ref={contentRef} placeholder="Content" />
+            <textarea value={state.content} onChange={handleChange}  placeholder="Content" name="content" />
             <button onClick={addNote} className="submit">Save</button>
         </div>
     )

@@ -1,7 +1,7 @@
-export function patchGoal(goal) {
+export function patchNote(note) {
     return (dispatch) => {
-        dispatch({ type: "PATCHING_GOAL_REQUEST" });
-        fetch(`http://localhost:3000/goals/${goal.id}`, {
+        dispatch({ type: "PATCHING_NOTE_REQUEST" });
+        fetch(`http://localhost:3000/notes/${note.id}`, {
             method: 'put',
             headers: {
                 'content-type': 'application/json',
@@ -9,14 +9,14 @@ export function patchGoal(goal) {
                 'Authorization': `Bearer ${localStorage.getItem('jwt')}`
             },
             body: JSON.stringify({
-                goal
+                note
             })
         })
         .then(res => res.json())
         .then(res => {
             dispatch({
-                type: "UPDATE_GOAL",
-                goal: goal
+                type: "UPDATE_NOTE",
+                note: note
             })
         })
     };

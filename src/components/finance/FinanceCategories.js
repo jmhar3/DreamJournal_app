@@ -4,7 +4,18 @@ import { reducer } from "../../Helpers";
 
 
 const FinanceCategories = ({transactions}) => {
-    const categories = transactions.map(transaction => transaction.category)
+    var categories;
+
+    const reduceCategories = () => {
+        function onlyUnique(value, index, self) {
+            return self.indexOf(value) === index;
+        }
+
+        const categoriesList = transactions.map(transaction => transaction.category)
+        categories = categoriesList.filter(onlyUnique);
+    }
+
+    reduceCategories()
 
     const amounts = () => {
         return categories.map(category => {

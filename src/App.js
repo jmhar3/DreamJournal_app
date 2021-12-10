@@ -17,30 +17,11 @@ import './css/dashboard.css';
 import './css/goals.css';
 import './css/notes.css';
 import './css/transactions.css';
-// import { useDispatch } from 'react-redux';
-// import { fetchGoals } from "./src/actions/fetchGoals";
-// import { fetchNotes } from "../actions/fetchNotes";
-// import { fetchTransactions } from "../actions/fetchTransactions";
-// import { useEffect } from 'react';
 
 function App() {
   const auth = localStorage.getItem('jwt')
   const dashboard_nav = <Navigate replace to="/dashboard" />
   const login_nav = <Navigate replace to="/login" />
-
-  // const dispatch = useDispatch();
-
-  // useEffect(() => {
-  //   dispatch(fetchGoals())
-  // }, [])
-
-  // useEffect(() => {
-  //     dispatch(fetchNotes())
-  // }, [])
-
-  // useEffect(() => {
-  //     dispatch(fetchTransactions())
-  // }, [])
 
   return (
     <Router>
@@ -55,10 +36,13 @@ function App() {
         <Route path="/dashboard"
           element={!auth ? login_nav : <Dashboard /> }
         />
+        <Route path="/notes/new"
+          element={!auth ? login_nav : <NotePad /> }
+        />
         <Route path="/notes/:id"
           element={!auth ? login_nav : <NotePad /> }
         />
-        <Route path="/notes/new"
+        <Route path="/notes/:id/edit"
           element={!auth ? login_nav : <NotePad /> }
         />
         <Route path="/transactions/new"

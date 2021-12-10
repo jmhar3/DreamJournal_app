@@ -4,7 +4,8 @@ import { useDispatch } from 'react-redux';
 import {patchGoal} from '../../actions/patchGoal';
 
 const Goal = ({goal}) => {
-    const [completed, setCompleted] = useState(goal.completed);
+    const goalCompleted = goal.completed === null ? false : goal.completed
+    const [completed, setCompleted] = useState(goalCompleted);
 
     const dispatch = useDispatch();
 
@@ -12,13 +13,8 @@ const Goal = ({goal}) => {
         setCompleted(!completed);
         dispatch(
             patchGoal({
-                goal: {
-                    oldGoal: goal,
-                    newGoal: {
-                        ...goal,
-                        completed: completed
-                    }
-                }
+                ...goal,
+                completed: completed
             })
         )
     }

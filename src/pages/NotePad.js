@@ -21,6 +21,11 @@ const Notepad = () => {
     var note = null;
     if (id) note = notes.find(note => note.id === parseInt(id))
 
+    const pathname = window.location.pathname;
+
+    
+    const hideNote = pathname.includes("edit") || !id;
+
     return (
         <div id="note">
             <section id="note-left">
@@ -28,7 +33,7 @@ const Notepad = () => {
                 <NotesList notes={notes}/>
             </section>
             <section id="note-right">
-                {note ? <ShowNote note={note}/> : <NoteForm/>}
+                { hideNote ? <NoteForm note={note} /> : <ShowNote note={note}/> }
             </section>
         </div>
     )

@@ -1,3 +1,7 @@
 input[type=number] {
     width: 12vw;
 }
+
+.form div {
+    gap: 1.5vw;
+}

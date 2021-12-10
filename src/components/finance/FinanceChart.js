@@ -5,6 +5,8 @@ import {reducer, capitalize} from '../../Helpers';
 const FinanceChart = ({ transactions, type }) => {
     const dateTime = new Date()
 
+    var values;
+
     const allValues = () => {
         const byDirection = (transaction) => transaction.direction === type;
         const filteredTransactions = transactions.filter(byDirection)
@@ -39,12 +41,12 @@ const FinanceChart = ({ transactions, type }) => {
             byDay(filteredTransactions, 0)
         ]
 
-        const values = weeklyValues.map(transactions => {
+        values = weeklyValues.map(transactions => {
             var tv = transactions.map(transaction => transaction.amount)
             return tv.length > 0 ? tv.reduce(reducer) : 0
         });
-        return values
     }
+    allValues()
 
     const day = dateTime.getDay();
 
@@ -59,7 +61,7 @@ const FinanceChart = ({ transactions, type }) => {
             {
                 label: capitalize(type),
                 backgroundColor: '#d40819',
-                data: allValues()
+                data: values
             }
         ]
     }
@@ -67,7 +69,7 @@ const FinanceChart = ({ transactions, type }) => {
     return (
         <div>
             <h2>{type === "Expense" ? "💸" : "💰"} {type}</h2>
-            <p>${allValues().reduce(reducer)}</p>
+            <p>${values.reduce(reducer)}</p>
             <Bar data={chartData} />
         </div>
     )

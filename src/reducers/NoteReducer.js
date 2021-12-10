@@ -12,8 +12,8 @@ function noteReducer (notes = [], action) {
             return notes.filter(note => action.note !== note)
         case "UPDATE_NOTE":
             return notes.map((note) => {
-                if (note === action.note.oldNote) {
-                    note = action.note.newNote
+                if (note.id === action.note.id) {
+                    note = action.note
                 }
                 return note
             })

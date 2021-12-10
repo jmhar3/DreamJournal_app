@@ -14,8 +14,8 @@ function goalReducer (goals = [], action) {
             return goals.filter(goal => action.goal !== goal)
         case "UPDATE_GOAL":
             return goals.map((goal) => {
-                if (goal === action.goal.oldGoal) {
-                    goal = action.goal.newGoal
+                if (goal.id === action.goal.id) {
+                    goal = action.goal
                 }
                 return goal
             })
