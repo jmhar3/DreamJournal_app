@@ -31,7 +31,7 @@ const TransactionsList = ({ transactions }) => {
     const dispatch = useDispatch();
 
     return (
-        <ul>
+        <ul className="transactions-list">
             {transactions?.map(transaction => {
                 return (
                     <>

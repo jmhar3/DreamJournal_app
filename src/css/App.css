@@ -250,6 +250,6 @@ select {
 
 /* TRANSITIONS */
 
-.button, img, input, button, div {
+.button, img, input, button, div, a {
   transition: border-radius .3s, border .3s, color .3s, box-shadow .3s, background-color .3s;
 }

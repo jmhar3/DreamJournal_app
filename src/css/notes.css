@@ -103,6 +103,28 @@
     cursor: pointer;
 }
 
+.show-buttons {
+    position: fixed;
+    bottom: 1.2vw;
+    right: 1.2vw;
+    display: flex;
+    gap: .9vw;
+    align-items: center;
+}
+
+.show-buttons a, .show-buttons button {
+    padding: .9vw;
+    border: 2px solid var(--light-mid);
+    border-radius: 1.2vw;
+    color: var(--light);
+    background-color: var(--bold);
+}
+
+.show-buttons a:hover, .show-buttons button:hover {
+    border: 2px solid var(--strong);
+    border-radius: 3vw;
+}
+
 /* CATEGORIES */
 
 #category-input ul, #category-input, #category-input li {

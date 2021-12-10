@@ -154,7 +154,7 @@
     height: fit-content;
 }
 
-#db-transactions h4:hover {
+.transactions-list h4:hover {
     cursor: pointer;
     color: blue;
 }
