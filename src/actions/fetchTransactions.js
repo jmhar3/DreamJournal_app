@@ -1,7 +1,7 @@
 export function fetchTransactions() {
     return (dispatch) => {
         dispatch({ type: "START_ADDING_TRANSACTIONS_REQUEST" });
-        fetch("http://localhost:3000/transactions", {
+        fetch("http://localhost:3000/api/v1/transactions", {
             method: 'get',
             headers: {
                 'content-type': 'application/json',

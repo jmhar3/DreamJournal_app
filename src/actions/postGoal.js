@@ -1,7 +1,7 @@
 export function postGoal(goal) {
     return (dispatch) => {
         dispatch({ type: "POSTING_GOAL_REQUEST" });
-        fetch("http://localhost:3000/goals", {
+        fetch("http://localhost:3000/api/v1/goals", {
             method: 'post',
             headers: {
                 'content-type': 'application/json',

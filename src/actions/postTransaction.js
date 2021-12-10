@@ -1,7 +1,7 @@
 export function postTransaction(transaction) {
     return (dispatch) => {
         dispatch({ type: "POSTING_TRANSACTION_REQUEST" });
-        fetch("http://localhost:3000/transactions", {
+        fetch("http://localhost:3000/api/v1/transactions", {
             method: 'post',
             headers: {
                 'content-type': 'application/json',

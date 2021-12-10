@@ -1,7 +1,7 @@
 import { useRef } from "react"
 import { v4 as uuidv4 } from 'uuid';
 
-const CategoryForm = ({categories, addCategory, deleteCategory}) => {
+const CategoryInput = ({categories, addCategory, deleteCategory}) => {
     const categoryRef = useRef();
 
     return (
@@ -11,7 +11,7 @@ const CategoryForm = ({categories, addCategory, deleteCategory}) => {
                     {categories.map((category) => {
                         return (
                             <li key={uuidv4}>
-                                {category}
+                                {category.name}
                                 <button
                                     onClick={deleteCategory(category)}
                                 >✕</button>
@@ -27,4 +27,4 @@ const CategoryForm = ({categories, addCategory, deleteCategory}) => {
     )
 }
   
-export default CategoryForm;
+export default CategoryInput;

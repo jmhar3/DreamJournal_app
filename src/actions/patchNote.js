@@ -1,7 +1,7 @@
 export function patchNote(note) {
     return (dispatch) => {
         dispatch({ type: "PATCHING_NOTE_REQUEST" });
-        fetch(`http://localhost:3000/notes/${note.id}`, {
+        fetch(`http://localhost:3000/api/v1/notes/${note.id}`, {
             method: 'put',
             headers: {
                 'content-type': 'application/json',
