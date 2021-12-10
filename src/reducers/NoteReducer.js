@@ -1,5 +1,7 @@
 function noteReducer (notes = [], action) {
     switch (action.type) {
+        case "DELETING_NOTE_REQUEST":
+            return notes
         case "POSTING_NOTE_REQUEST":
             return notes
         case "START_ADDING_NOTES_REQUEST":

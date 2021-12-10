@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import React, { useState } from 'react';
+import React from 'react';
 import Home from './pages/Home.js';
 import Login from './pages/Login.js';
 import Dashboard from './pages/Dashboard.js';
@@ -35,6 +35,9 @@ function App() {
         />
         <Route path="/dashboard"
           element={!auth ? login_nav : <Dashboard /> }
+        />
+        <Route path="/notes"
+          element={!auth ? login_nav : <NotePad /> }
         />
         <Route path="/notes/new"
           element={!auth ? login_nav : <NotePad /> }

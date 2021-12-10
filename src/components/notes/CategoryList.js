@@ -1,12 +1,14 @@
 const CategoryForm = ({categories}) => {
     return (
         <>
-            {categories.length < 0 ? (
+            {categories.length > 0 ? (
                 <ul>
                     {categories.map((category) => {
-                        <li key={category.id}>
-                            {category.label}
-                        </li>
+                        return (
+                            <li key={category.id} className="label">
+                                {category.name}
+                            </li>
+                        )
                     })}
                 </ul>
             ) : null}

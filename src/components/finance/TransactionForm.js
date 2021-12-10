@@ -4,7 +4,6 @@ import {postTransaction} from '../../actions/postTransaction';
 import { userId } from "../../Helpers";
 
 const TransactionForm = () => {
-    const labelRef = useRef();
     const amountRef = useRef();
     const directionRef = useRef();
     const categoryRef = useRef();
