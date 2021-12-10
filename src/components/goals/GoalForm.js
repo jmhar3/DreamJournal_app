@@ -1,52 +1,38 @@
-import { useRef } from "react"
+import { useRef, useState } from "react";
 import { useDispatch } from 'react-redux';
-// import { useNavigate } from "react-router-dom";
 import {postGoal} from '../../actions/postGoal';
-import { userId } from "../../Helpers";
+import { userId, date } from "../../Helpers";
 
 function GoalForm() {
-    const dateTime = new Date()
-    const day = dateTime.getDate()
-    const month = dateTime.getMonth() + 1
-    const year = dateTime.getFullYear()
-    const hours = dateTime.getHours() + 1
-    const minutes = dateTime.getMinutes() + 1
-
-    const validDate = (date) => {
-        if (date.toString().length === 1) {
-            return "0" + date
-        } else {
-            return date
-        }
-    }
-
-    const today = year + "-" + validDate(month) + "-" + validDate(day) + "T" + validDate(hours) + ":" + validDate(minutes);
-
     const labelRef = useRef();
     const dueDateRef = useRef();
     const priorityRef = useRef();
 
+    const [dateState, setDateState] = useState(date)
+
+    const handleChange = (e) => {
+        setDateState(e.target.value)
+    }
+
+
     const dispatch = useDispatch();
-    // const navigate = useNavigate();
 
     const addGoal = () => {
         dispatch(
             postGoal({
                 user_id: userId,
                 label: labelRef.current.value,
-                due_date: dueDateRef.current.value,
+                due_date: dateState,
                 priority: priorityRef.current.value,
                 completed: false
             })
         )
     }
-
-    // navigate("/dashboard", { replace: true });
     
     return (
         <div className="form">
             <input type="text" ref={labelRef} placeholder="Goal" />
-            <input type="datetime-local" ref={dueDateRef}  value={today} min={today}/>
+            <input type="datetime-local" onChange={handleChange} value={dateState} min={date}/>
             <div>
                 <select ref={priorityRef}>
                     <option value="low">Low</option>
