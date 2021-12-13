@@ -4,8 +4,10 @@ import CategoryInput from './CategoryInput';
 import {postNote} from '../../actions/postNote';
 import {patchNote} from '../../actions/patchNote';
 import { userId } from "../../Helpers";
+import { useNavigate } from "react-router-dom";
 
 const NoteForm = ({note}) => {
+    const navigate = useNavigate();
     const noteExists = note !== null;
 
     const [state, setState] = useState({
@@ -46,15 +48,16 @@ const NoteForm = ({note}) => {
                 patchNote({
                     ...note,
                     ...state,
-                    categories_attributes: state.categories,
+                    categories_attributes: state.categories.map(cat => cat.name || cat),
                 })
             )
+            navigate(`/notes/${note.id}`, { replace: true})
         } else {
             dispatch(
                 postNote({
                     user_id: userId,
                     ...state,
-                    categories_attributes: state.categories,
+                    categories_attributes: state.categories.map(cat => cat.name || cat),
                 })
             )
         }

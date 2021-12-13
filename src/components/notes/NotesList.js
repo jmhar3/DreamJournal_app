@@ -1,12 +1,11 @@
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { v4 as uuidv4 } from 'uuid';
-import CategoryList from "./CategoryList";
 
 const NotesList = ({ notes }) => {
     const { id } = useParams();
 
-    // const noteCategories = (note) => note.categories ? note.categories.map(category => category.name).join(", ") : null;
+    const noteCategories = (note) => note.categories ? note.categories.map(cat => cat.name || cat).join(", ") : null;
 
     const selectedNote = (note) => parseInt(id) === note.id;
 
@@ -27,12 +26,9 @@ const NotesList = ({ notes }) => {
                                     <h3>{note.pinned ? "⭐" : null}</h3>
                                 </span>
                                 <p>
-                                    {note.content.length > 60 ? `${note.content.slice(0, 57)}...` : note.content}
+                                    {note.content.length > 50 ? `${note.content.slice(0, 50)}...` : note.content}
                                 </p>
-                                {/* <p className="label">{noteCategories(note)}</p> */}
-                                <span>
-                                    <CategoryList categories={note.categories} />
-                                </span>
+                                <p className="label">{noteCategories(note)}</p>
                             </li>
                         )
 
