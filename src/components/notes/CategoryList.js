@@ -1,3 +1,5 @@
+import { v4 as uuidv4 } from 'uuid';
+
 const CategoryForm = ({categories}) => {
     return (
         <>
@@ -5,7 +7,7 @@ const CategoryForm = ({categories}) => {
                 <ul>
                     {categories.map((category) => {
                         return (
-                            <li key={category.id} className="label">
+                            <li key={uuidv4} className="label">
                                 {category.name}
                             </li>
                         )
