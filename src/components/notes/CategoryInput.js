@@ -11,9 +11,9 @@ const CategoryInput = ({categories, addCategory, deleteCategory}) => {
                     {categories.map((category) => {
                         return (
                             <li key={uuidv4}>
-                                {category.name}
+                                {category}
                                 <button
-                                    onClick={deleteCategory(category)}
+                                    onClick={() => deleteCategory(category)}
                                 >✕</button>
                             </li>
                         )
