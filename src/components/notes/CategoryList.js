@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from 'uuid';
 
-const CategoryForm = ({categories}) => {
+const CategoryList = ({categories}) => {
     return (
         <>
             {categories.length > 0 ? (
@@ -18,4 +18,4 @@ const CategoryForm = ({categories}) => {
     )
 }
   
-export default CategoryForm;
+export default CategoryList;

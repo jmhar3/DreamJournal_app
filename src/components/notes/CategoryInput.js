@@ -24,7 +24,7 @@ const CategoryInput = ({ categories, addCategory, deleteCategory }) => {
     // console.log(categoryState)
 
     const handleChange = (e) => setCategoryInputState(e.target.value)
-console.log(categories)
+    
     return (
         <span id="category-input">
             {categories?.length > 0 ? (

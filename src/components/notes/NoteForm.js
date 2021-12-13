@@ -44,6 +44,7 @@ const NoteForm = ({note}) => {
         if (noteExists) {
             dispatch(
                 patchNote({
+                    ...note,
                     ...state,
                     categories_attributes: state.categories,
                 })

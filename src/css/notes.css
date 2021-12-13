@@ -10,13 +10,6 @@
     overflow: hidden;
 }
 
-/* #note-left h1 a {
-    border-top: 2px solid var(--light-mid);
-    border-radius: .9vw;
-    padding: .6vw;
-    background-color: var(--mid);
-} */
-
 #note-left li {
     margin-top: .9vw;
     background-color: var(--light-mid);
@@ -40,9 +33,12 @@
     color: var(--dark);
 }
 
-#note-left p {
-    height: 3.5vw;
-    overflow: clip;
+#note-left li span:last-of-type li {
+    background-color: var(--strong);
+    color: var(--light);
+    padding: .3vw;
+    padding-right: .9vw;
+    border-radius: .6vw;
 }
 
 #note-right {
@@ -127,6 +123,11 @@
 
 /* CATEGORIES */
 
+span#category-input {
+    justify-content: flex-start;
+    margin-top: .3vw;
+}
+
 #category-input ul, #category-input, #category-input li {
     display: flex;
     flex-direction: row;
@@ -145,9 +146,11 @@
     color: var(--strong);
     border-radius: .6vw;
     width: fit-content;
+    height: 3vw;
+    padding: 0;
     padding-left: .6vw;
     padding-right: .6vw;
-    background-color: var(--light)
+    background-color: var(--light);
 }
 
 #note-right #category-input input::placeholder {
