@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { useDispatch } from 'react-redux';
 import {postGoal} from '../../actions/postGoal';
 import {patchGoal} from '../../actions/patchGoal';
@@ -7,11 +7,12 @@ import { useNavigate } from "react-router-dom";
 import {deleteGoal} from '../../actions/deleteGoal';
 
 function GoalForm({goal}) {
+    const goalExists = goal !== null;
 
     const [state, setState] = useState({
-        label: (goal === null ? "" : goal.label),
-        priority: (goal === null ? "" : goal.priority),
-        dueDate: (goal === null ? date() : goal.due_date)
+        label: goalExists ? goal.label : "",
+        priority: (goalExists ? goal.priority : ""),
+        dueDate: (goalExists ? goal.due_date : date())
     })
 
     const handleChange = (e) => {
@@ -25,7 +26,7 @@ function GoalForm({goal}) {
     const dispatch = useDispatch();
 
     const addGoal = () => {
-        if (goal !== null) {
+        if (goalExists) {
             dispatch(
                 patchGoal({
                     ...goal,
@@ -44,6 +45,11 @@ function GoalForm({goal}) {
                     completed: false
                 })
             )
+            setState({
+                label: "",
+                priority: "",
+                dueDate: date()
+            })
         }
     }
 
@@ -58,15 +64,17 @@ function GoalForm({goal}) {
                     <option value="mid">Mid</option>
                     <option value="high">High</option>
                 </select>
+                { goal !== null ? 
                 <button onClick={() => {
                     dispatch(
                         deleteGoal(
                             goal
                         )
                     )
-                    navigate('/goals', { replace: true})
+                    navigate('/goals', { replace: true })
                     window.location.reload();
                 }} className="submit">Delete</button>
+                : null }
                 <button onClick={addGoal} className="submit">{goal === null ? "Submit" : "Save"}</button>
             </div>
         </div>

@@ -3,9 +3,7 @@ import { Link } from "react-router-dom";
 
 const PinnedNotes = ({ notes }) => {
 
-    function isPinned(note) {
-        return note.pinned === true;
-    }
+    const isPinned = (note) => note.pinned === true;
 
     const pinnedNotes = notes.filter(isPinned);
 
