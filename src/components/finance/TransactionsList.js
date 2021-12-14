@@ -46,7 +46,7 @@ const TransactionsList = ({ transactions }) => {
                                 </div>
                             </span>
                             <span>
-                                <p>{transaction.direction === 'income' ? "+" : "-"}${transaction.amount}</p>
+                                <p>{transaction.direction === 'income' ? "+" : "-"}${Number.parseFloat(transaction.amount).toFixed(2)}</p>
                                 <h4 onClick={() => {
                                     dispatch(
                                         deleteTransaction(

@@ -1,10 +1,10 @@
 import GoalForm from '../components/goals/GoalForm';
 import GoalList from '../components/goals/GoalList';
-import { Link } from "react-router-dom";
 import { fetchGoals } from "../actions/fetchGoals";
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from "react-router-dom";
+import { date } from "../Helpers";
 
 const GoalPage = () => {
     const dispatch = useDispatch();
@@ -15,12 +15,8 @@ const GoalPage = () => {
 
     const goalData = useSelector(state => state.goals)
 
-    var goals;
-    if (goalData.length !== 0) {
-        goals = <GoalList goals={goalData} />
-    } else {
-        goals = <Link to="/goalpage" className="button">Get your sh*t together</Link>
-    }
+    const pastGoals = goalData.filter(goal => goal.due_date < date() && goal.completed !== true)
+    const futureGoals = goalData.filter(goal => goal.due_date > date())
 
     const { id } = useParams();
 
@@ -30,17 +26,27 @@ const GoalPage = () => {
     return (
         <div id="goal-db" >
             <section className="dashboard-left">
-                <h1>Create Goal</h1>
+                <h1>{id ? 'Edit' : 'Create'} Goal</h1>
                 <GoalForm goal={goal}/>
             </section>
             <section className="dashboard-right ">
                 <div className="dashboard-goals">
-                    <h2>Upcoming Goals</h2>
-                    {goals}
+                    {pastGoals.length > 0 ?
+                    <>
+                        <h2>Past Goals</h2>
+                        <GoalList goals={pastGoals} />
+                    </>
+                    : null }
+                    {pastGoals.length > 0 ?
+                    <>
+                        <h2>Upcoming Goals</h2>
+                        <GoalList goals={futureGoals} />
+                    </>
+                    : null }
                 </div>
             </section>
         </div>
     )
 }
-  
+
 export default GoalPage;

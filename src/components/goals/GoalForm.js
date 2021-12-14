@@ -9,17 +9,17 @@ import {deleteGoal} from '../../actions/deleteGoal';
 function GoalForm({goal}) {
     const [state, setState] = useState({
         label: null,
-        priority: null,
-        dueDate: null
+        priority: 'low',
+        dueDate: date()
     })
 
     useEffect(() => {
         setState({
             label: goal?.label || "",
-            priority: goal?.priority || "",
+            priority: goal?.priority || "low",
             dueDate: goal?.due_date || date()
         })
-    })
+    }, [])
 
     const handleChange = (e) => {
         setState({
@@ -53,7 +53,7 @@ function GoalForm({goal}) {
             )
             setState({
                 label: "",
-                priority: "",
+                priority: "low",
                 dueDate: date()
             })
         }
