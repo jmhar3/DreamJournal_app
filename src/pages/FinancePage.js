@@ -14,7 +14,7 @@ const FinancePage = () => {
     const transactions = useSelector(state => state.transactions)
 
     return (
-        <div id="goal-db" >
+        <div id="form-db" >
             <section className="dashboard-left">
                 <h1>Record Transaction</h1>
                 <TransactionForm />

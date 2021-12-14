@@ -24,7 +24,7 @@ const GoalPage = () => {
     if (id) goal = goalData.find(goal => goal.id === parseInt(id))
     
     return (
-        <div id="goal-db" >
+        <div id="form-db" >
             <section className="dashboard-left">
                 <h1>{id ? 'Edit' : 'Create'} Goal</h1>
                 <GoalForm goal={goal}/>
