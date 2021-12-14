@@ -17,6 +17,7 @@ const GoalPage = () => {
 
     const pastGoals = goalData.filter(goal => goal.due_date < date() && goal.completed !== true)
     const futureGoals = goalData.filter(goal => goal.due_date > date())
+    const completedGoals = goalData.filter(goal => goal.completed === true)
 
     const { id } = useParams();
 
@@ -33,14 +34,20 @@ const GoalPage = () => {
                 <div className="dashboard-goals">
                     {pastGoals.length > 0 ?
                     <>
-                        <h2>Past Goals</h2>
+                        <h3>Past Goals</h3>
                         <GoalList goals={pastGoals} />
                     </>
                     : null }
                     {pastGoals.length > 0 ?
                     <>
-                        <h2>Upcoming Goals</h2>
+                        <h3>Upcoming Goals</h3>
                         <GoalList goals={futureGoals} />
+                    </>
+                    : null }
+                    {pastGoals.length > 0 ?
+                    <>
+                        <h3>Completed Goals</h3>
+                        <GoalList goals={completedGoals} />
                     </>
                     : null }
                 </div>

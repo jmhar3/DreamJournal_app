@@ -95,7 +95,7 @@
     justify-content: space-between;
 }
 
-.dashboard-goals h2 {
+.dashboard-goals h3 {
     margin-bottom: .9vw;
 }
 
@@ -225,5 +225,4 @@
 
 .gyst-button {
     padding: .45vw .9vw .45vw .9vw;
-    width: 100%;
 }
