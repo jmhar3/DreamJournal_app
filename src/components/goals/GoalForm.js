@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch } from 'react-redux';
 import {postGoal} from '../../actions/postGoal';
 import {patchGoal} from '../../actions/patchGoal';
@@ -7,13 +7,18 @@ import { useNavigate } from "react-router-dom";
 import {deleteGoal} from '../../actions/deleteGoal';
 
 function GoalForm({goal}) {
-    console.log(goal.label)
-    const goalExists = goal !== null;
-
     const [state, setState] = useState({
-        label: goalExists ? goal.label : "",
-        priority: (goalExists ? goal.priority : ""),
-        dueDate: (goalExists ? goal.due_date : date())
+        label: null,
+        priority: null,
+        dueDate: null
+    })
+
+    useEffect(() => {
+        setState({
+            label: goal?.label || "",
+            priority: goal?.priority || "",
+            dueDate: goal?.due_date || date()
+        })
     })
 
     const handleChange = (e) => {
@@ -27,7 +32,7 @@ function GoalForm({goal}) {
     const dispatch = useDispatch();
 
     const addGoal = () => {
-        if (goalExists) {
+        if (goal) {
             dispatch(
                 patchGoal({
                     ...goal,
@@ -76,7 +81,7 @@ function GoalForm({goal}) {
                     window.location.reload();
                 }} className="submit">Delete</button>
                 : null }
-                <button onClick={addGoal} className="submit">{goal === null ? "Submit" : "Save"}</button>
+                <button onClick={addGoal} className="submit">{!goal ? "Submit" : "Save"}</button>
             </div>
         </div>
     )
