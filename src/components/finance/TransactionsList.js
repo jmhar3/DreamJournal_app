@@ -50,7 +50,9 @@ const TransactionsList = ({ transactions }) => {
                                         deleteTransaction(
                                             transaction
                                         )
-                                    )}}
+                                    )
+                                    window.location.reload();
+                                }}
                                 >✕</h4>
                             </span>
                         </li>

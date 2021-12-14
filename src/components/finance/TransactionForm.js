@@ -1,13 +1,22 @@
-import { useRef } from "react"
+import { useState } from "react"
 import { useDispatch } from 'react-redux';
 import {postTransaction} from '../../actions/postTransaction';
 import { userId } from "../../Helpers";
 
 const TransactionForm = () => {
-    const amountRef = useRef();
-    const directionRef = useRef();
-    const categoryRef = useRef();
-    const descriptionRef = useRef();
+    const [state, setState] = useState({
+        amount: "",
+        direction: "",
+        category: "",
+        description: ""
+    });
+
+    const handleChange = (e) => {
+        setState({
+            ...state,
+            [e.target.name]: e.target.value
+        })
+    }
 
     const dispatch = useDispatch();
 
@@ -15,22 +24,43 @@ const TransactionForm = () => {
         dispatch(
             postTransaction({
                 user_id: userId,
-                amount: amountRef.current.value,
-                direction: directionRef.current.value,
-                category: categoryRef.current.value,
-                description: descriptionRef.current.value
+                amount: state.amount,
+                direction: state.direction,
+                category: state.category,
+                description: state.description
             })
         )
+        setState({
+            amount: "",
+            direction: "",
+            category: "",
+            description: ""
+        })
     }
 
     return (
         <div className="form">
             <div>
-                <input type="text" placeholder="Description" ref={descriptionRef} />
-                <label>$ <input type="number" placeholder="0.00" ref={amountRef} /></label>
+                <input type="text"
+                    placeholder="Description"
+                    value={state.description}
+                    onChange={handleChange}
+                    name="description"
+                />
+                <label>$ <input
+                    type="number"
+                    placeholder="0.00"
+                    value={state.amount}
+                    onChange={handleChange}
+                    name="amount" 
+                /></label>
             </div>
             <div>
-                <select ref={categoryRef}>
+                <select
+                    value={state.category} 
+                    onChange={handleChange}
+                    name="category"
+                >
                     <option value="none">Category</option>
                     <option value="business">💼 Business</option>
                     <option value="clothing">🧥 Clothing</option>
@@ -47,7 +77,11 @@ const TransactionForm = () => {
                     <option value="utility">📱 Utility</option>
                     <option value="other">🏦 Other</option>
                 </select>
-                <select ref={directionRef}>
+                <select
+                    value={state.direction}
+                    onChange={handleChange}
+                    name="direction"
+                >
                     <option value="income">Incoming</option>
                     <option value="expense">Outgoing</option>
                 </select>
