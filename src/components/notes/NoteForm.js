@@ -8,13 +8,12 @@ import { useNavigate } from "react-router-dom";
 
 const NoteForm = ({note}) => {
     const navigate = useNavigate();
-    const noteExists = note !== null;
 
     const [state, setState] = useState({
-        title: (noteExists ? note.title : ""),
-        content: (noteExists ? note.content : ""),
-        pinned: (noteExists ? note.pinned : false),
-        categories: (noteExists ? [...note.categories] : [])
+        title: note?.title || "",
+        content: note?.content || "",
+        pinned: note?.pinned || false,
+        categories: note ? [...note.categories] : []
     })
 
     const handleChange = (e) => {
@@ -43,7 +42,7 @@ const NoteForm = ({note}) => {
     const dispatch = useDispatch();
 
     const addNote = () => {
-        if (noteExists) {
+        if (note) {
             dispatch(
                 patchNote({
                     ...note,
