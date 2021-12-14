@@ -6,8 +6,8 @@ import { userId } from "../../Helpers";
 const TransactionForm = () => {
     const [state, setState] = useState({
         amount: "",
-        direction: "",
-        category: "",
+        direction: "income",
+        category: "business",
         description: ""
     });
 
@@ -32,8 +32,8 @@ const TransactionForm = () => {
         )
         setState({
             amount: "",
-            direction: "",
-            category: "",
+            direction: "income",
+            category: "business",
             description: ""
         })
     }
@@ -61,7 +61,7 @@ const TransactionForm = () => {
                     onChange={handleChange}
                     name="category"
                 >
-                    <option value="none">Category</option>
+                    <option value="none" disabled>Category</option>
                     <option value="business">💼 Business</option>
                     <option value="clothing">🧥 Clothing</option>
                     <option value="debt">💳 Debt</option>
@@ -82,6 +82,7 @@ const TransactionForm = () => {
                     onChange={handleChange}
                     name="direction"
                 >
+                    <option value="none" disabled>Direction</option>
                     <option value="income">Incoming</option>
                     <option value="expense">Outgoing</option>
                 </select>

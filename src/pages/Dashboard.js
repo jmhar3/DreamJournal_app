@@ -109,7 +109,9 @@ const Dashboard = () => {
                 </section>
                 <section id="transaction-stats">
                     <div id="db-finance-categories">
-                        <FinanceCategories transactions={transactions} />
+                        <FinanceCategories type={'expense'} transactions={transactions} />
+                        <hr/>
+                        <FinanceCategories type={'income'} transactions={transactions} />
                     </div>
                     <div id="db-transactions">
                         {renderTransactions}

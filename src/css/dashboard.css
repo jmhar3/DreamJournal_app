@@ -110,7 +110,7 @@
     background-color: var(--light)
 }
 
-.dashboard-goals li, #db-transactions li, #db-header {
+.dashboard-goals li, #db-transactions li, #db-header, #db-finance-categories span, #db-finance-categories li {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -152,6 +152,29 @@
 #db-transactions, #db-finance-categories {
     width: 50%;
     height: fit-content;
+}
+
+.doughnut {
+    width: 16vw;
+    height: 16vw;
+}
+
+#db-finance-categories h2 {
+    margin-bottom: .9vw;
+    text-align: center;
+}
+
+#db-finance-categories li {
+    justify-content: flex-start;
+    gap: .9vw;
+    margin-left: 1.2vw;
+}
+
+#db-finance-categories li div {
+    border-radius: 100vw;
+    width: 1.5vw;
+    height: 1.5vw;
+    padding: 0;
 }
 
 .transactions-list h4:hover {

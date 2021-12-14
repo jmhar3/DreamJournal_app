@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import {deleteGoal} from '../../actions/deleteGoal';
 
 function GoalForm({goal}) {
+    console.log(goal.label)
     const goalExists = goal !== null;
 
     const [state, setState] = useState({
