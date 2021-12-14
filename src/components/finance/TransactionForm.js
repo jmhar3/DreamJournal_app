@@ -72,6 +72,7 @@ const TransactionForm = () => {
                     <option value="home">🏡 Home</option>
                     <option value="insurance">🚘 Insurance</option>
                     <option value="personal">💇🏽 Personal</option>
+                    <option value="pet">🐶 Pet Care</option>
                     <option value="savings">💰 Savings</option>
                     <option value="transport">🛩️ Transport</option>
                     <option value="utility">📱 Utility</option>

@@ -1,6 +1,6 @@
-import { Bar } from 'react-chartjs-2';
-import Chart from 'chart.js/auto';
-import {reducer, capitalize} from '../../Helpers';
+import { reducer, capitalize } from '../../Helpers';
+import 'chart.js/auto';
+import { Chart } from 'react-chartjs-2';
 
 const FinanceChart = ({ transactions, type }) => {
     const dateTime = new Date()
@@ -40,11 +40,13 @@ const FinanceChart = ({ transactions, type }) => {
         ]
 
         const values = weeklyValues.map(transactions => {
-            var tv = transactions.map(transaction => transaction.amount)
+            var tv = transactions.map(transaction => parseFloat(transaction.amount))
             return tv.length > 0 ? tv.reduce(reducer) : 0
         });
         return values
     }
+
+    const amounts = allValues()
 
     const day = dateTime.getDay();
 
@@ -52,23 +54,23 @@ const FinanceChart = ({ transactions, type }) => {
         'Thu', 'Fri', 'Sat', 'Sun']
 
     const adjustedLabels = dailyLabels.slice(day).concat(dailyLabels.slice(0, day))
-
-    const chartData = {
-        labels: adjustedLabels,
-        datasets: [
-            {
-                label: capitalize(type),
-                backgroundColor: '#d40819',
-                data: allValues()
-            }
-        ]
-    }
     
+    const calcPercent = (num) => (num/Math.max(...amounts.map(a => parseInt(a))))*100
+
     return (
         <div>
-            <h2>{type === "Expense" ? "💸" : "💰"} {capitalize(type)}</h2>
-            <p>${allValues().reduce(reducer)}</p>
-            <Bar data={chartData} />
+            <h2>{type === "expense" ? "💸" : "🤑"} {capitalize(type)}</h2>
+            <p>${Number.parseFloat(amounts.reduce(reducer)).toFixed(2)}</p>
+            <ul>
+                {adjustedLabels.map((day, i) => {
+                    return (
+                        <li>
+                            <hr className="chart-hr" style={{height: `${calcPercent(amounts[i])}%`}}/>
+                            {day}
+                        </li>
+                    )
+                })}
+            </ul>
         </div>
     )
 }

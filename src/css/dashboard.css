@@ -83,7 +83,7 @@
 .dashboard-goals, #db-transactions {
     padding: 1.8vw;
     width: 100%;
-    height: 69vh;
+    height: 90vh;
     -moz-box-shadow: 0 -3px 6px var(--strong) inset;
     -webkit-box-shadow: 0 -3px 6px var(--strong) inset;
     box-shadow: 0 -3px 6px var(--strong) inset;
@@ -110,12 +110,11 @@
     background-color: var(--light)
 }
 
-.dashboard-goals li, #db-transactions li, #db-header, #db-finance-categories span, #db-finance-categories li {
+.dashboard-goals li, #db-transactions li, #db-header, #db-finance-categories span, #db-finance-categories li, .finance-charts ul {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-
 }
 
 .goal-label {
@@ -144,6 +143,32 @@
     padding-bottom: 1.2vw;
 }
 
+.finance-charts p {
+    margin-top: .3vw;
+    font-size: 1.5vw;
+}
+
+.finance-charts ul {
+    height: 15vw;
+    margin: 0;
+}
+
+.finance-charts li {
+    height: 100%;
+    color: var(--light);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.chart-hr {
+    border: 9px solid var(--bold);
+    background-color: var(--bold);
+    opacity: 1;
+    width: 1.5vw;
+}
+
 #transaction-stats {
     align-items: flex-start;
     justify-content: space-between;
@@ -152,6 +177,7 @@
 #db-transactions, #db-finance-categories {
     width: 50%;
     height: fit-content;
+    margin-bottom: 2.1%;
 }
 
 .doughnut {
@@ -195,4 +221,8 @@
     padding: 0;
     border: var(--light) solid 2px;
     cursor: default;
+}
+
+.gyst-button {
+    padding: .45vw .9vw .45vw .9vw;
 }

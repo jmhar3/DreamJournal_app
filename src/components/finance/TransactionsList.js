@@ -21,6 +21,8 @@ const TransactionsList = ({ transactions }) => {
                 return "🏡"
             case 'personal':
                 return "💇🏽"
+            case 'pet':
+                return "🐶"
             case 'transport':
                 return "🛩️"
             default:

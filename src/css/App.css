@@ -156,7 +156,7 @@ li {
 hr {
   border-top: 3px solid var(--strong);
   background-color: var(--strong);
-  border-radius: 9px;
+  border-radius: 9vw;
   margin-top: .9vw;
   margin-bottom: .9vw;
 }
