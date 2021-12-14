@@ -139,6 +139,10 @@ span#category-input {
     padding: 0;
 }
 
+.form #category-input button {
+    color: var(--light);
+}
+
 #category-input button:hover {
     color: var(--bold);
 }
@@ -160,11 +164,19 @@ span#category-input {
 
 #note-right #category-input input:hover {
     border: 2px solid var(--bold);
+    color: var(--bold);
+}
+
+#note-right textarea::placeholder {
+    color: var(--dark);
+}
+
+#note-right input:hover::placeholder, #note-right textarea:hover::placeholder {
+    color: var(--bold);
 }
 
 #category-input li, #category-input button  {
     background-color: var(--strong);
-    color: var(--light);
 }
 
 #category-list li {
