@@ -19,7 +19,7 @@ const SignUp = () => {
 
     function onSubmit(e) {
         e.preventDefault();
-        fetch("http://localhost:3000/signup", {
+        fetch("http://localhost:3000/api/v1/signup", {
             method: 'post',
             headers: {
                  'content-type': 'application/json',

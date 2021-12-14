@@ -60,7 +60,7 @@ const FinanceCategories = ({ transactions, type }) => {
                 <ul>
                     {reduceCategories().map((cat, i) => {
                         return (
-                            <li><div style={{ backgroundColor: colours[i] }}></div> {cat}</li>
+                            <li><div style={{ backgroundColor: colours[i] }}></div> {capitalize(cat)}</li>
                         )
                     })}
                 </ul>

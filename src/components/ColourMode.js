@@ -1,5 +1,4 @@
 import React from "react"
-import "../css/colour_mode.css"
 
 const ColourMode = () => {
     const theme = localStorage.getItem("theme");

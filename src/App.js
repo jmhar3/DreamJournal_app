@@ -9,6 +9,7 @@ import NotePad from './pages/NotePad.js';
 import Nav from './components/Nav.js';
 import 'react-circular-progressbar/dist/styles.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import "./css/colour_mode.css";
 import './css/App.css';
 import './css/home.css';
 import './css/nav.css';
