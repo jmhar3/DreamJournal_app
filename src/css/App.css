@@ -70,6 +70,10 @@ a {
   text-decoration: none;
 }
 
+a:hover {
+  color: var(--bold);
+}
+
 /* COLOURS */
 
 .light {
@@ -172,7 +176,7 @@ hr {
 }
 
 .checkbox:hover {
-  background-color: var(--strong);
+  /* background-color: var(--strong); */
 }
 
 /* Form Fields */
@@ -186,7 +190,7 @@ input, textarea, select {
   outline: none;
 }
 
-input:hover, textarea:hover {
+input:hover, textarea:hover, select:hover, .checkbox:hover {
   border-radius: 3vw;
   box-shadow: 0 1px 6px 1px var(--strong);
 }

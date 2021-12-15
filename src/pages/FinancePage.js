@@ -21,7 +21,9 @@ const FinancePage = () => {
             </section>
             <section className="dashboard-right ">
                 <div className="dashboard-goals">
+                    {transactions.length > 0 ?
                     <TransactionsList transactions={transactions} />
+                    : <h3>No transactions to show.</h3>}
                 </div>
             </section>
         </div>

@@ -15,9 +15,11 @@ const GoalPage = () => {
 
     const goalData = useSelector(state => state.goals)
 
-    const pastGoals = goalData.filter(goal => goal.due_date < date() && goal.completed !== true)
-    const futureGoals = goalData.filter(goal => goal.due_date > date())
-    const completedGoals = goalData.filter(goal => goal.completed === true)
+    const completed = (goal) => goal.completed === true
+
+    const pastGoals = goalData.filter(goal => goal.due_date < date() && !completed(goal))
+    const futureGoals = goalData.filter(goal => goal.due_date > date() && !completed(goal))
+    const completedGoals = goalData.filter(goal => completed(goal))
 
     const { id } = useParams();
 
