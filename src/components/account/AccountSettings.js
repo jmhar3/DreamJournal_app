@@ -1,13 +1,17 @@
 import settings from '../../images/settings.png';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const AccountSettings = () => {
     const [accountMenu, setAccount] = useState(false)
     const showAccountMenu = () => setAccount(true);
     const hideAccount = () => setAccount(false);
 
+    const navigate = useNavigate();
+
     async function signOut() {
         localStorage.removeItem("jwt");
+        navigate('/', { replace: true})
         window.location.reload();
     }
 
