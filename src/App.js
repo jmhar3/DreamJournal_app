@@ -6,7 +6,7 @@ import Dashboard from './pages/Dashboard.js';
 import FinancePage from './pages/FinancePage.js';
 import GoalPage from './pages/GoalPage.js';
 import NotePad from './pages/NotePad.js';
-import Nav from './components/WebNav.js';
+import Nav from './components/nav/Nav.js';
 import 'react-circular-progressbar/dist/styles.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./css/colour_mode.css";
