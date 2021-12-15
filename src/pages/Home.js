@@ -1,4 +1,8 @@
 import { Link } from "react-router-dom";
+import dashboard from '../images/DJ-Dashboard.png';
+import goal from '../images/DJ-Goal.png';
+import note from '../images/DJ-Note.png';
+import finance from '../images/DJ-Transaction.png';
 
 const Home = () => {
   return (
@@ -11,10 +15,25 @@ const Home = () => {
           <Link to="/login" class="button">Get Started</Link>
         </section>
         <section id="hp-third">
-          <h2>Manage your goals, notes, finances + so much more...</h2>
+          <div className="window">
+            <section>
+              <div></div>
+              <div></div>
+              <div></div>
+            </section>
+            <img src={note} alt="Dashboard" />
+          </div>
         </section>
       </div>
       <section id="hp-fourth">
+          <div className="window">
+            <section>
+              <div></div>
+              <div></div>
+              <div></div>
+            </section>
+            <img src={dashboard} alt="Goal Form Page" />
+          </div>
       </section>
     </div>
   )
