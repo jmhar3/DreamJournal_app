@@ -154,11 +154,12 @@ li {
 }
 
 hr {
-  border-top: 3px solid var(--strong);
-  background-color: var(--strong);
+  border-top: 3px solid var(--light);
+  background-color: var(--light);
   border-radius: 9vw;
   margin-top: .9vw;
   margin-bottom: .9vw;
+  opacity: .9;
 }
 
 .checkbox {

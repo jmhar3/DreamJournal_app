@@ -163,7 +163,7 @@
 }
 
 .chart-hr {
-    border: 9px solid var(--bold);
+    border: .9vw solid var(--bold);
     background-color: var(--bold);
     opacity: 1;
     width: 1.5vw;
@@ -194,6 +194,9 @@
     justify-content: flex-start;
     gap: .9vw;
     margin-left: 1.2vw;
+    color: var(--dark);
+    font-family: 'Regular';
+    font-weight: bold;
 }
 
 #db-finance-categories li div {

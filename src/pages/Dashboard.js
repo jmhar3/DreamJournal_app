@@ -121,7 +121,7 @@ const Dashboard = () => {
             <section className="dashboard-right">
                 <div className="dashboard-goals">
                     <span>
-                        <h2>Todays Focus</h2>
+                        <h3>Todays Focus</h3>
                         <Link to="/newgoal" className="button">+</Link>
                     </span>
                     <GoalProgressBar goals={todaysGoals}/>
