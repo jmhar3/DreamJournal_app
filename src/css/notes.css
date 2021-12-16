@@ -29,15 +29,25 @@
     height: fit-content;
 }
 
-#note-left h3 {
+#note-left h3 a {
     color: var(--dark);
+}
+
+#note-left h3 a:hover {
+    color: var(--bold);
 }
 
 #note-left h1 a {
     background-color: var(--light-mid);
-    border: 2px solid var(--strong);
+    border: 2px solid var(--mid);
     border-radius: .9vw;
     padding: .3vw .9vw .3vw .9vw;
+}
+
+#note-left h1 a:hover {
+    background-color: var(--mid);
+    border: 2px solid var(--strong);
+    border-radius: 1.2vw;
 }
 
 #note-right {
@@ -84,8 +94,15 @@
     color: var(--dark);
 }
 
-#note-right .label, #note-right hr {
+#note-right ul .label {
     font-size: 1.2vw;
+    color: var(--light);
+    background-color: var(--strong);
+}
+
+#note-right hr {
+    border: 2px solid var(--mid);
+    background-color: var(--mid);
 }
 
 #note-right .submit {
@@ -145,6 +162,7 @@ span#category-input {
 
 #category-input button:hover {
     color: var(--bold);
+    border-radius: 1.2vw;
 }
 
 #note-right #category-input input, #note-right #category-input input::placeholder, #category-input li, #category-input button {
@@ -165,6 +183,7 @@ span#category-input {
 #note-right #category-input input:hover {
     border: 2px solid var(--bold);
     color: var(--bold);
+    border-radius: 1.2vw;
 }
 
 #note-right textarea::placeholder {
@@ -177,10 +196,10 @@ span#category-input {
 
 #category-input li, #category-input button  {
     background-color: var(--strong);
+    color: var(--light);
 }
 
 #category-list li {
-    background-color: var(--strong);
     color: var(--light);
     padding: .3vw .6vw .3vw .6vw;
     border-radius: .6vw;

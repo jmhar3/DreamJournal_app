@@ -40,13 +40,13 @@ const GoalPage = () => {
                         <GoalList goals={pastGoals} />
                     </>
                     : null }
-                    {pastGoals.length > 0 ?
+                    {futureGoals.length > 0 ?
                     <>
                         <h3>Upcoming Goals</h3>
                         <GoalList goals={futureGoals} />
                     </>
                     : null }
-                    {pastGoals.length > 0 ?
+                    {completedGoals.length > 0 ?
                     <>
                         <h3>Completed Goals</h3>
                         <GoalList goals={completedGoals} />
