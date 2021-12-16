@@ -35,7 +35,7 @@
     }
     
     .menu-icon img {
-        height: 12vw;
+        height: 9vw;
         border-radius: 2.4vw;
         border: var(--light-mid) solid 2px;
     }
@@ -56,5 +56,13 @@
 
     .dashboard-left h3 {
         font-size: 3.3vw;
+    }
+
+    #account-settings button {
+        font-size: 3vw;
+    }
+    
+    #db-header {
+        padding-top: 0;
     }
 }

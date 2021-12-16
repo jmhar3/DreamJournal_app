@@ -6,6 +6,10 @@
     .dashboard-right {
         width: 30%;
     }
+
+    #db-header {
+        padding-top: 3vw;
+    }
 }
 
 .dashboard-left {
@@ -47,10 +51,6 @@
     justify-content: center;
     align-items: center;
     gap: 1.2vw;
-}
-
-#db-header {
-    padding-top: 3vw;
 }
 
 #db-notes ul {
@@ -122,6 +122,10 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+}
+
+#db-header {
+    align-items: flex-end;
 }
 
 .goal-label {

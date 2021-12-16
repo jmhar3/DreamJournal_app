@@ -14,8 +14,13 @@
   --high: #eb0d1f;
 }
 
+@media only screen and (min-width: 600px) {
+  body {
+    padding-left: 4.5vw;
+  }
+}
+
 body {
-  padding-left: 4.5vw;
   background-color: var(--light);
   height: 100%;
   overscroll-behavior: none;
