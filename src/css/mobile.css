@@ -1,4 +1,15 @@
 @media only screen and (max-width: 600px) {
+    @media (prefers-color-scheme: dark) {
+        body {
+            --light: #0f0f0f;
+            --light-mid: #202020;
+            --mid: #1d1d1d;
+            --strong: #2e2e2e;
+            --bold: #ffd5db;
+            --dark: #fde3e7;
+        }
+    }
+
     /* NAV */
     header {
         position: fixed;
