@@ -8,11 +8,10 @@ const Nav = () => {
         )
     } else{
         return (
-            // <MobileNav />
-            <WebNav />
+            <MobileNav />
+            // <WebNav />
         )
     }
-
 }
 
 export default Nav;

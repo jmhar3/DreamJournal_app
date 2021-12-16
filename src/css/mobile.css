@@ -28,4 +28,22 @@
         border-radius: 2.4vw;
         border: var(--light-mid) solid 2px;
     }
+
+    /* DASHBOARD */
+
+    .dashboard-left {
+        width: 100%;
+    }
+      
+    .dashboard-right {
+        width: 100%;
+    }
+
+    .dashboard-left h1 {
+        font-size: 4.5vw;
+    }
+
+    .dashboard-left h3 {
+        font-size: 3.3vw;
+    }
 }
