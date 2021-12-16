@@ -1,8 +1,6 @@
 import { Doughnut } from 'react-chartjs-2';
 import randomColor from 'randomcolor';
 import { reducer, capitalize } from "../../Helpers";
-// import { defaults } from 'react-chartjs-2';
-// defaults.global.legend.display = false;
 
 const FinanceCategories = ({ transactions, type }) => {
     const byDirection = (transaction) => transaction.direction === type;
@@ -20,10 +18,12 @@ const FinanceCategories = ({ transactions, type }) => {
     const amounts = () => {
         return reduceCategories().map(category => {
             const filteredTransactions = filteredByDirection.filter(transaction => transaction.category === category)
-            const filteredAmounts = filteredTransactions.map(transaction => transaction.amount)
+            const filteredAmounts = filteredTransactions.map(transaction => parseFloat(transaction.amount))
             return filteredAmounts.reduce(reducer)
         })
     }
+
+    console.log(amounts())
 
     var colours = []
     const setColours = () => reduceCategories().map(() => colours.push(randomColor()));
