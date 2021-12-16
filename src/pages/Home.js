@@ -7,11 +7,11 @@ import finance from '../images/DJ-Transaction.png';
 const Home = () => {
   return (
     <div id="homepage">
-      <section id="hp-first">
+      <section className="hp-first">
         <h1>Get your sh*t together</h1>
       </section>
       <div class="light">
-        <section id="hp-second">
+        <section className="hp-second">
           <Link to="/login" class="button">Get Started</Link>
         </section>
         <section id="hp-third">
@@ -35,6 +35,28 @@ const Home = () => {
             <img src={dashboard} alt="Goal Form Page" />
           </div>
       </section>
+      <section className="hp-first">
+          <div className="window">
+            <section>
+              <div></div>
+              <div></div>
+              <div></div>
+            </section>
+            <img src={goal} alt="Dashboard" />
+          </div>
+      </section>
+      <div class="light">
+        <section className="hp-second">
+          <div className="window">
+            <section>
+              <div></div>
+              <div></div>
+              <div></div>
+            </section>
+            <img src={finance} alt="Dashboard" />
+          </div>
+        </section>
+      </div>
     </div>
   )
 }

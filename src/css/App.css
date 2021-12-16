@@ -117,6 +117,7 @@ button {
 
 .button:hover, .submit:hover, button:hover {
   border-radius: 30vw;
+  border: var(--strong) solid 2px;
   color: var(--bold);
 }
 
@@ -173,10 +174,6 @@ hr {
   text-align: center;
   border-radius: 30vw;
   cursor: pointer;
-}
-
-.checkbox:hover {
-  /* background-color: var(--strong); */
 }
 
 /* Form Fields */
@@ -255,6 +252,6 @@ select {
 
 /* TRANSITIONS */
 
-.button, img, input, button, div, a {
+.button, img, input, button, div, a, li {
   transition: border-radius .3s, border .3s, color .3s, box-shadow .3s, background-color .3s;
 }

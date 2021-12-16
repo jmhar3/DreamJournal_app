@@ -55,6 +55,7 @@ header a img:hover, header button img:hover {
 #colour_modes button {
     height: 3vw;
     width: 3vw;
+    border: none;
 }
 
 button#pink_mode {

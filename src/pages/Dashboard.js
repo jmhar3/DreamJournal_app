@@ -122,7 +122,7 @@ const Dashboard = () => {
                 <div className="dashboard-goals">
                     <span>
                         <h3>Todays Focus</h3>
-                        <Link to="/newgoal" className="button">+</Link>
+                        <Link to="/goals/new" className="button">+</Link>
                     </span>
                     <GoalProgressBar goals={todaysGoals}/>
                     {renderGoals}

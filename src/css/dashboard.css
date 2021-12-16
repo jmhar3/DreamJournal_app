@@ -100,9 +100,8 @@
 }
 
 .dashboard-goals span .button {
-    font-size: 2.7vw;
-    padding-top: 0;
-    padding-bottom: 0;
+    font-size: 2.1vw;
+    padding: 0 .9vw 0 .9vw;
 }
 
 .dashboard-goals .button {
@@ -131,6 +130,10 @@
 #db-notes li {
     padding: .9vw;
     margin: 0;
+}
+
+#db-notes li:hover {
+    border: 2px solid var(--mid);
 }
 
 #db-notes li p {

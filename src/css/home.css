@@ -10,7 +10,7 @@
     justify-content: center;
 }
 
-#hp-first {
+.hp-first {
     height: 50vh;
     background-color: var(--light);
     border-radius: 0 0 30vw 0;
@@ -18,7 +18,7 @@
     padding-bottom: 3vh;
 }
 
-#hp-second {
+.hp-second {
     height: 44vh;
     background-color: var(--mid);
     border-radius: 30vw 0 0 0;
@@ -68,13 +68,17 @@
     border-radius: .9vw;
 }
 
-#hp-third .window {
+#hp-third .window, .hp-second .window {
     background-color: var(--strong);
     margin: 0 0 3vh 30vw;
 }
 
 #hp-fourth .window {
     margin: 3vh 30vw 3vh 0;
+}
+
+.hp-first .window {
+    margin: 0 30vw 0 0;
 }
 
 #homepage .window section {

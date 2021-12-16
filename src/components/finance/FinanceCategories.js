@@ -23,8 +23,6 @@ const FinanceCategories = ({ transactions, type }) => {
         })
     }
 
-    console.log(amounts())
-
     var colours = []
     const setColours = () => reduceCategories().map(() => colours.push(randomColor()));
     setColours()

@@ -19,7 +19,7 @@ function GoalForm({goal}) {
             priority: goal?.priority || "low",
             dueDate: goal?.due_date || date()
         })
-    }, [])
+    }, [state])
 
     const handleChange = (e) => {
         setState({
@@ -66,6 +66,7 @@ function GoalForm({goal}) {
             <input type="datetime-local" onChange={handleChange} name="dueDate" value={state.dueDate} min={state.dueDate}/>
             <div>
                 <select onChange={handleChange} value={state.priority} name="priority">
+                    <option value="none" disabled>Priority</option>
                     <option value="low">Low</option>
                     <option value="mid">Mid</option>
                     <option value="high">High</option>
