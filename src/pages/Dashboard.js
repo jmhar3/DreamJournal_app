@@ -60,7 +60,6 @@ const Dashboard = () => {
     }
 
     const todaysGoals = goals.filter(isToday)
-
     const sortedGoals = todaysGoals.sort((a, b) => b.id - a.id)
 
     var renderGoals;
@@ -70,17 +69,18 @@ const Dashboard = () => {
         renderGoals = <Link to="/goals/new" className="button gyst-button">Get your goals together</Link>
     }
 
-    
+    const sortedNotes = notes.sort((a, b) => b.id - a.id)
     var renderNotes;
     if (notes?.find(note => note.pinned === true)) {
-        renderNotes = <PinnedNotes notes={notes}/>
+        renderNotes = <PinnedNotes notes={sortedNotes}/>
     } else {
         renderNotes = <Link to="/notes/new" className="button gyst-button">Get your notes together</Link>
     }
 
+    const sortedTransactions = transactions.sort((a, b) => b.id - a.id)
     var renderTransactions;
     if (transactions.length > 0) {
-        renderTransactions = <TransactionList transactions={transactions} />
+        renderTransactions = <TransactionList transactions={sortedTransactions} />
     } else {
         renderTransactions = <Link to="/transactions/new" className="button gyst-button">Get your finances together</Link>
     }

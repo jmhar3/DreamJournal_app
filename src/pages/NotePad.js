@@ -8,7 +8,8 @@ import { fetchNotes } from "../actions/fetchNotes";
 
 const Notepad = () => {
     const notes = useSelector(state => state.notes)
-
+    const sortedNotes = notes.sort((a, b) => new Date(b.updated_at.slice(0, 10)) - new Date(a.updated_at.slice(0, 10)))
+console.log(sortedNotes)
     const dispatch = useDispatch();
     
     useEffect(() => {
@@ -28,7 +29,7 @@ const Notepad = () => {
         <div id="note">
             <section id="note-left">
                 <h1>Notepad <Link to="/notes/new">+</Link></h1>
-                <NotesList notes={notes}/>
+                <NotesList notes={sortedNotes}/>
             </section>
             <section id="note-right">
                 { hideNote ? <NoteForm note={note} /> : <ShowNote note={note}/> }

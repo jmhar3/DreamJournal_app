@@ -24,11 +24,16 @@
 .dashboard-right {
     float: left;
     padding: 2.1%;
-    padding-left: 0;
     height: 100vh;
     display: flex;
     flex-direction: column;
     gap: 1.8vw;
+}
+
+#dashboard .dashboard-right {
+    position: fixed;
+    top: 0;
+    right: 0;
 }
   
 .dashboard-left h1, .dashboard-left h3 {
@@ -134,9 +139,9 @@
 }
 
 .priority-indicator {
-    width: 1.1vw;
+    width: .9vw;
     height: .9vw;
-    border-radius: 100%;
+    border-radius: 100vw;
 }
 
 #db-notes li {

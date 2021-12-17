@@ -3,8 +3,8 @@ import GoalList from '../components/goals/GoalList';
 import { fetchGoals } from "../actions/fetchGoals";
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useParams } from "react-router-dom";
 import { date } from "../Helpers";
+import { useParams } from "react-router-dom";
 
 const GoalPage = () => {
     const dispatch = useDispatch();
@@ -12,28 +12,24 @@ const GoalPage = () => {
     useEffect(() => {
         dispatch(fetchGoals())
     }, [])
+    
+    const { id } = useParams();
 
     const goalData = useSelector(state => state.goals)
 
     const sortedGoals = goalData.sort((a, b) => b.id - a.id)
-    console.log(sortedGoals)
 
     const completed = (goal) => goal.completed === true
 
-    const pastGoals = goalData.filter(goal => goal.due_date < date() && !completed(goal))
-    const futureGoals = goalData.filter(goal => goal.due_date > date() && !completed(goal))
-    const completedGoals = goalData.filter(goal => completed(goal))
-
-    const { id } = useParams();
-
-    var goal = null;
-    if (id) goal = goalData.find(goal => goal.id === parseInt(id))
+    const pastGoals = sortedGoals.filter(goal => goal.due_date < date() && !completed(goal))
+    const futureGoals = sortedGoals.filter(goal => goal.due_date > date() && !completed(goal))
+    const completedGoals = sortedGoals.filter(goal => completed(goal))
     
     return (
         <div id="form-db" >
             <section className="dashboard-left">
                 <h1>{id ? 'Edit' : 'Create'} Goal</h1>
-                <GoalForm goal={goal}/>
+                <GoalForm/>
             </section>
             <section className="dashboard-right ">
                 <div className="dashboard-goals">
