@@ -1,17 +1,21 @@
 import { useState, useEffect } from "react";
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import {postGoal} from '../../actions/postGoal';
 import {patchGoal} from '../../actions/patchGoal';
 import { userId, date } from "../../Helpers";
 import { useNavigate } from "react-router-dom";
 import {deleteGoal} from '../../actions/deleteGoal';
+import { useParams } from "react-router-dom";
 
-function GoalForm({goal}) {
-    const [state, setState] = useState({
-        label: null,
-        priority: 'low',
-        dueDate: date()
-    })
+function GoalForm() {
+    const goalData = useSelector(state => state.goals)
+
+    const { id } = useParams();
+
+    var goal = null;
+    if (id) goal = goalData.find(goal => goal.id === parseInt(id))
+    
+    const [state, setState] = useState(null)
 
     useEffect(() => {
         setState({
@@ -19,7 +23,7 @@ function GoalForm({goal}) {
             priority: goal?.priority || "low",
             dueDate: goal?.due_date || date()
         })
-    }, [state])
+    }, [id])
 
     const handleChange = (e) => {
         setState({
@@ -62,16 +66,16 @@ function GoalForm({goal}) {
     
     return (
         <div className="form">
-            <input type="text" onChange={handleChange} name="label" value={state.label} placeholder="Goal" />
-            <input type="datetime-local" onChange={handleChange} name="dueDate" value={state.dueDate} min={state.dueDate}/>
+            <input type="text" onChange={handleChange} name="label" value={state?.label} placeholder="Goal" />
+            <input type="datetime-local" onChange={handleChange} name="dueDate" value={state?.dueDate} min={state?.dueDate}/>
             <div>
-                <select onChange={handleChange} value={state.priority} name="priority">
+                <select onChange={handleChange} value={state?.priority} name="priority">
                     <option value="none" disabled>Priority</option>
                     <option value="low">Low</option>
                     <option value="mid">Mid</option>
                     <option value="high">High</option>
                 </select>
-                { goal !== null ? 
+                { goal ? 
                 <button onClick={() => {
                     dispatch(
                         deleteGoal(

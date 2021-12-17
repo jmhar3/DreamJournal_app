@@ -15,6 +15,9 @@ const GoalPage = () => {
 
     const goalData = useSelector(state => state.goals)
 
+    const sortedGoals = goalData.sort((a, b) => b.id - a.id)
+    console.log(sortedGoals)
+
     const completed = (goal) => goal.completed === true
 
     const pastGoals = goalData.filter(goal => goal.due_date < date() && !completed(goal))

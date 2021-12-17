@@ -52,3 +52,7 @@
     right: 11vw;
     width: 30vw;
 }
+
+.toggle-slider button {
+    border: none;
+}

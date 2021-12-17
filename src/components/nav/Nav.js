@@ -2,14 +2,15 @@ import WebNav from "./WebNav";
 import MobileNav from "./MobileNav";
 
 const Nav = () => {
-    if (/Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+    console.log(window.screen.width)
+    if (window.screen.width < 600 || (/iPad/i.test(navigator.userAgent))) {
         return (
             <MobileNav />
         )
-    } else{
+    } else {
         return (
-            <MobileNav />
-            // <WebNav />
+            // <MobileNav />
+            <WebNav />
         )
     }
 }

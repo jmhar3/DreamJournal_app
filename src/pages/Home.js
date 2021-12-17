@@ -7,9 +7,6 @@ import finance from '../images/DJ-Transaction.png';
 const Home = () => {
   return (
     <>
-      <div className="anchor-menu">
-        <a href="#hp-third" />
-      </div>
       <div id="homepage">
         <section className="hp-first">
           <h1>Get your sh*t together</h1>

@@ -1,4 +1,5 @@
 import { Doughnut } from 'react-chartjs-2';
+import 'chart.js/auto';
 import randomColor from 'randomcolor';
 import { reducer, capitalize } from "../../Helpers";
 
@@ -53,6 +54,7 @@ const FinanceCategories = ({ transactions, type }) => {
             <h2>{capitalize(type)}</h2>
             <span>
                 <div className="doughnut">
+                    {/* <h2>{type === "expense" ? "💸" : "🤑"}</h2> */}
                     <Doughnut data={categoryData} options={options} />
                 </div>
                 <ul>

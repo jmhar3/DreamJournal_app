@@ -1,6 +1,7 @@
 import { capitalize } from '../../Helpers';
 import { useDispatch } from 'react-redux';
 import { deleteTransaction } from '../../actions/deleteTransaction';
+import { v4 as uuidv4 } from 'uuid';
 
 const TransactionsList = ({ transaction }) => {
     function categoryEmoji(category) {
@@ -33,7 +34,7 @@ const TransactionsList = ({ transaction }) => {
     const dispatch = useDispatch();
 
     return (
-        <li key={transaction.id}>
+        <li key={uuidv4}>
             <span>
                 <h1>{categoryEmoji(transaction.category)}</h1>
                 <div className="transactions-label">

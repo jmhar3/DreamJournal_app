@@ -19,13 +19,7 @@ const Dashboard = () => {
 
     useEffect(() => {
         dispatch(fetchGoals())
-    }, [])
-
-    useEffect(() => {
         dispatch(fetchNotes())
-    }, [])
-
-    useEffect(() => {
         dispatch(fetchTransactions())
     }, [])
 
@@ -67,9 +61,11 @@ const Dashboard = () => {
 
     const todaysGoals = goals.filter(isToday)
 
+    const sortedGoals = todaysGoals.sort((a, b) => b.id - a.id)
+
     var renderGoals;
     if (todaysGoals.length > 0) {
-        renderGoals = <GoalList goals={todaysGoals} />
+        renderGoals = <GoalList goals={sortedGoals} />
     } else {
         renderGoals = <Link to="/goals/new" className="button gyst-button">Get your goals together</Link>
     }

@@ -15,6 +15,10 @@
     width: fit-content;
 }
 
+#form-db .dashboard-left input {
+    width: 100%;
+}
+
 #form-db .dashboard-left .form div {
     display: flex;
     justify-content: space-between;

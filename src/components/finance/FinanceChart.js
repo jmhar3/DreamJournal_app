@@ -1,6 +1,4 @@
 import { reducer, capitalize } from '../../Helpers';
-import 'chart.js/auto';
-import { Chart } from 'react-chartjs-2';
 
 const FinanceChart = ({ transactions, type }) => {
     const dateTime = new Date()
@@ -50,8 +48,7 @@ const FinanceChart = ({ transactions, type }) => {
 
     const day = dateTime.getDay();
 
-    const dailyLabels = ['Mon', 'Tue', 'Wed',
-        'Thu', 'Fri', 'Sat', 'Sun']
+    const dailyLabels = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
 
     const adjustedLabels = dailyLabels.slice(day).concat(dailyLabels.slice(0, day))
     
