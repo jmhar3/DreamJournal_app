@@ -61,10 +61,12 @@ const Dashboard = () => {
 
     const todaysGoals = goals.filter(isToday)
     const sortedGoals = todaysGoals.sort((a, b) => b.id - a.id)
+    const completedGoals = sortedGoals.filter(goal => !goal.completed)
+    const incompleteGoals = sortedGoals.filter(goal => !!goal.completed)
 
     var renderGoals;
     if (todaysGoals.length > 0) {
-        renderGoals = <GoalList goals={sortedGoals} />
+        renderGoals = <><GoalList goals={completedGoals} /><GoalList goals={incompleteGoals} /></>
     } else {
         renderGoals = <Link to="/goals/new" className="button gyst-button">Get your goals together</Link>
     }
