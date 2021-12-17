@@ -36,8 +36,6 @@ const Login = ({ setToken }) => {
                     </button>
                 </div>
                 {toggleLogin ? <SignIn setToken={setToken} /> : <SignUp />}
-                <p>Or sign in with...</p>
-                <FacebookLogin />
             </section>
             <section id="login-right">
                 <img src={image} alt="" />
