@@ -7,6 +7,7 @@ function noteReducer (notes = [], action) {
         case "START_ADDING_NOTES_REQUEST":
             return notes
         case "ADD_NOTES":
+            console.log(action)
             return [...action.notes]
         case "ADD_NOTE":
             return [...notes, action.note]
