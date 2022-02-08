@@ -11,7 +11,7 @@ const GoalPage = () => {
 
     useEffect(() => {
         dispatch(fetchGoals())
-    }, [])
+    }, [dispatch])
     
     const { id } = useParams();
 

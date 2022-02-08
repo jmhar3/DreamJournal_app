@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import SignIn from '../components/account/SignIn.js';
 import SignUp from '../components/account/SignUp.js';
-import FacebookLogin from '../components/account/FacebookLogin';
 import image from '../images/stretching.png';
 
 const Login = ({ setToken }) => {

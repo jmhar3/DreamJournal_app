@@ -21,7 +21,7 @@ const Dashboard = () => {
         dispatch(fetchGoals())
         dispatch(fetchNotes())
         dispatch(fetchTransactions())
-    }, [])
+    }, [dispatch])
 
     const notes = useSelector(state => state.notes)
     const goals = useSelector(state => state.goals)

@@ -9,7 +9,7 @@ const FinancePage = () => {
 
     useEffect(() => {
         dispatch(fetchTransactions())
-    }, [])
+    }, [dispatch])
 
     const transactions = useSelector(state => state.transactions)
 

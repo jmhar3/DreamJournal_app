@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import { useState } from 'react';
 import menu from '../../images/health.png';
 import home from '../../images/world.png';
-import newRecord from '../../images/book.png';
 import goal from '../../images/to-do.png';
 import note from '../../images/notes.png';
 import finance from '../../images/box.png';

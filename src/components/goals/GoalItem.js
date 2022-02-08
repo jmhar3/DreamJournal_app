@@ -17,16 +17,16 @@ const Goal = ({goal}) => {
     return (
         <li>
             <div onClick={updateGoal} className="checkbox">
-                { goal.completed ? <h3>✓</h3> : null }
+                { goal?.completed ? <h3>✓</h3> : null }
             </div>
-            <div className="goal-label" key={goal.id}>
-                { goal.completed ?
-                    <s><Link to={`/goals/${goal.id}/edit`}>{goal.label}</Link></s>
-                    : <Link to={`/goals/${goal.id}/edit`}>{goal.label}</Link>
+            <div className="goal-label" key={goal?.id}>
+                { goal?.completed ?
+                    <s style={{color: 'var(--dark)'}}><Link to={`/goals/${goal?.id}/edit`}>{goal.label}</Link></s>
+                    : <Link to={`/goals/${goal?.id}/edit`}>{goal?.label}</Link>
                 }
-                <p className="label">{goal.due_date?.replace("T", " ")}</p>
+                <p className="label">{goal?.due_date?.replace("T", " ")}</p>
             </div>
-            {goal.completed ? null : <div className={`priority-indicator ${goal.priority}`}></div>}
+            {goal?.completed ? null : <div className={`priority-indicator ${goal?.priority}`}></div>}
         </li>
     )
 }

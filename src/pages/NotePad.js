@@ -9,12 +9,12 @@ import { fetchNotes } from "../actions/fetchNotes";
 const Notepad = () => {
     const notes = useSelector(state => state.notes)
     const sortedNotes = notes.sort((a, b) => new Date(b.updated_at.slice(0, 10)) - new Date(a.updated_at.slice(0, 10)))
-console.log(sortedNotes)
+
     const dispatch = useDispatch();
     
     useEffect(() => {
         dispatch(fetchNotes())
-    }, [])
+    }, [dispatch])
 
     const { id } = useParams();
 
