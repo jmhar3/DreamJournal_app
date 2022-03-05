@@ -16,5 +16,6 @@ export function fetchTransactions() {
                 transactions
             })
         })
+        .catch(err => console.log(err))
     };
 }
