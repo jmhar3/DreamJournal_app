@@ -16,5 +16,6 @@ export function fetchGoals() {
                 goals
             })
         })
+        .catch(err => console.log(err))
     };
 }

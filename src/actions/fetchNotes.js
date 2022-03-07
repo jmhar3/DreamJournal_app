@@ -16,5 +16,6 @@ export function fetchNotes() {
                 notes
             })
         })
+        .catch(err => console.log(err))
     };
 }
