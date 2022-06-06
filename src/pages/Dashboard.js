@@ -1,4 +1,4 @@
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, useCallback } from "react";
 import { Link } from "react-router-dom";
 
 import GoalProgressBar from "../components/goals/GoalProgressBar";
@@ -31,8 +31,11 @@ const Dashboard = () => {
   const dateTime = new Date();
   const curHr = dateTime.getHours();
   const today = dateTime.toDateString();
+  const day = dateTime.getDate();
+  const month = dateTime.getMonth() + 1;
+  const year = dateTime.getFullYear();
 
-  function greeting() {
+  const greeting = useMemo(() => {
     if (curHr < 12) {
       return "Good Morning";
     } else if (curHr < 18) {
@@ -40,66 +43,68 @@ const Dashboard = () => {
     } else {
       return "Good Evening";
     }
-  }
+  }, [curHr]);
 
-  const day = dateTime.getDate();
-  const month = dateTime.getMonth() + 1;
-  const year = dateTime.getFullYear();
+  const validDate = useCallback((date) => {
+    return date.toString().length === 1 ? "0" + date : date;
+  }, []);
 
-  const validDate = (date) => {
-    if (date.toString().length === 1) {
-      return "0" + date;
-    } else {
-      return date;
-    }
-  };
+  const todaysDate = useMemo(() => {
+    return year + "-" + validDate(month) + "-" + validDate(day);
+  }, [year, month, day]);
 
-  const todaysDate = year + "-" + validDate(month) + "-" + validDate(day);
+  const isToday = useCallback(
+    (goal) => {
+      return goal.due_date?.includes(todaysDate);
+    },
+    [todaysDate]
+  );
 
-  function isToday(goal) {
-    return goal.due_date?.includes(todaysDate);
-  }
+  const todaysGoals = useMemo(() => {
+    return goals.filter(isToday);
+  }, [goals, isToday]);
 
-  const todaysGoals = goals.filter(isToday);
-  const sortedGoals = todaysGoals.sort((a, b) => b.id - a.id);
-  const completedGoals = sortedGoals.filter((goal) => !goal.completed);
-  const incompleteGoals = sortedGoals.filter((goal) => !!goal.completed);
+  const sortedGoals = useMemo(() => {
+    return todaysGoals.sort((a, b) => b.id - a.id);
+  }, [todaysGoals]);
 
-  var renderGoals;
-  if (completedGoals.length > 0 && incompleteGoals.length > 0) {
-    renderGoals = (
+  const completedGoals = useMemo(() => {
+    return sortedGoals.filter((goal) => !goal.completed);
+  }, [sortedGoals]);
+
+  const incompleteGoals = useMemo(() => {
+    return sortedGoals.filter((goal) => !!goal.completed);
+  }, [sortedGoals]);
+
+  const renderGoals = useMemo(() => {
+    return (
       <>
-        <GoalList goals={completedGoals} />
-        <GoalList goals={incompleteGoals} />
+        {completedGoals.length > 0 && <GoalList goals={completedGoals} />}
+        {incompleteGoals.length > 0 && <GoalList goals={incompleteGoals} />}
+        <Link to="/goals/new" className="button gyst-button">
+          New Goal
+        </Link>
       </>
     );
-  } else if (completedGoals.length > 0 && !incompleteGoals.length > 0) {
-    renderGoals = <GoalList goals={completedGoals} />;
-  } else if (!completedGoals.length > 0 && incompleteGoals.length > 0) {
-    renderGoals = <GoalList goals={incompleteGoals} />;
-  } else {
-    renderGoals = (
-      <Link to="/goals/new" className="button gyst-button">
-        Get your goals together
-      </Link>
-    );
-  }
+  }, []);
 
   const sortedNotes = useMemo(() => {
     notes.sort((a, b) => b.id - a.id);
   }, [notes]);
 
-  const sortedTransactions = transactions.sort((a, b) => b.id - a.id);
-  var renderTransactions;
-  if (transactions.length > 0) {
-    renderTransactions = <TransactionList transactions={sortedTransactions} />;
-  } else {
-    renderTransactions = (
+  const sortedTransactions = useMemo(() => {
+    transactions.sort((a, b) => b.id - a.id);
+  }, [transactions]);
+
+  const renderTransactions = useMemo(() => {
+    return transactions.length > 0 ? (
+      <TransactionList transactions={sortedTransactions} />
+    ) : (
       <Link to="/transactions/new" className="button gyst-button">
         Get your finances together
       </Link>
     );
-  }
+  }, [transactions, sortedTransactions]);
 
   const username = jwt(localStorage.getItem("jwt")).user_name;
 
@@ -110,7 +115,7 @@ const Dashboard = () => {
           <div>
             <h3>{today}</h3>
             <h1>
-              {greeting()}, {capitalize(username)}
+              {greeting}, {capitalize(username)}
             </h1>
           </div>
           <Account />

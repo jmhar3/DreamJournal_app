@@ -24,7 +24,7 @@ function App() {
   const auth = localStorage.getItem('jwt')
   const dashboard_nav = <Navigate replace to="/dashboard" />
   const login_nav = <Navigate replace to="/login" />
-
+  
   return (
     <Router>
       <Nav />
