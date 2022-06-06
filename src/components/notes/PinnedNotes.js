@@ -1,15 +1,16 @@
 import { v4 as uuidv4 } from 'uuid';
 import { Link } from "react-router-dom";
+import { useMemo } from "react";
 
 const PinnedNotes = ({ notes }) => {
-
-    const isPinned = (note) => note.pinned === true;
-
-    const pinnedNotes = notes.filter(isPinned);
-
+    // const pinnedNotes = useMemo(() => {
+    //  const isPinned = notes.filter(note => note.pinned === true);
+    //  return notes?.find(note => note.pinned === true) ? isPinned : null
+    // }, [])
+console.log(notes)
     return (
         <ul>
-            {pinnedNotes.map(note => {
+            {/* {pinnedNotes && pinnedNotes.map(note => {
                 return (
                     <li key={uuidv4}>
                         <Link to={`/notes/${note.id}`} >
@@ -19,7 +20,13 @@ const PinnedNotes = ({ notes }) => {
                     </li>
                 )
 
-            })}
+            })} */}
+            <li key={uuidv4}>
+                <Link to={`/notes/new`} >
+                    <h1>📝</h1>
+                    <p>New Note</p>
+                </Link>
+            </li>
         </ul>
     )
 }
