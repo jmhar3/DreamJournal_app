@@ -86,7 +86,7 @@ const Dashboard = () => {
         </Link>
       </>
     );
-  }, []);
+  }, [completedGoals, incompleteGoals]);
 
   const sortedNotes = useMemo(() => {
     notes.sort((a, b) => b.id - a.id);
