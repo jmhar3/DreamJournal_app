@@ -1,35 +1,56 @@
-import ProgressBar from 'react-bootstrap/ProgressBar';
+import { useCallback, useMemo } from "react";
+import ProgressBar from "react-bootstrap/ProgressBar";
 
-const GoalProgressBar = ({goals}) => {
-    const isCompleted = (goal) => goal.completed === true;
+const GoalProgressBar = ({ goals }) => {
+  const isCompleted = useCallback((goal) => {
+    return goal.completed === true;
+  }, []);
 
-    const filterComplete = goals.filter(isCompleted)
+  const filterComplete = useMemo(() => {
+    return goals.filter(isCompleted);
+  }, [goals, isCompleted]);
 
-    function checkPriority(goals, priorityRating){
-        return goals.filter(function(goal) {
-            return goal.priority === priorityRating;
-        })
-    }
+  const checkPriority = useCallback(( priorityRating) => {
+    return goals.filter((goal) => {
+      return goal.priority === priorityRating;
+    });
+  }, [goals]);
 
-    const lowPriority = checkPriority(filterComplete, 'low')
-    const midPriority = checkPriority(filterComplete, 'mid')
-    const highPriority = checkPriority(filterComplete, 'high')
+  const lowPriority = checkPriority(filterComplete, "low");
+  const midPriority = checkPriority(filterComplete, "mid");
+  const highPriority = checkPriority(filterComplete, "high");
 
-    const checkProgress = (priority) => {
-        return (priority.length / goals.length) * 100
-    }
+  const checkProgress = useCallback((priority) => {
+    return (priority.length / goals.length) * 100;
+  }, [goals])
 
-    if (lowPriority.length !== 0 || midPriority.length !== 0 || highPriority.length !== 0) {
-        return (
-            <ProgressBar>
-                <ProgressBar variant="success" now={checkProgress(lowPriority)} key={1} />
-                <ProgressBar variant="warning" now={checkProgress(midPriority)} key={2} />
-                <ProgressBar variant="danger" now={checkProgress(highPriority)} key={3} />
-            </ProgressBar>
-        )
-    } else {
-        return null
-    }
-}
+  if (
+    lowPriority.length !== 0 ||
+    midPriority.length !== 0 ||
+    highPriority.length !== 0
+  ) {
+    return (
+      <ProgressBar>
+        <ProgressBar
+          variant="success"
+          now={checkProgress(lowPriority)}
+          key={1}
+        />
+        <ProgressBar
+          variant="warning"
+          now={checkProgress(midPriority)}
+          key={2}
+        />
+        <ProgressBar
+          variant="danger"
+          now={checkProgress(highPriority)}
+          key={3}
+        />
+      </ProgressBar>
+    );
+  } else {
+    return null;
+  }
+};
 
 export default GoalProgressBar;

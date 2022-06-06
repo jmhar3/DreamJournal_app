@@ -31,7 +31,7 @@ const Goal = ({ goal }) => {
         )}
         <p className="label">{due_date?.replace("T", " ")}</p>
       </div>
-      {completed ? null : (
+      {!completed && (
         <div className={`priority-indicator ${priority}`}></div>
       )}
     </li>
