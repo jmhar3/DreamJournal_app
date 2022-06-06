@@ -1,36 +1,38 @@
 import { Link } from "react-router-dom";
+import { useCallback } from "react";
 import { useDispatch } from "react-redux";
 import { patchGoal } from "../../actions/patchGoal";
 
 const Goal = ({ goal }) => {
   const dispatch = useDispatch();
+  const { completed, label, id, priority, due_date } = goal;
 
-  const completeGoal = () => {
+  const completeGoal = useCallback(() => {
     dispatch(
       patchGoal({
         ...goal,
-        completed: goal.completed === null ? true : !goal.completed,
+        completed: completed === null ? true : !completed,
       })
     );
-  };
+  }, [dispatch, patchGoal, goal]);
 
   return (
     <li>
       <div onClick={completeGoal} className="checkbox">
-        {goal.completed && <h3>✓</h3>}
+        {completed && <h3>✓</h3>}
       </div>
-      <div className="goal-label" key={goal.id}>
-        {goal.completed ? (
+      <div className="goal-label" key={id}>
+        {completed ? (
           <s style={{ color: "var(--dark)" }}>
-            <Link to={`/goals/${goal.id}/edit`}>{goal.label}</Link>
+            <Link to={`/goals/${id}/edit`}>{label}</Link>
           </s>
         ) : (
-          <Link to={`/goals/${goal.id}/edit`}>{goal.label}</Link>
+          <Link to={`/goals/${id}/edit`}>{label}</Link>
         )}
-        <p className="label">{goal.due_date?.replace("T", " ")}</p>
+        <p className="label">{due_date?.replace("T", " ")}</p>
       </div>
-      {goal.completed ? null : (
-        <div className={`priority-indicator ${goal.priority}`}></div>
+      {completed ? null : (
+        <div className={`priority-indicator ${priority}`}></div>
       )}
     </li>
   );
