@@ -1,75 +1,83 @@
-import { reducer, capitalize } from '../../Helpers';
+import { reducer, capitalize } from "../../Helpers";
+import { useMemo, useCallback } from "react";
 
 const FinanceChart = ({ transactions, type }) => {
-    const dateTime = new Date()
+  const dateTime = new Date();
+  const day = dateTime.getDay();
 
-    const allValues = () => {
-        const byDirection = (transaction) => transaction.direction === type;
-        const filteredTransactions = transactions.filter(byDirection)
+  const amounts = useMemo(() => {
+    const byDirection = (transaction) => transaction.direction === type;
+    const filteredTransactions = transactions.filter(byDirection);
 
-        function weekday(count) {
-            const date = dateTime.getDate() - count
-            const month = dateTime.getMonth() + 1
-            const year = dateTime.getFullYear()
-            const validDate = (num) => {
-                if (num.toString().length === 1) {
-                    return "0" + num
-                } else {
-                    return num
-                }
-            }
-            return year + "-" + validDate(month) + "-" + validDate(date);
+    const weekday = (count) => {
+      const date = dateTime.getDate() - count;
+      const month = dateTime.getMonth() + 1;
+      const year = dateTime.getFullYear();
+      const validDate = (num) => {
+        if (num.toString().length === 1) {
+          return "0" + num;
+        } else {
+          return num;
         }
+      };
+      return `${year}-${validDate(month)}-${validDate(date)}`;
+    };
 
-        function byDay(transactions, count) {
-            return transactions.filter(function (transaction) {
-                return transaction.created_at.includes(weekday(count));
-            })
-        }
+    const byDay = (count) => {
+      return filteredTransactions.filter((transaction) => {
+        return transaction.created_at.includes(weekday(count));
+      });
+    };
 
-        const weeklyValues = [
-            byDay(filteredTransactions, 6),
-            byDay(filteredTransactions, 5),
-            byDay(filteredTransactions, 4),
-            byDay(filteredTransactions, 3),
-            byDay(filteredTransactions, 2),
-            byDay(filteredTransactions, 1),
-            byDay(filteredTransactions, 0)
-        ]
+    const weeklyValues = [
+      byDay(6),
+      byDay(5),
+      byDay(4),
+      byDay(3),
+      byDay(2),
+      byDay(1),
+      byDay(0),
+    ];
 
-        const values = weeklyValues.map(transactions => {
-            var tv = transactions.map(transaction => parseFloat(transaction.amount))
-            return tv.length > 0 ? tv.reduce(reducer) : 0
-        });
-        return values
-    }
+    return weeklyValues.map((transactions) => {
+      const tv = transactions.map((transaction) =>
+        parseFloat(transaction.amount)
+      );
+      return tv.length > 0 ? tv.reduce(reducer) : 0;
+    });
+  }, [transactions, dateTime, type]);
 
-    const amounts = allValues()
+  const dailyLabels = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 
-    const day = dateTime.getDay();
+  const adjustedLabels = useMemo(() => {
+    return dailyLabels.slice(day).concat(dailyLabels.slice(0, day));
+  }, [dailyLabels, day]);
 
-    const dailyLabels = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+  const calcPercent = useCallback((num) => {
+    return (num / Math.max(...amounts.map((a) => parseInt(a)))) * 100;
+  }, [amounts]);
 
-    const adjustedLabels = dailyLabels.slice(day).concat(dailyLabels.slice(0, day))
-    
-    const calcPercent = (num) => (num/Math.max(...amounts.map(a => parseInt(a))))*100
-
-    return (
-        <div>
-            <h2>{type === "expense" ? "💸" : "🤑"} {capitalize(type)}</h2>
-            <p>${Number.parseFloat(amounts.reduce(reducer)).toFixed(2)}</p>
-            <ul>
-                {adjustedLabels.map((day, i) => {
-                    return (
-                        <li>
-                            <hr className="chart-hr" style={{height: `${calcPercent(amounts[i])}%`}}/>
-                            {day}
-                        </li>
-                    )
-                })}
-            </ul>
-        </div>
-    )
-}
+  return (
+    <div>
+      <h2>
+        {type === "expense" ? "💸" : "🤑"} {capitalize(type)}
+      </h2>
+      <p>${Number.parseFloat(amounts.reduce(reducer)).toFixed(2)}</p>
+      <ul>
+        {adjustedLabels.map((day, i) => {
+          return (
+            <li>
+              <hr
+                className="chart-hr"
+                style={{ height: `${calcPercent(amounts[i])}%` }}
+              />
+              {day}
+            </li>
+          );
+        })}
+      </ul>
+    </div>
+  );
+};
 
 export default FinanceChart;
