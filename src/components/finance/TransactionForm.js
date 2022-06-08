@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useCallback } from "react"
 import { useDispatch } from 'react-redux';
 import {postTransaction} from '../../actions/postTransaction';
 import { userId } from "../../Helpers";
@@ -11,16 +11,16 @@ const TransactionForm = () => {
         description: ""
     });
 
-    const handleChange = (e) => {
+    const handleChange = useCallback((event) => {
         setState({
             ...state,
-            [e.target.name]: e.target.value
+            [event.target.name]: event.target.value
         })
-    }
+    }, [setState])
 
     const dispatch = useDispatch();
 
-    const addTransaction = () => {
+    const addTransaction = useCallback(() => {
         dispatch(
             postTransaction({
                 user_id: userId,
@@ -36,7 +36,7 @@ const TransactionForm = () => {
             category: "business",
             description: ""
         })
-    }
+    }, [dispatch, postTransaction, userId, state, setState])
 
     return (
         <div className="form">
