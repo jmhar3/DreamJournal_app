@@ -81,9 +81,6 @@ const Dashboard = () => {
       <>
         {completedGoals.length > 0 && <GoalList goals={completedGoals} />}
         {incompleteGoals.length > 0 && <GoalList goals={incompleteGoals} />}
-        <Link to="/goals/new" className="button gyst-button">
-          New Goal
-        </Link>
       </>
     );
   }, [completedGoals, incompleteGoals]);
@@ -135,14 +132,19 @@ const Dashboard = () => {
       </section>
       <section className="dashboard-right">
         <div className="dashboard-goals">
-          <span>
-            <h3>Todays Focus</h3>
-            <Link to="/goals/new" className="button">
-              +
-            </Link>
-          </span>
-          <GoalProgressBar goals={todaysGoals} />
-          {renderGoals}
+          <div>
+            <span className="db-goals-header">
+              <h3>Todays Focus</h3>
+              <Link to="/goals/new" className="button">
+                +
+              </Link>
+            </span>
+            <GoalProgressBar goals={todaysGoals} />
+            {renderGoals}
+          </div>
+          <Link to="/goals/new" className="button gyst-button">
+            Add New Goal
+          </Link>
         </div>
         <div id="db-notes">
           <PinnedNotes notes={sortedNotes} />
