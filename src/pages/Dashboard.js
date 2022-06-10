@@ -132,7 +132,7 @@ const Dashboard = () => {
       </section>
       <section className="dashboard-right">
         <div className="dashboard-goals">
-          <div>
+          <div className="db-goals-main">
             <span className="db-goals-header">
               <h3>Todays Focus</h3>
               <Link to="/goals/new" className="button">
