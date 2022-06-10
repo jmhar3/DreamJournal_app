@@ -2,6 +2,7 @@ import CategoryList from "./CategoryList";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { deleteNote } from "../../actions/deleteNote";
+import { useCallback } from "react";
 
 const ShowNote = ({ note }) => {
   const dispatch = useDispatch();

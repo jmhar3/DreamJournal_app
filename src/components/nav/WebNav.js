@@ -7,7 +7,7 @@ import note from "../../images/notes.png";
 import finance from "../../images/box.png";
 import ColourMode from "../ColourMode";
 
-export const Nav = () => {
+const Nav = () => {
   const [homeLabel, setHome] = useState(false);
   const showHome = () => setHome(true);
   const hideHome = () => setHome(false);
@@ -127,3 +127,5 @@ export const Nav = () => {
     </header>
   );
 };
+
+export default Nav;

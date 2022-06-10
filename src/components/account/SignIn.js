@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useMemo } from "react";
 
 const SignIn = () => {
     const [credentials, setCredentials] = useState({
@@ -6,16 +6,18 @@ const SignIn = () => {
         password: ""
     })
     
-    const handleChange = useCallback((event) {
+    const handleChange = useCallback((event) => {
         setCredentials((prevCredentials) => {
             return {...prevCredentials,
             [event.target.name]: event.target.value}
         })
     }, [setCredentials])
 
-    const emptyFields = credentials.email === "" || credentials.password === "";
+    const emptyFields = useMemo(() => {
+     return credentials.email === "" || credentials.password === "";
+    }, [credentials])
 
-    function onSubmit(e) {
+    const onSubmit = useCallback((e) => {
         e.preventDefault();
         fetch("http://localhost:3000/api/v1/login", {
             method: 'post',
@@ -33,10 +35,12 @@ const SignIn = () => {
             if (res.token !== undefined) {
                 localStorage.setItem('jwt', res.token)
                 localStorage.setItem('theme', "pink")
+            } else {
+             // throw error
             }
             window.location.reload();
         })
-    }
+    }, [credentials])
 
     return (
         <div>

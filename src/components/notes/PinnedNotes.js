@@ -4,7 +4,7 @@ import { useMemo } from "react";
 
 const PinnedNotes = ({ notes }) => {
   const pinnedNotes = useMemo(() => {
-    const isPinned = notes.filter((note) => note.pinned === true);
+    const isPinned = notes?.filter((note) => note.pinned === true);
     return notes?.find((note) => note.pinned === true) ? isPinned : null;
   }, [notes]);
 
