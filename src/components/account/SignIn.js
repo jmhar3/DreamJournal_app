@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 
 const SignIn = () => {
     const [credentials, setCredentials] = useState({
@@ -6,12 +6,12 @@ const SignIn = () => {
         password: ""
     })
     
-    function handleChange(e) {
-        setCredentials({
-            ...credentials,
-            [e.target.name]: e.target.value
+    const handleChange = useCallback((event) {
+        setCredentials((prevCredentials) => {
+            return {...prevCredentials,
+            [event.target.name]: event.target.value}
         })
-    }
+    }, [setCredentials])
 
     const emptyFields = credentials.email === "" || credentials.password === "";
 
